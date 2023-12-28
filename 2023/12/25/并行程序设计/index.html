@@ -1,0 +1,861 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zhouyuchen/img/fluid.png">
+  <link rel="icon" href="/zhouyuchen/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="雨沉">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="article">
+<meta property="og:title" content="并行程序设计">
+<meta property="og:url" content="https://zyccodegit.gitee.io/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="雨沉">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226155644186.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226163828227.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226194256003.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226205715445-17035954415368.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226213852081.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231227170013111.png">
+<meta property="article:published_time" content="2023-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-27T10:13:31.017Z">
+<meta property="article:author" content="雨沉">
+<meta property="article:tag" content="并行程序设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226155644186.png">
+  
+  
+  
+  <title>并行程序设计 - 雨沉</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zhouyuchen/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zhouyuchen/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zhouyuchen/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zyccodegit.gitee.io","root":"/zhouyuchen/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zhouyuchen/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zhouyuchen/js/utils.js" ></script>
+  <script  src="/zhouyuchen/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zhouyuchen/">
+      <strong>雨沉</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zhouyuchen/img/spider.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="并行程序设计"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-25 00:00" pubdate>
+          2023年12月25日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          91 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">并行程序设计</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <html><head></head><body><h1 id="并行程序设计"><a href="#并行程序设计" class="headerlink" title="并行程序设计"></a>并行程序设计</h1><h2 id="第三章（重点）"><a href="#第三章（重点）" class="headerlink" title="第三章（重点）"></a>第三章（重点）</h2><h3 id="1-并行编程的语言实现"><a href="#1-并行编程的语言实现" class="headerlink" title="1.并行编程的语言实现"></a>1.并行编程的语言实现</h3><p>改动越大，实现难度越大，从1~3实现难度递减</p>
+<ol>
+<li>设计全新的并行语言</li>
+</ol>
+<p>优点：并行程序实现简单、方便</p>
+<p>缺点：没有统一的标准，设计语言的难度和工作量都很大</p>
+<ol start="2">
+<li>扩展串行语言语法，使其支持并行特征</li>
+</ol>
+<p>将串行语言的并行扩充部分作为原来串行语言的注释(标注)，则对串行编译器来说，并行扩充部分将不起作用；对于并行编译器来说，将会根据标注要求，将串行程序转化为并行程序。</p>
+<p>优点：相对于设计全新的并行语言，难度有所降低</p>
+<p>缺点：需要重新开发编译器</p>
+<ol start="3">
+<li>为串行语言提供可调用的并行库</li>
+</ol>
+<p>优点：无需重新开发编译器，编程者只需要在串行程序中加入对并行库的的调用，就可以实现并行程序的设计</p>
+<h3 id="2-MPI-并行程序的编程模式"><a href="#2-MPI-并行程序的编程模式" class="headerlink" title="2.MPI 并行程序的编程模式"></a>2.MPI 并行程序的编程模式</h3><p>Message  Passing  Interface(消息传递接口):是消息传递函数库的标准规范</p>
+<ul>
+<li>MPI是一种新的库描述。</li>
+<li>MPI是一种标准或规范的代表。不是特指某一个对它的具体实现</li>
+<li>MPI是一种<strong>消息传递编程模型</strong>，并成为这种编程模型的代表和事实上的标准。</li>
+</ul>
+<h3 id="3-MPI-程序结构"><a href="#3-MPI-程序结构" class="headerlink" title="3.MPI 程序结构"></a>3.MPI 程序结构</h3><ul>
+<li><p>MPI是一种完全基于库的语言。它不需要特殊的编译器或操作系统的调整，所有的MPI程序都有一个基本的结构。</p>
+</li>
+<li><p>只需要编译、链接MPI库，然后使用特殊的并行启动程序进行启动即可</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>** argv)</span> {<br>    <span class="hljs-comment">// 初始化MPI环境</span><br>    MPI_Init(&amp;argc, &amp;argv);<br>    <span class="hljs-comment">// 获取进程总数和当前进程的标识符</span><br>    <span class="hljs-type">int</span> world_size, world_rank;<br>    MPI_Comm_size(MPI_COMM_WORLD, &amp;world_size);<br>    MPI_Comm_rank(MPI_COMM_WORLD, &amp;world_rank);<br>    <span class="hljs-comment">// 数据分配，根据进程数量划分数据</span><br>    <span class="hljs-comment">// 这部分代码会因具体应用而异</span><br>    <span class="hljs-comment">// 进行通信，根据问题需要进行数据交换</span><br>    <span class="hljs-comment">// MPI_Send, MPI_Recv, MPI_Bcast, MPI_Reduce等函数的调用</span><br>    <span class="hljs-comment">// 并行计算，每个进程处理自己负责的数据部分</span><br>    <span class="hljs-comment">// 这部分代码会因具体应用而异</span><br>    <span class="hljs-comment">// 同步操作，确保计算的一致性</span><br>    MPI_Barrier(MPI_COMM_WORLD);<br>    <span class="hljs-comment">// 结束MPI环境</span><br>    MPI_Finalize();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>上述代码包括了初始化MPI环境、数据分配、通信、计算、同步和终止等步骤</p>
+<p>打印Hello World!</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> **argv)</span><br>{<br>   MPI_Init(&amp;argc, &amp;argv);<br>   <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hello, world!\n"</span>);<br>   MPI_Finalize();<br>   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h3 id="4-MPI-基础调用"><a href="#4-MPI-基础调用" class="headerlink" title="4.MPI 基础调用"></a>4.MPI 基础调用</h3><p>基本的MPI函数调用包括MPI_Init和MPI_Finalize。</p>
+<p>应用程序启动之后对MPI_Init进行调用，并且必须将来自主程序的参数传递给初始化调用。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">iret = MPI_Init(&amp;argc, &amp;argv);<br>iret = MPI_Finalize();<br></code></pre></td></tr></tbody></table></figure>
+
+<p>int MPI_Finalize () </p>
+<ul>
+<li>退出MPI系统，所有进程正常退出都必须调用。表明并行代码的结束,<strong>结束除主进程外其它进程</strong>。</li>
+<li>串行代码仍可在主进程(rank = 0)上运行，但不能再有MPI函数（包括MPI_Init()）</li>
+</ul>
+<h3 id="5-进程"><a href="#5-进程" class="headerlink" title="5.进程"></a>5.进程</h3><ul>
+<li><p>大多数程序在可以通信的组件中，将所需要<strong>进程的数量</strong>和<strong>进程rank</strong>称为<strong>通信器</strong>。<strong>MPI的一个主要功能是启动远程进程</strong>，并将这些进程进行绑定起来，以便在进程之间进行消息传递。默认的<strong>通信器</strong>是MPI_COMM_WORLD，它是由MPI_Init在每个并行作业开始时设置的。</p>
+</li>
+<li><p>进程(Process):是一种独立的计算单元，拥有部分内存的所有权并控制用户空间的资源。</p>
+</li>
+<li><p>rank:是一种唯一的、可移植的标识符，用于区分进程集中的各个进程。通常这个值是0到进程数减1的整数。</p>
+</li>
+<li><p>序号(rank) 序号用来在一个进程组或通信子中标识一个进程. </p>
+<ul>
+<li>MPI程序中的进程由进程组标识/进程序号或通信子标识/进程序号所唯一确定.</li>
+<li>序号是相对于进程组或通信子而言的: 同一个进程在不同的进程组或通信子中可以有不同的序号.进程的序号是在进程组或通信子被创建时赋予的。</li>
+</ul>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">MPI_Comm_size</span> <span class="hljs-params">(MPI_Comm comm<span class="hljs-comment">/*in*/</span>,<span class="hljs-type">int</span>* size<span class="hljs-comment">/*out*/</span>)</span><br><span class="hljs-comment">//获得进程个数 size</span><br><span class="hljs-comment">//指定一个通信子,也指定了一组共享该空间的进程, 这些进程组成该通信子的group.</span><br><span class="hljs-comment">//获得通信子comm中规定的group包含的进程的数量.</span><br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">MPI_Comm_rank</span> <span class="hljs-params">(MPI_Comm comm<span class="hljs-comment">/*in*/</span>,<span class="hljs-type">int</span>* rank<span class="hljs-comment">/*out*/</span>)</span><br><span class="hljs-comment">//得到本进程在通信空间中的rank值,即在组中的逻辑编号(该 rank值为0到n-1间的整数,相当于进程的ID。).</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>MPI预定义的进程组和通信域</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_GROUP_NULL<br><span class="hljs-comment">//无效进程组句柄</span><br>MPI_COMM_NULL<br><span class="hljs-comment">//无效通信域句柄</span><br>MPI_GROUP_EMPTY<br><span class="hljs-comment">//有效进程组句柄，包括元素个数为0</span><br>MPI_COMM_SELF<br><span class="hljs-comment">//有效通信域句柄，包括元素仅为当前进程</span><br>MPI_COMM_WORLD<br><span class="hljs-comment">//有效通信域句柄，包括元素为所有进程！！！！！！</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>MPI程序最小工作示例</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> **argv)</span><br>{<br>   <span class="hljs-comment">//在程序启动后初始化，包括程序参数</span><br>   MPI_Init(&amp;argc, &amp;argv);<br>   <span class="hljs-type">int</span> rank, nprocs;<br>   <span class="hljs-comment">//获取进程的rank number</span><br>   MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);<br>   <span class="hljs-comment">//获取由mpirun命令确定的程序进程数量</span><br>   MPI_Comm_size(MPI_COMM_WORLD, &amp;nprocs);<br>   <span class="hljs-comment">//完成MPI来同步rank，然后退出</span><br>   <span class="hljs-built_in">printf</span>(“I am Rank %d of %d\n<span class="hljs-string">", rank, nprocs);</span><br><span class="hljs-string">   MPI_Finalize();</span><br><span class="hljs-string">   return 0;</span><br><span class="hljs-string">}</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226155644186.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<p><strong>输出的结果可能是任意顺序的：MPI程序由操作系统决定何时以及通过怎样的方式输出结果。</strong></p>
+</li>
+</ul>
+<h3 id="6-消息传递"><a href="#6-消息传递" class="headerlink" title="6.消息传递"></a>6.消息传递</h3><p>消息传递方法的核心是<strong>点对点</strong>的消息传递，或者更准确地说，是<strong>进程对进程</strong>地消息传递。并行处理的重点是协调这些消息传递的工作。</p>
+<p>传递</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">MPI_Send</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span>* buf, <span class="hljs-type">int</span> count, MPI_Datatype datatype, <span class="hljs-type">int</span> dest, <span class="hljs-type">int</span> tag, MPI_Comm comm)</span><br><span class="hljs-title function_">MPI_Send</span><span class="hljs-params">(A, <span class="hljs-number">10</span>, MPI_DOUBLE, <span class="hljs-number">1</span>,<span class="hljs-number">99</span>, MPI_COMM_WORLD)</span>;<br><span class="hljs-comment">//MPI_Send函数将数组A中的10个双精度浮点数发送给标识符为1的进程，消息标签为99。</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>接受</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">MPI_Recv</span><span class="hljs-params">(<span class="hljs-type">void</span>* buf, <span class="hljs-type">int</span> count, MPI_Datatype datatype, <span class="hljs-type">int</span> source, <span class="hljs-type">int</span> tag, MPI_Comm comm, MPI_Status* status)</span><br><span class="hljs-title function_">MPI_Recv</span><span class="hljs-params">(B, <span class="hljs-number">20</span>, MPI_DOBULE, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD,  &amp;status)</span>;<br><span class="hljs-comment">//MPI_Recv函数从标识符为0的进程接收消息，消息标签为99，将接收到的数据存储在数组B中，并使用status变量获取消息的状态信息。</span><br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (rank != <span class="hljs-number">0</span>)<br>{<br>    <span class="hljs-comment">// 对于非根进程，发送消息到根进程（rank 0）</span><br>    <span class="hljs-built_in">strcpy</span>(message, <span class="hljs-string">"Hello World!"</span>);<br>    MPI_Send(message, <span class="hljs-built_in">strlen</span>(message)+<span class="hljs-number">1</span>, MPI_CHAR, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD);<br>} <br><span class="hljs-keyword">else</span> <br>{ <span class="hljs-comment">/* rank == 0 */</span><br>    <span class="hljs-comment">// 对于根进程，循环接收来自其他进程的消息</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> source = <span class="hljs-number">1</span>; source &lt; nprocs; ++source)<br>    {<br>        <span class="hljs-comment">// 使用MPI_Recv接收来自其他进程（source）的消息</span><br>        MPI_Recv(message, <span class="hljs-number">100</span>, MPI_CHAR, source, <span class="hljs-number">99</span>, MPI_COMM_WORLD,  &amp;status);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, message);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226163828227.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<h3 id="7-阻塞"><a href="#7-阻塞" class="headerlink" title="7.阻塞"></a>7.阻塞</h3><ul>
+<li>需要等待操作的实际完成，或至少等待MPI系统安全地备份后才返回；</li>
+<li>MPI_Send与MPI_Recv都是阻塞的；</li>
+<li>MPI_Send调用返回时表明数据已经发出或被MPI系统复制，随后对发送缓冲区的修改不会改变所发送的数据；</li>
+<li>而MPI_Recv返回，则表明已完成数据接收。</li>
+<li>函数调用是非局部的，对整个通信参与者都会有影响。</li>
+</ul>
+<p><strong>异步通信 非阻塞</strong></p>
+<p>无需等待操作的实际完成，不等待工作的完成；<br>MPI_Isend与MPI_Irecv都是非阻塞的。</p>
+<ul>
+<li>一个发送/接收的MPI程序，必须在一个进程上发送数据，在另一个进程上接收数据。</li>
+<li>在发送时，缓冲区必须已经完成读取并且可以释放。在接收时，缓冲区必须被填充。</li>
+<li>如果通信中的两个进程都阻塞，就会出现挂起的情况。</li>
+<li>当一个或多个进程在等待一个永远不会发生的事件时，也会发生挂起。</li>
+</ul>
+<p><strong>异步(非阻塞)调用</strong></p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Request requests[<span class="hljs-number">2</span>] = {MPI_REQUEST_NULL, MPI_REQUEST_NULL};<br><span class="hljs-comment">//发布Irecv</span><br>MPI_Irecv(xrecv, count, MPI_DOUBLE, partner_rank, tag, comm, &amp;requests[<span class="hljs-number">0</span>]);<br><span class="hljs-comment">//调用 Isend</span><br>MPI_Isend(xsend, count, MPI_DOUBLE, partner_rank, tag, comm, &amp;requests[<span class="hljs-number">1</span>]);<br><span class="hljs-comment">//等待接受和发送完成</span><br>MPI_Waitall(<span class="hljs-number">2</span>, requests, MPI_STATUSES_IGNORE);<br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>混合阻塞与异步调用</strong></p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Request request;<br><span class="hljs-comment">//发送</span><br>MPI_Isend(xsend, count, MPI_DOUBLE, partner_rank, tag, comm, &amp;request);<br><span class="hljs-comment">//接受</span><br>MPI_Recv(xrecv, count, MPI_DOUBLE, partner_rank, tag, comm, MPI_STATUS_IGNORE);<br><span class="hljs-comment">//释放请求</span><br>MPI_Request_free(&amp;request);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="8-通信域"><a href="#8-通信域" class="headerlink" title="8.通信域"></a>8.通信域</h3><p>通信域（Communicator）是一个逻辑上的组，用于定义一组进程之间的通信关系。MPI通信域定义了进程之间的通信上下文，进程可以在其中进行消息传递和同步操作。</p>
+<p>MPI提供了两种类型的通信域：<code>MPI_COMM_WORLD</code>和自定义通信域。</p>
+<ol>
+<li><strong>MPI_COMM_WORLD</strong>是MPI的默认通信域，包含了运行MPI程序的所有进程。它是在MPI初始化时自动创建的，并且可以通过<strong>MPI_COMM_WORLD</strong>常量来引用。在<strong>MPI_COMM_WORLD</strong>中，所有进程都可以相互通信。</li>
+<li>自定义通信域是通过调用MPI函数创建的。通过自定义通信域，你可以将进程划分为不同的组，每个组具有自己的通信上下文。自定义通信域可以用于实现更复杂的通信模式，例如组间通信或子集内的通信。</li>
+</ol>
+<h2 id="第四章（重点）"><a href="#第四章（重点）" class="headerlink" title="第四章（重点）"></a>第四章（重点）</h2><h3 id="1-同步"><a href="#1-同步" class="headerlink" title="1.同步"></a>1.同步</h3><ul>
+<li><p>MPI_Barrier函数的作用是阻塞进程，直到通信域comm中的所有进程都调用了该函数，才会继续往下执行。它用于确保在某一点上所有进程都达到了同步状态，即所有进程都执行到了该函数，并且在所有进程都执行完该函数之前，没有进程可以继续往下执行。</p>
+</li>
+<li><p>MPI_Barrier函数通常用于同步进程的执行，以确保在某个点上所有进程都达到了同步状态。它可以用于控制进程间的顺序执行，或者用于确保在某个操作之前或之后所有进程都已完成某个阶段的工作。</p>
+</li>
+</ul>
+<p>整体同步并行计算模型(Bulk Synchronous Parallel, BSP)：</p>
+<ul>
+<li>并发计算步骤：进程进行局部异步计算，局部并行计算可以与通信重叠；</li>
+<li>通信步骤：进程之间相互交换数据；</li>
+<li>同步屏障步骤：当进程到达同步屏障时，等待所有其它进程到达这个屏障，然后进行另一组超级步骤</li>
+</ul>
+<h3 id="2-聚合通信"><a href="#2-聚合通信" class="headerlink" title="2.聚合通信"></a>2.聚合通信</h3><ul>
+<li>MPI具有丰富的聚合通信调用集。</li>
+<li>聚合通信将对MPI通信器中的一组进程进行操作。</li>
+<li>操作部分进程时，可以为MPI_COMM_WORLD的子集创建自己的MPI通信器。然后，可在聚合通信中使用通信器来代替MPI_COMM_WORLD。</li>
+<li>大多数聚合通信都是对数据执行操作的。</li>
+<li>参加聚合通信的进程和聚合通信的上下文，由该聚合通信调用的通信域限定。<br>聚合通信的三大功能：通信、同步和计算。<ul>
+<li>通信：完成组内数据的传输。</li>
+<li>同步：实现组内所有进程在执行次序上进行协调，使得组内所有进程在特定某一点在执行进度上取得一致。</li>
+<li>计算：对给定的数据完成一定的操作。</li>
+</ul>
+</li>
+</ul>
+<p>按通信的方向不同，分为：一对多通信，多对一通信，多对多通信。</p>
+<ul>
+<li>一对多聚合通信：一个称为ROOT的进程向其他所有进程发送消息。常见的一对多通信的例子是广播。</li>
+<li>多对一聚合通信：一个称为ROOT的进程接收来自其他所有进程的消息。常见的多对一通信的例子是收集。</li>
+<li>多对多通信：每一个进程都向其他所有进程发送消息或者接收来自其他所有进程发送的消息。</li>
+</ul>
+<h3 id="3-MPI-数据类型"><a href="#3-MPI-数据类型" class="headerlink" title="3.MPI 数据类型"></a>3.MPI 数据类型</h3><p>目的：移植，方便使用（抽象，不连续数据的传送）<br>分为：预定义数据类型 和 派生数据类型<br>MPI是强数据类型的</p>
+<p><img src="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226194256003.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<h3 id="4-MPI-派生数据类型（自定义）"><a href="#4-MPI-派生数据类型（自定义）" class="headerlink" title="4.MPI 派生数据类型（自定义）"></a>4.MPI 派生数据类型（自定义）</h3><p>派生数据类型：通常是用户根据程序的需要，在原始数据类型的基础上定义适合自身程序的数据处理方式，又称为用户自定义数据类型或抽象数据类型</p>
+<p>目的</p>
+<ul>
+<li>异构计算: 不同系统有不同的数据表示格式。MPI预先定义一些基本数据类型，在实现过程中以这些基本数据类型为桥梁进行转换。</li>
+<li>派生数据类型:允许消息来自不连续的和类型不一致的存储区域，如数组散元与结构类型等的传送。</li>
+</ul>
+<p>特点</p>
+<ul>
+<li>派生数据类型在一条非连续存储或具有混合类型的消息中提供了一种可移植和优雅的解决方法。</li>
+<li>派生数据类型在发送数据过程中提供了一种高效的方法，即当数据从一个单处理器分发到多个处理器上时，不需要任何中间缓冲区。</li>
+<li>派生数据类型都是在基本MPI数据类型的基础之上生成的。</li>
+<li>MPI提供了许多不同的产生派生数据类型的<strong>例程</strong>,又叫类型生成器，每个例程都针对某一类数据，比如：连续数据、非连续数据、非连续的混合类型的数据。</li>
+<li>每一个派生数据类型在使用之前都必须commit。</li>
+<li>MPI例程MPI_TYPE_EXTENT在涉及任何对齐问题时用于计算偏移很有用。</li>
+</ul>
+<p>四种常用的定义(构造)新数据类型的方法</p>
+<ul>
+<li>MPI_Type_contiguous(连续复制的类型生成器)</li>
+<li>MPI_Type_vector(向量数据类型的生成器)</li>
+<li>MPI_Type_indexed(索引数据类型的生成器)</li>
+<li>MPI_Type_struct(结构数据类型的生成器)</li>
+<li>MPI_Type_contiguous: 将一个连续的数据块转换为一种类型；<br>MPI_Type_vector: 通过跨步数据块创建一个类型；<br>MPI_Type_create_subarray: 创建较大数组的矩形子集；<br>MPI_Type_indexd或者MPI_Type_Create_hindexed: 创建一组长度和位移描述的不规矩索引。为了提高通用性，hindexed版本中，通过字节而不是数据类型来表示位移。<br>MPI_Type_create_struct: 创建一种数据类型，以可移植方式将数据项封装在结构中。在这种方式中，考虑到了编译器的填充。</li>
+</ul>
+<h3 id="5-ghost-cell-基本原理"><a href="#5-ghost-cell-基本原理" class="headerlink" title="5.ghost cell 基本原理"></a>5.ghost cell 基本原理</h3><ul>
+<li>ghost cell是用来连接相邻处理器上的网格的机制，用于对来自相邻处理器上的值进行缓存，从而减少需要的通信操作。</li>
+<li>ghost cell技术是MPI中实现分布式存储并行性的最重要方法。</li>
+<li>一旦程序被并行化，一个相似的外部区域将被添加进来，用于保存相邻网格的值。<br>这些cell不是真正的cell，只是用于减少通信成本的一种辅助手段，所以被称为ghost cell。<br>ghost cell的真实数据存储在相邻的处理器上，而本地拷贝只是一个虚值。</li>
+<li>ghost cell更新或者交换指的是ghost cell中的信息变更，当并行程序执行的多个进程需要更新来自相邻进程的真实值时才会发生ghost cell更新或者交换。</li>
+</ul>
+<p>ghost cell交换(续)</p>
+<ul>
+<li>在C语言中，行数据时连续的，而列数据是由行大小的跨度隔开的。</li>
+<li>行发送可以使用MPI_Send调用发送连续数组。</li>
+<li>为列发送单独值的代价相当高，因此需要以某种方式将他们组合在一起再发送。</li>
+<li>可以使用MPI_Pack调用来打包列数据实现。</li>
+</ul>
+<h3 id="6-笛卡尔拓扑基础"><a href="#6-笛卡尔拓扑基础" class="headerlink" title="6.笛卡尔拓扑基础"></a>6.笛卡尔拓扑基础</h3><p>MPI的笛卡尔拓扑可以将进程进行坐标划分，将进程映射到二维、三维，甚至多维网格。</p>
+<p>MPI_Dims_create：在笛卡尔网格中创建处理器的除法。<br>MPI_Cart_create：创建要附加到的拓扑信息的新通信器。<br>MPI_Cart_coords：确定在组中给定排名的笛卡尔拓扑中的进程共同点。<br>MPI_Cart_shift：返回移动的源和目标排名，给定移动方向和量。</p>
+<p><img src="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226205715445-17035954415368.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<h2 id="第五章（重点）"><a href="#第五章（重点）" class="headerlink" title="第五章（重点）"></a>第五章（重点）</h2><h3 id="1-MapReduce-基本概念"><a href="#1-MapReduce-基本概念" class="headerlink" title="1.MapReduce 基本概念"></a>1.MapReduce 基本概念</h3><p>MapReduce是一种编程范式（programming paradigm），用于大规模数据集（大于1TB）的并行运算。 </p>
+<p>MapReduce的名字源于这个模型中的两项核心操作：Map（映射）和 Reduce（化简）</p>
+<p>模式的思想是通过<strong>自动分割</strong>将要执行的问题(程序)、拆解成**Map(映射)<strong>和</strong>Reduce(化简)**的方式。</p>
+<p>分而治之</p>
+<p>MapReduce 是 Apache Hadoop 的核心。 术语“MapReduce”指的是 Hadoop 程序执行的两个不同的独立任务。 第一个是映射作业，它接受一组数据，并将其转换为另一组数据，其中各个元素分解为元组（键/值对）</p>
+<h3 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h3><ul>
+<li>MapReduce编程模型的原理是：利用一个输入key/value pair集合来产生一个输出的key/value pair集合。MapReduce库的用户用两个函数表达这个计算：Map和Reduce。</li>
+<li>用户自定义的Map函数接受一个输入的key/value pair值，然后产生一个中间key/value pair值的集合。</li>
+<li>MapReduce库把所有具有相同中间key值的中间value值I集合在一起后传递给reduce函数。 </li>
+</ul>
+<p>用户自定义的Reduce函数接受一个中间key的值I和相关的一个value值的集合。Reduce函数合并这些value值，形成一个较小的value值的集合。一般的，每次Reduce函数调用只产生0或1个输出value值。通常我们通过一个迭代器把中间value值提供给Reduce 函数，这样我们就可以处理无法全部放入内存中的大量的value值的集合。</p>
+<p>简单概括的说：MapReduce是将一个大作业拆分为多个小作业的框架（大作业和小作业应该本质是一样的，只是规模不同），用户需要做的就是决定拆成多少份，以及定义作业本身。 </p>
+<h3 id="3-处理流程"><a href="#3-处理流程" class="headerlink" title="3.处理流程"></a>3.处理流程</h3><p><img src="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231226213852081.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<h3 id="4-词频统计"><a href="#4-词频统计" class="headerlink" title="4.词频统计"></a>4.词频统计</h3><p>如果我们想统计下过去10年计算机论文出现最多的几个单词，看看大家都在研究些什么，那我收集好论文后，该怎么办呢？<br><strong>方法一</strong>：我可以写一个小程序，把所有论文按顺序遍历一遍，统计每一个遇到的单词的出现次数，最后就可以知道哪几个单词最热门了。<br>这种方法在数据集比较小时，是非常有效的，而且实现最简单，用来解决这个问题很合适。<br><strong>方法二</strong>：写一个多线程程序，并发遍历论文。<br>这个问题理论上是可以高度并发的，因为统计一个文件时不会影响统计另一个文件。当我们的机器是多核或者多处理器，方法二肯定比方法一高效。但是写一个多线程程序要比方法一困难多了，我们必须自己同步共享数据，比如要防止两个线程重复统计文件。</p>
+<p><strong>方法三</strong>：把作业交给多个计算机去完成。<br>    我们可以使用方法一的程序，部署到N台机器上去，然后把论文集分成N份，一台机器跑一个作业。这个方法跑得足够快，但是部署起来很麻烦，我们要人工把程序copy到别的机器，要人工把论文集分开，最痛苦的是还要把N个运行结果进行整合（当然我们也可以再写一个程序）。<br><strong>方法四</strong>：让MapReduce来帮帮我们吧！<br>    Map/Reduce本质上就是方法三，但是如何拆分文件集，如何copy程序，如何整合结果这些都是框架定义好的。我们只要定义好这个任务（用户程序），其它都交给MapReduce。</p>
+<p>统计词频的Map/Reduce函数的核心代码非常简短，主要就是实现Map和Reduce函数。 </p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">　　<span class="hljs-built_in">map</span>(String key, String value): <br>　　	<span class="hljs-comment">// key: document name </span><br>　　	<span class="hljs-comment">// value: document contents </span><br>　　<span class="hljs-keyword">for</span> each word w in value: <br>　　EmitIntermediate(w, <span class="hljs-string">"1"</span>); <br>　　reduce(String key, Iterator values): <br>　　	<span class="hljs-comment">// key: a word </span><br>　　	<span class="hljs-comment">// values: a list of counts </span><br>　　<span class="hljs-type">int</span> result = <span class="hljs-number">0</span>; <br>　　<span class="hljs-keyword">for</span> each v in values: <br>　　result += ParseInt(v); <br>　　Emit(AsString(result)); <br><span class="hljs-comment">//说明：map函数接受的键是文件名，值是文件的内容，map逐个遍历单词，每遇到一个单词w，就产生一个中间键值对&lt;w, “1”&gt;，这表示单词w咱又找到了一个；Map/Reduce将键相同（都是单词w）的键值对传给reduce函数，这样reduce函数接受的键就是单词w，值是一串“1”（最基本的实现是这样，但可以优化），个数等于键为w的键值对的个数，然后将这些“1”累加就得到单词w的出现次数。最后这些单词的出现次数会被写到用户定义的位置，存储在底层的分布式存储系统。 </span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-结构"><a href="#5-结构" class="headerlink" title="5.结构"></a>5.结构</h3><p> map函数和reduce函数是交给用户实现的，这两个函数定义了任务本身。</p>
+<p>map函数：接受一个键值对(key-value pair)，产生一组中间键值对。MapReduce框架会将map函数产生的中间键值对里键相同的值传递给一个reduce函数。</p>
+<p>reduce函数：接受一个键，以及相关的一组值，将这组值进行合并产生一组规模更小的值（通常只有一个或零个值）。</p>
+<h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><h3 id="1-内存模型"><a href="#1-内存模型" class="headerlink" title="1.内存模型"></a>1.内存模型</h3><p>共享内存型：即在多处理器的计算机系统中，可以被不同计算单元访问的内存。</p>
+<p>分布式内存型：即每个计算单元都有单独的内存，计算单元之间的数据访问通过互连网络传输，这一并行架构具有较强的可扩展性，但程序开发难度较高</p>
+<p>混合型内存型：即结合了共享内存和分布式内存的方式，各计算单元内实现共享内存，计算单元间采用分布式内存方式形成计算集群</p>
+<p><strong>OpenMP对应共享内存模型</strong></p>
+<h3 id="2-OpenMP并行编程方法"><a href="#2-OpenMP并行编程方法" class="headerlink" title="2.OpenMP并行编程方法"></a>2.OpenMP并行编程方法</h3><p><strong>#pragma omp parallel for  -为外循环添加OpenMP线程</strong></p>
+<p>随着多核心架构的不断发展，<strong>线程级的并行</strong>成为影响软件性能的关键因素</p>
+<p>OpenMP是被广泛使用的<strong>线程和共享内存并行</strong>开放标准之一</p>
+<p>OpenMP的并行化实现是通过嵌入程序源代码中的编译制导语句来实现的，所添加的编译制导语句可以视为程序设计语言的<strong>并行化拓展</strong>，<strong>支持数据的共享和私有化</strong>，<strong>支持并行区域划分</strong>、<strong>工作共享和同步</strong>等机制</p>
+<p>编译OpenMP并行化程序时，需要编译器支持，并添加编译选项。如GCC编译时添加-fopenmp</p>
+<p>编译：gcc -fopenmp -o ./vecadd_opt1 vecadd_opt1.c timer.c</p>
+<h3 id="3-SIMD"><a href="#3-SIMD" class="headerlink" title="3.SIMD"></a>3.SIMD</h3><p>SSE(Streaming SIMD Extensions，<strong>单指令多数据</strong>流扩展)指令集最早出现在Pentium系列处理器中，主要用于处理单精度浮点数。</p>
+<p>MMX(MultiMediaeXtensions，多媒体扩展)指令集是Intel基于x86架构融合SIMD思想于1962年推出的第一个真正意义上的向量化指令集拓展，可以提高图形图像处理能力，同样也适用于大量复杂数据的并行处理。</p>
+<p>在编程中，使用 SIMD 模型可以通过以下方式实现：</p>
+<ol>
+<li><strong>SIMD 指令集：</strong><br> 现代处理器通常支持 SIMD 指令集，如Intel的SSE（Streaming SIMD Extensions）和AVX（Advanced  Vector Extensions），以及ARM的NEON（Advanced  SIMD）。这些指令集提供了一组特殊指令，用于同时处理多个数据元素。</li>
+<li><strong>向量化编程：</strong><br> 向量化编程是一种将代码重写为使用 SIMD 指令的技术。通过使用适当的编译器指示或手动优化代码，可以将循环和计算操作转换为 SIMD 操作，以实现并行计算。</li>
+<li><strong>SIMD 库和框架：</strong><br> 一些编程库和框架提供了对 SIMD 模型的抽象和封装，以简化向量化编程。例如，Intel的IPP（Integrated Performance  Primitives）、OpenCV（Open Source Computer Vision Library）和NumPy（Numerical  Python）等库都提供了对 SIMD 操作的支持。</li>
+</ol>
+<p>使用 SIMD 模型时需要注意以下几点：</p>
+<ul>
+<li>数据的并行性：SIMD 模型适用于具有数据并行性的任务，即可以同时处理多个独立的数据元素。</li>
+<li>数据对齐：在使用 SIMD 指令时，数据通常需要对齐到特定的边界，以获得最佳性能。</li>
+<li>数据依赖性：如果数据之间存在依赖性，使得它们不能同时处理，那么 SIMD 可能无法提供性能优势。</li>
+</ul>
+<h3 id="4-MPI-并行编程方法"><a href="#4-MPI-并行编程方法" class="headerlink" title="4.MPI 并行编程方法"></a>4.MPI 并行编程方法</h3><p><strong>#pragma omp simd  -为内循环添加SIMD向量化</strong></p>
+<p>MPI_THREAD_SINGLE—只执行一个线程(标准MPI)<br><strong>MPI_THREAD_FUNNELED—多线程，但只有主线程进行MPI调用（推荐）</strong><br>MPI_THREAD_SERIALIZED—多线程，但每次只有一个线程进行MPI调用<br>MPI_THREAD_MULTIPLE—多线程，并且多个线程对MPI进行调用</p>
+<h3 id="5-内存分配"><a href="#5-内存分配" class="headerlink" title="5.内存分配"></a>5.内存分配</h3><ol>
+<li><strong>本地内存分配（Local Memory Allocation）：</strong><br> 每个MPI进程都有自己的本地内存，可以使用标准的内存分配函数（如malloc、calloc等）在本地分配内存。本地内存分配的内存只能在本地进程中使用，无法直接在其他进程中访问。如果需要在不同进程之间共享数据，就需要使用MPI提供的通信操作来传输数据。</li>
+<li><strong>分布式内存分配（Distributed Memory Allocation）：</strong><br> 在MPI中，通常使用分布式内存模型，即每个进程有自己的内存空间，进程之间的内存是独立的。分布式内存分配可以通过使用MPI提供的特定函数来实现，如MPI_Alloc_mem和MPI_Win_allocate等。这些函数可以在多个进程之间分配共享内存，以便进行进程间的数据交换和通信。</li>
+</ol>
+<p><img src="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/image-20231227170013111.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+</body></html>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zhouyuchen/categories/%E8%AF%BE%E7%A8%8B/" class="category-chain-item">课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zhouyuchen/tags/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">#并行程序设计</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="note note-info">
+    <div class="license-title">
+      <!-- <div>并行程序设计</div>
+      <div>https://zyccodegit.gitee.io/2023/12/25/并行程序设计/</div> -->
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者 : 雨沉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于 : 2023年12月25日</div>
+          <div>未特殊说明均为原创，仅供自己学习使用</div>
+        </div>
+      
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/" title="题库">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">题库</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zhouyuchen/2023/12/03/blender/" title="Blender">
+                        <span class="hidden-mobile">Blender</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <span>水鸟窥鱼立，山云带雨沉</span> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zhouyuchen/js/events.js" ></script>
+<script  src="/zhouyuchen/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zhouyuchen/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zhouyuchen/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zhouyuchen/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

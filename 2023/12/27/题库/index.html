@@ -1,0 +1,964 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zhouyuchen/img/fluid.png">
+  <link rel="icon" href="/zhouyuchen/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="雨沉">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="article">
+<meta property="og:title" content="题库">
+<meta property="og:url" content="https://zyccodegit.gitee.io/2023/12/27/%E9%A2%98%E5%BA%93/index.html">
+<meta property="og:site_name" content="雨沉">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/clip_image002.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/clip_image001.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/image-20231228124204498.png">
+<meta property="article:published_time" content="2023-12-27T08:54:15.000Z">
+<meta property="article:modified_time" content="2023-12-28T04:54:20.474Z">
+<meta property="article:author" content="雨沉">
+<meta property="article:tag" content="并行程序设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/clip_image002.png">
+  
+  
+  
+  <title>题库 - 雨沉</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zhouyuchen/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zhouyuchen/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zhouyuchen/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zyccodegit.gitee.io","root":"/zhouyuchen/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zhouyuchen/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zhouyuchen/js/utils.js" ></script>
+  <script  src="/zhouyuchen/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zhouyuchen/">
+      <strong>雨沉</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zhouyuchen/img/spider.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="题库"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-27 16:54" pubdate>
+          2023年12月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          172 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">题库</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <html><head></head><body><h1 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h1><p>并行计算科学主要研究的是空间上的并行问题。空间上的并行导致了两类并行机的产生，按照Flynn的说法分为：A<br>    <strong>A 单指令流多数据流(SIMD) 和 多指令流多数据流(MIMD)</strong><br>    B 单指令流单数据流(SISD) 和 多指令流多数据流(MIMD)<br>    C 多指令流单数据流(MISD) 和 单指令流多数据流(SIMD)<br>    D 多指令流单数据流(MISD) 和 单指令流单数据流(SISD)</p>
+<p>并行的层次按照从粗粒度到细粒度的顺序排列为：D<br>    A 程序级→子程序级→操作级→微操作级→语句级<br>    B 程序级→语句级→子程序级→操作级→微操作级<br>    C 微操作级→操作级→语句级→子程序级→程序级<br>    <strong>D 程序级→子程序级→语句级→操作级→微操作级</strong></p>
+<p>下列并行计算机系统结构中属于访存模型的是：C<br>    A MIMD (Multi-Instruction Multi-Data)<br>    B COW (Cluster of Workstation)<br>    <strong>C NORMA (No-Remote Memory Access)</strong><br>    D DSM (Distributed Shared Memory)</p>
+<p>下面说法中<strong>不是</strong>并行程序设计难的原因的是：C<br>    A 技术先行，缺乏理论指导<br>    B 程序的语法/语义复杂，需要用户自己处理<br>    <strong>C 环境和工具的生长期较长, 缺乏代码可扩展和异构可扩展</strong><br>    D 并行语言缺乏代码可扩展和异构可扩展, 程序移植困难, 重写代码难度太大</p>
+<p>下面哪一项是共享变量并行编程模型的典型代表：B<br>    A MPI        <strong>B OpenMP</strong><br>    C PVM（Parallel Virtual Machine）是一种用于并行计算的软件系统        </p>
+<p>​    D HPF   HPF (High Performance Fortran) 是一种并行编程语言</p>
+<p>下面哪一项<strong>不是</strong>MPI的派生数据类型方法：C<br>    A MPI_Type_contiguous() 连续复制的类型生成器<br>    B MPI_Type_vector() 向量数据类型的生成器<br>    <strong>C MPI_Type_index() 索引数据类型的生成器</strong>  <strong>indexed</strong><br>    D MPI_Type_struct() 结构数据类型的生成器</p>
+<p>按通信的方向不同，<strong>组通信可分为三种</strong>，下面哪一项并<strong>不</strong>在其中：D<br>    A 一对多通信        B 多对一通信<br>    C 多对多通信        <strong>D 点对点通信</strong></p>
+<p>下面关于MapReduce的说法中，哪一项是<strong>错误</strong>的：C<br>    A 简而言之，MapReduce是将一个大作业拆分为多个小作业的框架，用户需要做的是决定拆成多少份，以及定义作业本身。<br>    B MapReduce具有强大的并行处理能力，能够将一个庞大的数据分布到大规模的集群中进行分布式处理<br>    <strong>C Map/Reduce的容错能力较低，集群中某一个节点出现错误可能会对整个数据处理有不小的影响。</strong><br>    D MapReduce就是一个计算函数，对于迁移计算本身就比迁移数据更加快，更合理。</p>
+<ol>
+<li>第一台并行计算机ILLIAC  IV 于（C）年运行第一个应用程序。<br>a)    1972<br>b)    1974</li>
+</ol>
+<p>   <strong>c)    1976</strong><br>   d)    1981<br>2.    所有内存模块都由硬件进行了统一的编址，各个结点既可以<strong>直接访问局部内存</strong>单元，又可以<strong>直接访问其他结点</strong>的局部内存单元的并行体系结构是（A）。<br>   <strong>a)    DSM</strong><br>   b)    MPP<br>   c)    ASM<br>   d)    NOW<br>3.    <strong>SIMD</strong> 是现今大量使用的指令集，其含义是（C）。<br>   a)    各个进程在同一时间可以执行不同的指令<br>   b)    各个进程顺序执行不同指令<br>   c)    <strong>各个进程同一时间执行相同指令</strong><br>   d)    单个进程选择执行不用指令<br>4.    进程编组的目的是将需要交互的进程调度到一个组中，其中一个进程的组成员由（B）唯一确定。<br>   a)    机器唯一标识+组标识符+成员序号<br>   b)    <strong>组标识符+成员序号</strong><br>   c)    全局唯一标识符<br>   d)    机器唯一标识+成员需要<br>5.    并行度和并行粒度之间的关系是（A）。<br>   a)    <strong>并行度与并行粒度大小常互为倒数，增大粒度会减小并行度</strong>。<br>   b)    并行度会随着并行粒度的细分而增大。<br>   c)    并行粒度由用户确定，并行度由处理器确定。<br>   d)    增加并行度和并行粒度都会减小系统的开销。</p>
+<p>3、MPI调用下列哪个函数可以获得当前进程标识（A ）。<br>A、<strong>MPI_COMM_RANK</strong>            B、MPI_COMM_SIZE<br>C、MPI_INIT                         D、MPI_SENDRECV<br>5、下列关于MPI的叙述中<strong>错误</strong>的是（    B）。<br>A、MPI定义的接口和现在已有的接口差别不能太大，但是允许扩展以提供更大的灵活性<br><strong>B、MPI是一种并行程序设计语言</strong></p>
+<p>MPI（Message Passing  Interface）并不是一种编程语言，而是一种用于编写并行程序的标准和库。MPI定义了一组规范，用于在多台计算机之间进行消息传递，从而实现并行计算。MPI可以与多种编程语言结合使用，如C、C++、Fortran等，但它本身并不是一种编程语言。</p>
+<p>C、MPI提供可靠的通信接口，用户不必处理通信失败<br>D、MPI提供的接口可以方便C语言和FORTRAN语言的调用</p>
+<p>1、目前MPI不支持下列哪一门语言（ B）。<br>A、C语言<br>B、Java语言<br>C、C++语言<br>D、Fortran语言<br>2、下列哪一个不是目前MPI的主要实现（ D）<br>    A、MPICH        B、OpenMPI<br>    C、LAM        D、LAN 局域网<br>3、MPI调用下列哪个函数可以退出MPI系统（ C）。<br>A、MPI_COMM_RANK            B、MPI_COMM_SIZE<br>C、MPI_FINALIZE                 D、MPI_SENDRECV<br>4、下列并行的层次中哪个不是以并行粒度划分的（ D）。<br>A、程序级并行<br>B、语句级并行<br>C、操作级并行<br>D、算法级并行<br>5、下列关于MPI的叙述中正确的是（    C    ）。<br>A、MPI定义的接口和现在已有的接口可以差别太大，也允许扩展以提供更大的灵活性<br>B、MPI是一种并行程序设计语言<br>C、MPI提供可靠的通信接口，用户不必处理通信失败<br>D、MPI提供的接口可以方便C语言和JAVA语言的调用</p>
+<p>1、在MPI中，大致可以划分出四种通信模式，以下哪个选项不属于MPI的通信模式（ B）。<br>A、标准模式<br><strong>B、缓存模式</strong><br>C、同步模式<br>D、就绪模式<br>2、MPI的消息接收函数与消息发送函数十分类似，但消息接收函数比消息发送函数的参数要多一个，多出的这个参数为（C ）<br>    A、flag        B、argc     <strong>C、status</strong>        D、steam<br>3、MPI调用下列哪个函数可以用于检测MPI环境是否已经初始化（D ）。<br>A、MPI_Type_contiguous            B、MPI_TEST<br>C、MPI_BCAST                     <strong>D、MPI_INITIALIZED</strong><br>4、对于MPI消息的标识Tag，以下说法<strong>不正确</strong>的是（ D）。<br>A、Tag可以区别同一进程的不同消息，使程序员以一种有序的方式处理到达的消息。<br>B、MPI用一个新概念“上下文”(context)对“tag”进行扩展。系统运行时分配，不允许统配。<br>C、tag在取值上有一个范围，不能随意取值。<br><strong>D、如果消息的收发操作发生在任意进程之间，那么接受和发送函数中的tag参数可以省略不写。</strong><br>5、下列关于MPI通信模式中的标准模式，以下说法中<strong>错误</strong>的是（D    ）。<br>A、由 MPI 系统来决定是先将消息拷贝至一个缓冲区然后立即返回 ，还是等待将数据发送出去后再返回。<br>B、MPI系统预留了一部分缓存空间，用于存放需要发送的消息。<br>C、当MPI要发送的消息大于预留的缓存空间大小时，MPI的标准收发操作会产生错误或是溢出。<br><strong>D、MPI的标准发送模式只需要有一个发送方即可，无需考虑是否有消息接收的接收方。</strong></p>
+<p>1.关于并行计算算法设计，以下<strong>错误</strong>的选项是（C）<br>A 以 MIMD 为主<br>B 可扩展、可移植<br><strong>C 是小粒度任务级并行</strong><br>D 每个进程发挥单机性能</p>
+<p>2.以下不属于并行计算机体系结构组成要素的是（D）<br>A 节点 B 互联网络 C 内存 <strong>D 进程</strong></p>
+<p>3.以下关于并行算法错误的是（C）<br>A 适合在并行机上实现的算法<br>B 好的并行算法应充分发挥并行机计算机的潜在性能<br><strong>C 按并行进程执行顺序：同步并行算法、异步并行算法</strong>  （混合并行算法）<br>D 按计算任务：细粒度并行算法、中粒度并行算法、大粒度并行算法</p>
+<ol start="4">
+<li>以下关于MPI说法<strong>错误</strong>的是（A）</li>
+</ol>
+<p><strong>A MPI标准所支持的数据类型为弱类型</strong><br>B MPI是一种消息传递编程模型，并成为这种编程模型的代表和事实上的标准。<br>C MPI并行程序设计采用提供并行库的方式<br>D MPI是一种标准或规范的代表。不是特指某一个对它的具体实现。</p>
+<ol start="5">
+<li>以下不属于MPI六个基本函数的是（A）<br>A MPI_Initialized        B MPI_Init    C MPI_Finalize    D MPI_COMM_RANK</li>
+</ol>
+<h1 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h1><p>高性能计算机肯定是并行计算机。    √<br>并行算法按照计算任务可分为数值并行算法与非数值并行算法。    ×<br>并行计算机的体系结构在80年代趋于统一。    ×<br>集群系统中每一个节点都是一个完整的计算机。    √<br>对于资源高度共享的处理机，常称为紧耦合系统。    √<br>MPI标准所支持的数据类型为弱类型。    ×<br>除了MPI_Init()，其余所有的MPI函数应该在其后被调用。× MPI_Initialized<br>不能用一个程序实现消息传递程序的两种方式。    ×<br>静态并行性指程序的结构以及进程的个数在运行之前就可确定。    √<br>并行度与并行粒度大小成正比关系: 增大粒度也会增大并行度。    ×<br>MPI消息传递过程分为消息装配、消息发送、消息拆卸三个阶段。    √<br>MPI预定义数据类型中MPI_BYTE和MPI_PACKED可以匹配任何以字节为单位的存储。√<br>同步模式中MPI_Ssend遵从三次握手协议。    √<br>MapReduce编程模型的思想是通过手动分割将要执行的问题(程序)、拆解成Map(映射)和Reduce(化简)的方式。    ×<br>对于复杂的查询，如多层嵌套的SQL语言，Map/Reduce并不支持。        √</p>
+<ol>
+<li>   并行程序能通过将任务分解到多个核心并行计算的方式加快任务完成，因此同一任务在相同硬件条件下总是并行程序计算更快。（X）</li>
+<li>   基于消息传递的并行程序，每个并行进程均有自己独立的地址空间，相互之间访问不能直接进行，必须通过显式的消息传递来实现。（√）</li>
+<li>   在调用MPI_Finalize函数后，表明并行代码的结束,结束所有进程。（X）除了主进程</li>
+<li>   每个MPI消息都有相应的数据类型，用于MPI消息在处理和传递过程中，独立于某一具体的语言和平台体系结构，其分为预定义数据类型和派生数据类型。（√）</li>
+<li>   使用缓冲模式MPI_Bsend发送消息，其通信缓冲区由MPI系统保证，用户仅需将数据写入缓冲区即可。（X）</li>
+<li>   （F）并行程序能通过将任务分解到多个核心并行计算的方式加快任务完成，因此同一任务在相同硬件条件下总是并行程序计算更快。</li>
+<li>   （T ）高性能计算机肯定是并行计算机。</li>
+<li>   （ F）使用缓冲模式MPI_Bsend发送消息，其通信缓冲区由MPI系统保证，用户仅需将数据写入缓冲区即可。  <strong>要确保缓存区大小足够容纳</strong></li>
+</ol>
+<ol>
+<li><p>（F ）MPI是一门并行语言。</p>
+</li>
+<li><p>（T ）目前支持MPI的语言有C，C++，Fortran语言。</p>
+</li>
+<li><p>（T ）MPI消息是由消息信封和和消息内容组成</p>
+</li>
+<li><p>（ T）MPI标准所支持的数据类型为强类型。</p>
+</li>
+<li><p>（ F）MPI_Comm_rank（）函数的作用是获得进程的个数。 </p>
+</li>
+<li><p>（ F）MPI（Message Passing Interface），可以视为是一种接口。</p>
+</li>
+<li><p>（ T）对称式共享存储指的是，任意处理器可直接访问任意内存地址,且访问延迟、带宽、几率都是等价的，系统是对称的。</p>
+</li>
+<li><p>（ F）MPP（Massively Parallel Processor，大规模并行处理机）<br>每个结点均有自己的操作系统,但这些结点均没有独立的内存。</p>
+<p>MPP系统是由多个处理节点组成的并行计算机系统，每个节点都具有自己的处理器、内存和存储器。这些节点通过高速互连网络进行通信和协调，以实现并行计算和数据处理。</p>
+</li>
+<li><p>（ T）MPI程序中在进程间通信传送的所有信息称为消息，一个MPI消息包括消息信封、消息内容两部分。</p>
+</li>
+<li><p>（ F）在MPI通信模式中，阻塞式消息传送允许Source == dest，也即消息的发送进程可以是消息的接收进程。 </p>
+</li>
+</ol>
+<p>这是因为阻塞式消息传送是同步的操作，发送进程会等待接收进程接收消息后才能继续执行后续代码。如果发送进程和接收进程是同一个进程，那么它会一直等待自己去接收消息，导致死锁。</p>
+<p>1.并行计算时间上的并行是指用多个处理器并发的执行计算（F）<br>2.我们常用的串行机也叫做单指令流单数据流（SISD）（T）<br>4.高性能计算机可以不是并行计算机（F）<br>5.并行算法设计以SIMD为主（F）</p>
+<h1 id="填空"><a href="#填空" class="headerlink" title="填空"></a>填空</h1><p>1.所谓并行计算，分为<strong>时间上的并行</strong>和<strong>空间上的并行</strong>，前者指<strong>流水线技术</strong>，后者指用<strong>多个处理器并发的执行计算</strong>。<br>2.<strong>计算</strong>科学、传统的两种科学（即<strong>理论</strong>科学和<strong>实验</strong>科学），并列被认为是人类认识自然的三大支柱，他们彼此相辅相成地推动科学发展与社会进步。<br>3.MPI是一种<strong>消息传递编程模型</strong>；对于并行语言的实现方式，MPI并行程序设计采用的是<strong>提供并行库</strong>。<br>4.MPI并行程序的两种主要形式是<strong>对等模式</strong>和<strong>主从模式</strong>。<br>5.MPI消息包括<strong>消息信封</strong>和<strong>消息内容</strong>两部分。<br>6.SPMD编程模式的程序需要一份源代码。<br>    一个进程组成员由<strong>组标识符</strong>和<strong>成员序号</strong>唯一确定。<br>    并行程序的设计模型有<strong>隐式并行</strong>、<strong>数据并行</strong>、<strong>共享变量</strong>、<strong>消息传递</strong>四种。<br>7.MPI的数据类型分为<strong>预定义</strong>数据类型和<strong>派生</strong>数据类型。<br>    组通信的三大功能为<strong>通信、同步、计算</strong>。</p>
+<p>4.利用MPI_Send可以发送数据，其函数为MPI_Send(buf,count, <strong>datatype</strong>, dest,<br>tag,comm)。</p>
+<p>5.利用MPI_Recv可以接收数据，其函数为MPI_Send(buf,count, <strong>datatype</strong>, dest,<br>tag,comm,<strong>status</strong>)。</p>
+<p>3.按进程间程序执行的顺序关系分类：同步算法、异步算法；独立并行算法；</p>
+<ol>
+<li>   MPI预定义了进程组和通信域，其中<strong>MPI_COMM_WORLD</strong>是指<strong>有效通信域句柄</strong>，包含元素为<strong>所有进程</strong>。</li>
+<li>   并行的层次以并行粒度可分为<strong>程序级并行、子程序级并行、语句级并行、操作级并行、微操作级</strong>并行五层。</li>
+<li>   <strong>加速比（</strong>speedup)是同一个任务在<strong>单处理器</strong>系统和<strong>并行处理器</strong>系统中运行消耗的时间的比率，用来衡量并行系统或程序并行化的性能和效果。</li>
+</ol>
+<p>1、使用MPI程序需要保证__MPI_Init__函数第一个被调用，__MPI_Finalize__函数被最终调用。<br>4、MPI程序中在进程间通信传送的所有信息称为消息。一个MPI消息包括__消息信封__和<strong>消息内容</strong>两部分。<br>2、并行计算机的组成要素有__结点、互联网络和内存。<br>3、Flynn提出指令流，数据流，和多倍性的概念，把不同的计算机分为4类，分别为SISD、SIMD、MISD和_MIMD__。<br>4、第一台并行计算机于1972年诞生于<strong>伊利诺伊</strong>大学。<br>5、并行计算机的结构模型有PVP、SMP、DSM、MPP和COW。</p>
+<p>1、MPI程序常用__C__、__C++__、__Fortran__这三种语言进行编写。<br>3、在一个MPI程序中，<strong>size</strong>用于标识当前程序中的总进程数，<strong>rank</strong><strong>用于标识当前正在运行的进程，这两个变量均属于__整型（int）（数据类型）。<br>4、MPI最基本的通信模式是在一对进程之间进行的消息收发操作：一个进程发送消息，另一个进程接收消息，这种通信方式称为<strong>点对点通信模式</strong>。<br>5、MPI程序中为完成某个并行计算的所涉及多个进程，这些进程合在一起形成的进程组称之为__communicator</strong><br>6、均匀存储器访问：所有处理器<strong>均匀共享</strong>物理存储器，这里所谓均匀是指所有处理器对所有存储字具有相同的存取时间</p>
+<h1 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h1><p>1.简述加DSM、MPP、NOW的特点</p>
+<p> DSM （Distributed Shared Memory）分布式共享存储</p>
+<p>以结点为单位，每个结点有一个或多个CPU ；专用的高性能互联网络连接； 单一的操作系统；单一的内存地址空间：所有内存模块都由硬件进行了统一的编址，各个结点既可以直接访问局部内存单元，又可以直接访问其他结点的局部内存单元；可扩展到上百个结点；支持消息传递、共享存储并行程序设计</p>
+<p>MPP（Massively Parallel Processing）大规模并行处理结构</p>
+<p> 每个结点相对独立，有一个或多个微处理器</p>
+<p> 每个结点均有自己的操作系统</p>
+<p> 各个结点自己独立的内存，避免内存访问瓶颈</p>
+<p> 各个结点只能访问自己的内存模块</p>
+<p> 扩展性较好</p>
+<p>NOW（Network of Workstations）工作站机群</p>
+<p> 每个结点都是一个完整的工作站，有独立的硬盘与UNIX系统</p>
+<p> 结点间通过低成本的网络（如千兆以太网）连接</p>
+<p> 每个结点安装消息传递并行程序设计软件，实现通信、负载平衡等</p>
+<p> 投资风险小、结构灵活、可扩展性强、通用性好、异构能力强，被大量中小型计算用户和科研院校所采用</p>
+<p>2.集群的概念及集群系统的分类</p>
+<p>集群是一组独立计算机(结点)的结合体，结点间通过高性能的网络相连，各结点除了作为一个单一的计算资源供用户使用外，还可以协同工作，并表示为一个单一的、集中的计算资源，供并行计算使用。集群是一种造价低廉，易于构建并且具有较好可扩展性的体系结构。</p>
+<p>集群系统按功能和结构可以分为如下四类：(1)高可用性集群系统；(2)负载均衡集群系统；(3)高性能集群系统；(4)虚拟化集群系统</p>
+<p>3.并行计算的四类设计模型</p>
+<p>隐式并行、数据并行、共享变量、消息传递；</p>
+<p>(1)隐式并行：程序员用熟悉的串行语言编码，由编译器或者运行支持系统自动转化为并行代码，其特点是语义简单、可移植性好，单线程，易于调试和验证正确性，但效率很低。</p>
+<p>(2)数据并行：数据并行是SIMD(单指令多数据流)的自然模型，是局部计算和数据选路操作。其特点是单线程、并行操作于聚合数据结构(数组)，松散同步，单一地址空间，隐式交互作用和显式数据分布。</p>
+<p>(3)共享变量：共享变量是PVP，SMP，DSM的自然模型。其特点是多线程，异步，单一地址空间，显式同步，隐式数据分布，隐式通信。</p>
+<p>(4)消息传递：消息传递是MPP,COW的自然模型。其特点是多线程，异步，多地址空间，显式同步，显式通信，显式数据映射和负载分配。</p>
+<ol start="4">
+<li>是什么是MPI</li>
+</ol>
+<p>MPI是一个库，而不是一门语言</p>
+<p>MPI是一种标准或规范的代表，而不特指某一个对它的具体实现</p>
+<p>MPI是一种消息传递编程模型，并成为这种编程模型的代表和事实上的标准</p>
+<p>5.并行计算的定义和主要目的</p>
+<p>定义：并行计算是指同时对多个任务或多条指令、或对多个数据项进行处理。完成此项处理的计算机系统称为并行计算机系统，它是将多个处理器（可以几个、几十个、几千个、几万个等）通过网络连接以一定的方式有序地组织起来（一定的连接方式涉及网络的互联拓扑、通信协议等，而有序的组织则涉及操作系统、中间件软件等）。</p>
+<p>并行计算的主要目的：</p>
+<p>一是为了提供比传统计算机快的计算速度；</p>
+<p>二是解决传统计算机无法解决的问题。</p>
+<p>6.MPI中6个常用函数的基本功能</p>
+<p>MPI_INIT 初始化MPI</p>
+<p>MPI_FINALIZE 终止MPI</p>
+<p>MPI_COMM_SIZE 确定进程的数目</p>
+<p>MPI_COMM_RANK 确定进程的序号</p>
+<p>MPI_SEND 发送一条信息</p>
+<p>MPI_RECV 就收一条信息</p>
+<p>7.什么是并行计算机、并行计算机的组成部分</p>
+<p>并行计算机是由一组处理单元组成的，这组处理单元通过相互之间的通信与协作，以更快的速度共同完成一项大规模的计算任务。</p>
+<p>并行计算机的组成部分：计算节点和节点间的通信与协作机制。</p>
+<ol start="8">
+<li>MPI的特点</li>
+</ol>
+<p>基于消息传递的通信机制</p>
+<p>结合串行语言的并行库</p>
+<p>支持Fortran、C和C++常用串行语言</p>
+<p>可移植性好</p>
+<p>程序设计方式灵活、简单</p>
+<ol>
+<li>对于可以执行并行计算的任务，通常表现出哪些特征？</li>
+</ol>
+<p> （1）可以工作分离成离散部分，有助于同时解决； </p>
+<p> （2）随时并及时地执行多个程序指令； </p>
+<p> （3）多计算资源下解决问题的耗时要少于单个计算资源下的耗时。</p>
+<ol start="2">
+<li>相较于串行计算，并行计算的挑战有哪些？</li>
+</ol>
+<p>  （1）相对于先进的串行编程环境，并行编译器和调试器落后，自动并行编译器满足不了程序并行化的要求。</p>
+<p>  （2）串行编程有着冯.诺伊曼模型，而并行模型多样化，没有统一的标准。</p>
+<p>  （3）对于串行程序而言，依托稳定的环境可较为低成本的开发通用计算程序，可以移植性好，而并行程序通常是针对某一特定问题的特殊解，通用性差。</p>
+<p>  （4）相对于串行计算，熟悉并行编程的从业人员较少</p>
+<ol start="3">
+<li>并行编程有多种实现方式，请列举并说明各个方式。</li>
+</ol>
+<p>​    （1）设计全新的并行语言。</p>
+<p>​    （2）扩展串行语言的语法，使其支持并行程序特征。</p>
+<p>​    （3）为串行语言提供可调用的并行库。</p>
+<p>请列举你知道的并行计算框架？(要写中文含义)</p>
+<p>​    PVP(Parallel Vector Processor，并行向量处理机)</p>
+<p>​    SMP(Symmetric Multiprocessor，对称多处理机)</p>
+<p>​    DSM(Distributed Shared Memory，分布式共享存储)</p>
+<p>​    MPP(Massively Parallel Processor，大规模并行处理机)</p>
+<p>​    NOW(Network of Workstation) 或 COW(Cluster of Workstation) 集群工作站</p>
+<p>并行语言的实现方式？</p>
+<p>​    设计全新的并行语言</p>
+<p>​    扩展串行语言语法，使其支持并行特征</p>
+<p>​    为串行语言提供可调用的并行库</p>
+<p>请写出MPI最基本的六个函数？(不需要写参数)</p>
+<p>​    MPI_Init()</p>
+<p>​    MPI_Comm_size()</p>
+<p>​    MPI_Comm_rank()</p>
+<p>​    MPI_Send()</p>
+<p>​    MPI_Recv()</p>
+<p>​    MPI_Finalize()</p>
+<p>请写出下图中函数的参数的含义？</p>
+<p><img src="/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/clip_image002.png" srcset="/zhouyuchen/img/loading.gif" lazyload> </p>
+<p>请完成下面的表格？</p>
+<table>
+<thead>
+<tr>
+<th>通信模式</th>
+<th>发送</th>
+<th>接收</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标准通信模式</td>
+<td>MPI_Send</td>
+<td>MPI_Recv</td>
+</tr>
+<tr>
+<td>缓存通信模式</td>
+<td>MPI_Bsend</td>
+<td>MPI_Recv</td>
+</tr>
+<tr>
+<td>同步通信模式</td>
+<td>MPI_Ssend</td>
+<td>MPI_Recv</td>
+</tr>
+<tr>
+<td>就绪通信模式</td>
+<td>MPI_Rsend</td>
+<td>MPI_Recv</td>
+</tr>
+</tbody></table>
+<p>1、基于编程语言的并行计算的实现方式有哪些？（本小题5分）</p>
+<p>答：（1）设计全新的并行语言。（1分）</p>
+<p>​    （2）扩展串行语言的语法，使其支持并行程序特征。（2分）</p>
+<p>​    （3）为串行语言提供可调用的并行库。（2分）</p>
+<p>2、详述并行计算的四类设计模型。（本小题10分）</p>
+<p>答：隐式并行、数据并行、共享变量、消息传递；</p>
+<p>(1)隐式并行：其特点是语义简单、可移植性好，单线程，易于调试和验证正确性，但效率很低。（2.5分）</p>
+<p>(2)数据并行：其特点是单线程、并行操作于聚合数据结构(数组)，松散同步，单一地址空间，隐式交互作用和显式数据分布。（2.5分）</p>
+<p>(3)共享变量：其特点是多线程，异步，单一地址空间，显式同步，隐式数据分布，隐式通信。（2.5分）</p>
+<p>(4)消息传递：其特点是多线程，异步，多地址空间，显式同步，显式通信，显式数据映射和负载分配。（2.5分）</p>
+<p>3、相较于串行计算，并行计算的挑战有哪些？最少答四个挑战点（本小题10分）</p>
+<p>答：（1）相对于先进的串行编程环境，并行编译器和调试器落后，自动并行编译器满足不了程序并行化的要求。（2.5分）</p>
+<p>（2）串行编程有着冯.诺伊曼模型，而并行模型多样化，没有统一的标准。（2.5分）</p>
+<p>（3）对于串行程序而言，依托稳定的环境可较为低成本的开发通用计算程序，可以移植性好，而并行程序通常是针对某一特定问题的特殊解，通用性差。（2.5分）</p>
+<p>（4）相对于串行计算，熟悉并行编程的从业人员较少。（2.5分）</p>
+<p>4、并行程序设计方式主要有哪几种并分别说明。（本小题5分）</p>
+<p>答：实现并行编程常见方法有以下三种。但三者可混合使用，如对以SMP为节点的Cluster来说，可以在节点间进行消息传递，在节点内进行共享变量编程。（2分）</p>
+<p>（1）线程模型：OpenMP、POSIX。（1分）</p>
+<p>（2）消息传递模型：PVM（Parallel Virtual Machine Computing）、MPI（Message Passing Interface）。（1分）</p>
+<p>（3）数据并行模型：HPF。（1分）</p>
+<p>1、MPI程序一般分为几个部分？（本小题5分）</p>
+<p>答：（1）头文件。（1分）</p>
+<p>​    （2）变量声明（1分）</p>
+<p>​    （3）程序开始（1分）</p>
+<p>（4）程序体（1分）</p>
+<p>（5）程序结束（1分）</p>
+<p>2、详述并行计算机的5中结构模型，并写出一个各类模型中具有代表性的并行机。（本小题10分）</p>
+<p>答：PVP、SMP、DSM、MPP、COW</p>
+<p>(1)PVP是并行向量处理机，代表机器有银河Ⅰ（2分）</p>
+<p>(2)SMP是共享存储对称多处理机，具有单一操作系统管理，具有共享内存及计算机的其他资源的特点，代表机器有曙光一号（2分）</p>
+<p>(3)DSM是分布式共享存储，具有单一的操作系统和共享内存的特点，代表机器有origin3000（2分）</p>
+<p>(4)MPP是大规模并行处理机，每个节点都拥有自己的操作系统，独立的内存。代表机器有IBM SP2（2分）</p>
+<p>(5)COW是集群工作站，每个节点都是一个完整的计算机，每个节点通过高性能网络互相连接，代表机器有曙光2000（2分）</p>
+<p>3、MPI程序中的输出语句和一般串行程序中的输出语句的执行结果有什么不同？不同进程对同一个内容输出，其顺序是什么？（本小题5分）</p>
+<p>答：（1）MPI程序中的输出语句每一个进程都执行，执行时有几个进程就有几条输出语句，而串行程序中的输出语句只有本进程输出的结果。（3分）</p>
+<p>（2）不同的进程对同一个内容输出，其顺序的随机的。（2分）</p>
+<p>4、详述并行计算的四类设计模型。（本小题10分）</p>
+<p>答：隐式并行、数据并行、共享变量、消息传递；</p>
+<p>(1)隐式并行：其特点是语义简单、可移植性好，单线程，易于调试和验证正确性，但效率很低。（2.5分）</p>
+<p>(2)数据并行：其特点是单线程、并行操作于聚合数据结构(数组)，松散同步，单一地址空间，隐式交互作用和显式数据分布。（2.5分）</p>
+<p>(3)共享变量：其特点是多线程，异步，单一地址空间，显式同步，隐式数据分布，隐式通信。（2.5分）</p>
+<p>(4)消息传递：其特点是多线程，异步，多地址空间，显式同步，显式通信，显式数据映射和负载分配。（2.5分）</p>
+<p>1、Cluster：由多个组成的系统，每个节点都是一个完整的计算机，各个节点通过高性能网络相互连接。 （5分）</p>
+<p>2、point to point communications：MPI最基本的通信模式：一对进程之间进行的消息收发操作，一个进程发送消息，另一个进程接收消息。（5分）</p>
+<p>3、Speedup：是同一个任务在单处理器系统和并行处理器系统中运行消耗的时间的比率（5分）</p>
+<p>4、并行度(Degree of Parallelism, DOP):同时执行的分进程数。（2分）并行粒度(Granularity): 两次并行或交互操作之间所执行的计算负载.（3分）</p>
+<p>1、写出MPI编程中最常用的六大函数，并分别简述它们的功能。（本小题10分）</p>
+<p>答：（1）MPI_Init()：该函数指示系统完成所有初始化工作，以备对后续MPI库的调用进行处理。（2分）</p>
+<p>（2）MPI_Comm_rank()：获取一个通信域中的正在运行的进程（1分）</p>
+<p>（3）MPI_Comm_size()：获取一个通信域中的进程总数。（1分）</p>
+<p>（4）MPI_Finalize()：用于释放MPI程序所占用的系统资源，结束MPI程序。（2分）</p>
+<p>（5）MPI Send()：用于某一个进程向另一个进程发送消息。（2分）</p>
+<p>（6）MPI_Recv()：用于一个进程接收另一个发送的消息。（2分）</p>
+<p>2、简要叙述：什么是MPI，MPI具有哪些特点（本小题5分）</p>
+<p>答：Message Passing Interface(消息传递接口):是消息传递函数库的标准规范。（2分）</p>
+<p>特点：（1）基于消息传递的通信机制 （3分 每答出1点 算1分）</p>
+<p>（2）结合串行语言的并行库</p>
+<p>（3）支持Fortran、C和C++常用串行语言</p>
+<p>（4）可移植性好</p>
+<p>（5）程序设计方式灵活、简单</p>
+<p>（6）高性能</p>
+<p>（7）简洁性</p>
+<p>3、简述Map/Reduce编程模型的工作原理（本小题5分）</p>
+<p>答：Map/Reduce编程模型的原理是：</p>
+<p>（1）利用一个输入key/value pair集合来产生一个输出的key/value pair集合。Map/Reduce库的用户用两个函数表达这个计算：Map和Reduce。（3分）</p>
+<p>（2）用户自定义的Map函数接受一个输入的key/value pair值，然后产生一个中间key/value pair值的集合。Map/Reduce库把所有具有相同中间key值I的中间value值集合在一起后传递给reduce函数。（1分）</p>
+<p>（3）用户自定义的Reduce函数接受一个中间key的值I和相关的一个value值的集合。Reduce函数合并这些value值，形成一个较小的value值的集合。（1分）</p>
+<p>4、在访存模型中，还存在三种存取结构UMA、NUMA、NORMA，请分别简述这三种结构。（本小题5分）</p>
+<p>答：（1）均匀存储器访问（UMA－Uniform Memory Access）：所有处理器均匀共享物理存储器，这里所谓均匀是指所有处理器对所有存储字具有相同的存取时间（2分）</p>
+<p>（2）非均匀存储器访问(NUMA—Nonuniform Memory Access)：被共享的存储器在物理上是分布在所有的处理机中的，其所有本地存储器的集合就组成了全局地址空间。（2分）</p>
+<p>（3）非远程存储器访问(NORMA — No-Remote Memory Access)：所有存储器都是私有的，仅能由其处理器所访问。（1分）</p>
+<p>5、请简要叙述MPI的四种通信模式（本小题5分）</p>
+<p>（1）标准模式：由MPI系统决定是等待将数据发送出去后返回，还是将消息拷贝至缓冲区然后立即返回。此时的消息发送由MPI系统在后台进行大部分MPI系统会预留一定缓冲区，当发送消息的长度小于预留缓冲区大小时，会将消息缓存然后立即返回。否则则当消息部分或全部发送完毕后返回。（2分）</p>
+<p>（2）缓冲模式：MPI系统将消息拷贝至用户提供的缓冲区，然后立即返回；消息发送由MPI系统在后台进行，用户必须保证缓冲区的大小足够容下采用缓冲模式发送的消息 （1分）</p>
+<p>（3）同步模式：在标准模式的基础上，要求确认接收方已经开始接收后，函数调用才返回，接收方接收该消息的缓冲区已准备好，不需要附加的系统缓冲区。（1分）</p>
+<p>（4）就绪模式：在标准模式的基础，要求消息的发送操作开始前，已经存在对应的接收操作。（1分）</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>1.下列mpi程序运行时要求启动4个进程，每个进程要求获取自己的进程号、进程运行所在的机器名称、启动的进程个数并输出。请补充适当的mpi函数.</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MASTER 0</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">(<span class="hljs-type">int</span> argc，<span class="hljs-type">char</span> *argv[])</span>{<br><br><span class="hljs-type">int</span> numtasks,taskid，len;<br><br><span class="hljs-type">int</span> numtasks,taskid,len；<br><br><span class="hljs-type">char</span> hostname[MPI_MAX_PROCESSOR_NAME];<br><br>MPI_Init(&amp;argc,&amp;argv);<br><br>MPI_Comm_size(MPI_COMM_WORLD,&amp;numtasks);<br><br>MPI_Comm_rank (MPI_COMM_WORLD,&amp;taskid) ;<br><br>MPI_Get_processor_name (hostname,&amp;len);<br><br><span class="hljs-built_in">printf</span> (<span class="hljs-string">"Hello from task %d on %s ! \n"</span>, taskid, hostname);<br><br><span class="hljs-keyword">if</span> (taskid == MASTER)<br><br><span class="hljs-built_in">printf</span> (<span class="hljs-string">"MASTER: Number of MPI tasks is: %d \n"</span> , numtasks);<br><br>MPI_Finalize();<br><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>2.编程求Sum=1+2+…+N.(要求使用MPI)</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><br>Int <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc,<span class="hljs-type">char</span> *argv[])</span><br><br>{<br><br><span class="hljs-type">int</span> sum,i,total;<br><br><span class="hljs-type">int</span> numprocs,myid;<br><br>MPI_Init(&amp;argc,&amp;argv);<br><br>MPI_Comm_size(MPI_COMM_WORLD,&amp;numprocs);<br><br>MPI_Comm_rank (MPI_COMM_WORLD,&amp;myid) ;<br><br><span class="hljs-keyword">for</span>(i=myid+<span class="hljs-number">1</span>;i&lt;=N;i+=numprocs)<br><br>sum+=i;<br><br>MPI_Reduce(∑,&amp;total,<span class="hljs-number">1</span>,MPI_INT,MPI_SUM,<span class="hljs-number">0</span>,MPI_COMM_WORLD);<br><br>If(myid==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(“sum=%d\n”,tatal);<br><br>MPI_Finalize();<br><br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br><br> <br><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>3.补全以下程序</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span> </span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span> </span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span> </span><br><br> <br><br><span class="hljs-type">void</span> <span class="hljs-title function_">read_num</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> *num_point,<span class="hljs-type">int</span> my_rank,MPI_Comm comm)</span>; <br><br><span class="hljs-type">void</span> <span class="hljs-title function_">compute_pi</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> num_point,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>* num_in_cycle,</span><br><span class="hljs-params"></span><br><span class="hljs-params"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>* local_num_point,<span class="hljs-type">int</span> comm_sz,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> *total_num_in_cycle,MPI_Comm comm,<span class="hljs-type">int</span> my_rank)</span>; <br><br> <br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc,<span class="hljs-type">char</span>** argv)</span>{ <br><br>  <span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> num_in_cycle,num_point,total_num_in_cycle,local_num_point; <br><br>  <span class="hljs-type">int</span> my_rank,comm_sz; <br><br>  <span class="hljs-type">double</span> begin,end; <br><br>  MPI_Comm comm; <br><br>  **MPI_Init(<span class="hljs-literal">NULL</span>,<span class="hljs-literal">NULL</span>);**<span class="hljs-comment">//初始化 </span><br><br>  comm=MPI_COMM_WORLD; <br><br>   **MPI_Comm_size(comm,&amp;comm_sz);**<span class="hljs-comment">//得到进程总数 </span><br><br>  **MPI_Comm_rank(comm,&amp;my_rank);**<span class="hljs-comment">//得到进程编号 </span><br><br> <br><br>  read_num(&amp;num_point,my_rank,comm);<span class="hljs-comment">//读取输入数据 </span><br><br>  begin=MPI_Wtime();<br><br>  compute_pi(num_point,&amp;num_in_cycle,&amp;local_num_point,comm_sz,&amp;total_num_in_cycle,comm,my_rank);<br><br>  end=MPI_Wtime(); <br><br>  <span class="hljs-keyword">if</span>(my_rank==<span class="hljs-number">0</span>){ <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Elapsing time: %fs\n"</span>,end-begin); } <br><br>   **MPI_Finalize();** <span class="hljs-comment">//释放资源</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <br><br>} <br><br> <br><br><span class="hljs-type">void</span> <span class="hljs-title function_">read_num</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>* num_point,<span class="hljs-type">int</span> my_rank,MPI_Comm comm)</span>{ <br><br>  **<span class="hljs-keyword">if</span>(my_rank==<span class="hljs-number">0</span>)** <span class="hljs-comment">//指定主进程执行</span><br><br>​    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"please input num in sqaure \n"</span>); <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,num_point); <br><br>  }<br><br>​    MPI_Bcast(num_point,<span class="hljs-number">1</span>,MPI_LONG_LONG,<span class="hljs-number">0</span>,comm); <br><br>} <br><br> <br><br><span class="hljs-type">void</span> <span class="hljs-title function_">compute_pi</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> num_point,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>* num_in_cycle,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>* local_num_point,<span class="hljs-type">int</span> comm_sz,<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> *total_num_in_cycle,MPI_Comm comm,<span class="hljs-type">int</span> my_rank)</span>{<br><br>  *num_in_cycle=<span class="hljs-number">0</span>; <br><br>  *local_num_point=num_point/comm_sz; <br><br>  <span class="hljs-type">double</span> x,y,distance_squared; <br><br>  srand(time(<span class="hljs-literal">NULL</span>)); <br><br>  <span class="hljs-keyword">for</span>(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt; *local_num_point;i++){ <br><br>​    x=(<span class="hljs-type">double</span>)rand()/(<span class="hljs-type">double</span>)RAND_MAX; <br><br>​    x=x*<span class="hljs-number">2</span><span class="hljs-number">-1</span>; <br><br>​    y=(<span class="hljs-type">double</span>)rand()/(<span class="hljs-type">double</span>)RAND_MAX; <br><br>​    y=y*<span class="hljs-number">2</span><span class="hljs-number">-1</span>; <br><br>​    distance_squared=x*x+y*y; <br><br>​    <span class="hljs-keyword">if</span>(distance_squared&lt;=<span class="hljs-number">1</span>) <br><br>​      *num_in_cycle=*num_in_cycle+<span class="hljs-number">1</span>; <br><br>  }  <br><br>  MPI_Reduce(num_in_cycle,total_num_in_cycle,<span class="hljs-number">1</span>,MPI_LONG_LONG,MPI_SUM,<span class="hljs-number">0</span>,comm);<br><br>  <span class="hljs-keyword">if</span>(my_rank==<span class="hljs-number">0</span>){ <br><br>​    <span class="hljs-type">double</span> pi=(<span class="hljs-type">double</span>)*total_num_in_cycle/(<span class="hljs-type">double</span>)num_point*<span class="hljs-number">4</span>; <br><br>​    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"the estimate value of pi is %lf\n"</span>,pi); <br><br>  } <br><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>4.下面并行程序matrix.c的功能是利用3个进程计算两个3行3列的矩阵的乘积,请将空缺的代码补充完整，使得该程序能够编译运行并得出正确的结果。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><br> <br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span><br><br>{<br><br>​    <span class="hljs-type">int</span> process_rank, process_size;<br><br>​    <span class="hljs-type">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] = {{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>}, {<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>}, {<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>}};<br><br>​    <span class="hljs-type">int</span> b[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] = {{<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>}, {<span class="hljs-number">44</span>, <span class="hljs-number">55</span>, <span class="hljs-number">66</span>}, {<span class="hljs-number">77</span>, <span class="hljs-number">88</span>, <span class="hljs-number">99</span>}};<br><br>​    <span class="hljs-type">int</span> c[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] = {<span class="hljs-number">0</span>};<br><br>​    MPI_Status status;<br><br> <br><br>​    MPI_Init(&amp;argc, &amp;argv);<br><br>​    MPI_Comm_rank(MPI_COMM_WORLD, &amp;process_rank);<br><br>​    MPI_Comm_size(MPI_COMM_WORLD, &amp;process_size);<br><br> <br><br>​    <span class="hljs-keyword">if</span>(process_rank == <span class="hljs-number">0</span>)<br><br>​    {<br><br>​       <span class="hljs-comment">// 将矩阵后两行分别发送给两个从进程</span><br><br>​       MPI_Send(a[<span class="hljs-number">1</span>], <span class="hljs-number">3</span>, MPI_INT, <span class="hljs-number">1</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD);<br><br>​       MPI_Send(a[<span class="hljs-number">2</span>], <span class="hljs-number">3</span>, MPI_INT, <span class="hljs-number">2</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD);<br><br>​        <span class="hljs-comment">// 接收两个从进程的计算结果</span><br><br>​       MPI_Recv(c[<span class="hljs-number">1</span>], <span class="hljs-number">3</span>, MPI_INT, <span class="hljs-number">1</span>, <span class="hljs-number">66</span>, MPI_COMM_WORLD, &amp;status);<br><br>​       MPI_Recv(c[<span class="hljs-number">2</span>], <span class="hljs-number">3</span>, MPI_INT, <span class="hljs-number">2</span>, <span class="hljs-number">66</span>, MPI_COMM_WORLD, &amp;status);<br><br>​    <br><br>​       <span class="hljs-comment">// 计算矩阵c的第一行的值</span><br><br>​       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;process_size; i++)<br><br>​           <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;process_size; j++)<br><br>​              c[<span class="hljs-number">0</span>][i] += a[<span class="hljs-number">0</span>][j] * b[j][i];<br><br> <br><br>​       <span class="hljs-comment">// 输出矩阵c</span><br><br>​       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;process_size; i++)<br><br>​       {<br><br>​           <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;process_size; j++)<br><br>​              <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, c[i][j]);<br><br>​           <span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);<br><br>​       }<br><br>​    }<br><br> <br><br>​    <span class="hljs-keyword">else</span><br><br>​    {   <br><br>​       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">1</span>; k&lt;process_size; k++)<br><br>​       {<br><br>​           MPI_Recv(a[k], <span class="hljs-number">3</span>, MPI_INT, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD, &amp;status);<br><br>​           <span class="hljs-comment">// 计算矩阵c的第k行的值</span><br><br>​           <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;process_size; i++)<br><br>​              <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>; j&lt;process_size; j++)<br><br>​                  c[k][i] += a[k][j] * b[j][i];<br><br>​           <span class="hljs-comment">// 将第k行的计算结果发送给主进程</span><br><br>​           MPI_Send(c[k], <span class="hljs-number">3</span>, MPI_INT, <span class="hljs-number">0</span>, <span class="hljs-number">66</span>, MPI_COMM_WORLD);<br><br>​       }<br><br>​    }<br><br> <br><br>​    MPI_Finalize();<br><br>​    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>编译命令：mpicc -o matrix matrix.c</p>
+<p>运行命令：mpirun -np 3 ./matrix</p>
+<p><strong>结果</strong></p>
+<p><img src="/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/clip_image001.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"> </p>
+<p>1、补全以下程序</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">read_num</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> *num_point,<span class="hljs-type">int</span> my_rank,MPI_Comm comm)</span>; <br><br><span class="hljs-type">void</span> <span class="hljs-title function_">compute_pi</span><span class="hljs-params">( )</span>; <br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc,<span class="hljs-type">char</span>** argv)</span>{ <br><br>  <span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> num_in_cycle,num_point,total_num_in_cycle,local_num_point; <br><br>  <span class="hljs-type">int</span> my_rank,comm_sz; <br><br>  <span class="hljs-type">double</span> begin,end; <br><br>  MPI_Comm comm; <br><br>  **MPI_Init(<span class="hljs-literal">NULL</span>,<span class="hljs-literal">NULL</span>);**<span class="hljs-comment">//初始化 （3分）</span><br><br>  comm=MPI_COMM_WORLD; <br><br>   **MPI_Comm_size(comm,&amp;comm_sz);**<span class="hljs-comment">//得到进程总数 （3分）</span><br><br>   **MPI_Comm_rank(comm,&amp;my_rank);**<span class="hljs-comment">//得到进程编号 （3分）</span><br><br>**read_num(&amp;num_point,my_rank,comm);**<span class="hljs-comment">//读取输入数据 （4分）</span><br><br>  begin=MPI_Wtime();<br><br>compute_pi(num_point,&amp;num_in_cycle,&amp;local_num_point,comm_sz,<br><br>&amp;total_num_in_cycle,comm,my_rank);<br><br>  end=MPI_Wtime(); <br><br>  <span class="hljs-keyword">if</span>(my_rank==<span class="hljs-number">0</span>){ <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Elapsing time: %fs\n"</span>,end-begin); } <br><br>​    **MPI_Finalize();** / <span class="hljs-comment">//释放资源（3分）</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <br><br>} <br><br> <br><br><span class="hljs-type">void</span> <span class="hljs-title function_">read_num</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>* num_point,<span class="hljs-type">int</span> my_rank,MPI_Comm comm)</span>{ <br><br> **<span class="hljs-keyword">if</span>(my_rank==<span class="hljs-number">0</span>)** <span class="hljs-comment">//指定主进程执行（4分）</span><br><br>​    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"please input num in sqaure \n"</span>); <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>,num_point); <br><br> }<br><br>​    MPI_Bcast(num_point,<span class="hljs-number">1</span>,MPI_LONG_LONG,<span class="hljs-number">0</span>,comm); <br><br>} <br><br> <br></code></pre></td></tr></tbody></table></figure>
+
+<p>2、请完成下面的表格，并说明每一种通信模式的特点</p>
+<table>
+<thead>
+<tr>
+<th>通信模式</th>
+<th>发送</th>
+<th>接收</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标准通信模式</td>
+<td>MPI_Send（2分）</td>
+<td>MPI_Recv</td>
+</tr>
+<tr>
+<td>缓存通信模式</td>
+<td>MPI_Bsend（2分）</td>
+<td>MPI_Recv</td>
+</tr>
+<tr>
+<td>同步通信模式（2分）</td>
+<td>MPI_Ssend</td>
+<td>MPI_Recv</td>
+</tr>
+<tr>
+<td>就绪通信模式（2分）</td>
+<td>MPI_Rsend</td>
+<td>MPI_Recv</td>
+</tr>
+</tbody></table>
+<p>标准模式: 由MPI系统决定是等待将数据发送出去后返回；还是将消息拷贝至一缓冲区然后立即返回。大部分MPI系统会预留一定缓冲区，当发送消息的长度小于预留缓冲区大小时，会将消息缓存然后立即返回。否则则当消息部分或全部发送完毕后返回。发送是非本地的。（3分）</p>
+<p>缓冲模式: 用户直接控制通信缓冲区的申请、使用和释放。对通信缓冲区的合理与正确使用是由程序设计人员自己保证的。MPI系统将消息拷贝至用户提供的缓冲区，然后立即返回；消息发送由MPI系统在后台进行用户必须保证缓冲区的大小足够容下采用缓冲模式发送的消息,发送是本地的。（3分）</p>
+<p>同步模式：遵从三次握手协议，在标准模式的基础上，要求确认接收方已经开始接收后，函数调用才返回。本质特征是接收方接收该消息的缓冲区已准备好，不需要附加的系统缓冲区。是非本地的。（3分）</p>
+<p>就绪模式：有客户请求,才提供服务，要求接收操作先于发送操作而被启动。发送请求仅当有匹配的接收后才能发出，否则出错。（3分）</p>
+<p>1、补全以下程序</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span><br><br>{<br><br> <span class="hljs-type">int</span> rank,size;<br><br> <span class="hljs-type">int</span> flag,rval,i;<br><br> <span class="hljs-type">int</span> buffer_1,recv_1;<br><br> MPI_Status status,status;<br><br> <span class="hljs-type">int</span> src=<span class="hljs-number">0</span>;<br><br> <span class="hljs-type">int</span> dest=<span class="hljs-number">1</span>;<br><br> MPI_Init(&amp;argc,&amp;argv); （<span class="hljs-number">2</span>分）<br><br>MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank); （<span class="hljs-number">2</span>分）<br><br> MPI_Comm_size(MPI_COMM_WORLD,&amp;size);    （<span class="hljs-number">2</span>分）<br><br> <br><br> <span class="hljs-keyword">if</span>(size!=<span class="hljs-number">2</span>) <span class="hljs-comment">//限制当前程序仅可在线程数为2时才能进行下去，否则使用MPI_Abort退出MPI 执行环境（2分）</span><br><br> {<br><br>   <span class="hljs-built_in">printf</span>(<span class="hljs-string">"*** This program uses exactly 2 processes ! not %d ***\n"</span>,size);<br><br>   MPI_Abort(MPI_COMM_WORLD,<span class="hljs-number">1</span>); <span class="hljs-comment">//1表示错误代码</span><br><br> }<br><br>   <span class="hljs-keyword">if</span>(rank==src) <span class="hljs-comment">//当前进程为发送进程（2分）</span><br><br> {<br><br>   buffer_1=<span class="hljs-number">200</span>;<br><br>   <span class="hljs-built_in">printf</span>(<span class="hljs-string">"standard MPI_send\n"</span>);<br><br>​    MPI_Send(&amp;buffer_1,<span class="hljs-number">1</span>,MPI_INT,____dest______,_____1_____,MPI_COMM_WORLD);<span class="hljs-comment">//发送进程发送整型数值，该数值来源于buffer_1    printf("MPI_Send %d data,tag=1\n",buffer_1);（每空均2分）</span><br><br> }<br><br> <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(_____rank==dest_____) <span class="hljs-comment">//当前进程为接收进程 （2分）</span><br><br> {<br><br>​    MPI_Recv(&amp;recv_1,<span class="hljs-number">1</span>,MPI_INT,_____src_____,<span class="hljs-number">1</span>,MPI_COMM_WORLD,&amp;status); （<span class="hljs-number">2</span>分）<br><br><span class="hljs-comment">//接受进程接收1个来自标签1的整型数据，并将该数据存储在recv_1中</span><br><br>​      <span class="hljs-built_in">printf</span>(<span class="hljs-string">"MPI_Recv=%d,tag=1\n"</span>,recv_1);<br><br>  }<br><br> ______MPI_Finalize()____<span class="hljs-comment">//释放MPI占用的资源，结束MPI环境（2分）</span><br><br>}<br><br> <br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="复习重点"><a href="#复习重点" class="headerlink" title="复习重点"></a>复习重点</h1><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c">例题：<br>简答题：请简要介绍 MPI 是什么？<br>综合题：<br><span class="hljs-number">1</span>、补全以下程序。<br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span><br>{<br><span class="hljs-type">double</span> start_time, main_time, min_time, max_time, avg_time;<br>MPI_Init(&amp;argc, &amp;argv);<br><span class="hljs-type">int</span> rank, nprocs;<br>MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);<br>MPI_Comm_size(MPI_COMM_WORLD, &amp;nprocs);<br>MPI_Barrier(MPI_COMM_WORLD);<br>start_time = MPI_Wtime();<br>sleep(<span class="hljs-number">30</span>);<br>main_time = MPI_Wtime() - start_time;<br>MPI_Reduce(&amp;main_time, &amp;max_time, <span class="hljs-number">1</span>, MPI_DOUBLE, MPI_MAX, <span class="hljs-number">0</span>,<br>MPI_COMM_WORLD);<br>MPI_Reduce(&amp;main_time, &amp;min_time, <span class="hljs-number">1</span>, MPI_DOUBLE, MPI_MIN,<br><span class="hljs-number">0</span>,MPI_COMM_WORLD);<br>MPI_Reduce(&amp;main_time, &amp;avg_time, <span class="hljs-number">1</span>, MPI_DOUBLE, MPI_SUM,<br><span class="hljs-number">0</span>,MPI_COMM_WORLD);<br><span class="hljs-keyword">if</span> (rank == <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Time for work is Min: %lf Max: %lf Avg: %lf</span><br><span class="hljs-string">seconds\n"</span>, min_time, max_time, avg_time/nprocs);<br>MPI_Finalize();<br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br>输出是（假设有 <span class="hljs-number">4</span> 个进程，分别执行了 <span class="hljs-number">500</span>ms、<span class="hljs-number">400</span>ms、<span class="hljs-number">600</span>ms、<span class="hljs-number">540</span>ms）<br></code></pre></td></tr></tbody></table></figure>
+
+<p> <img src="/zhouyuchen/2023/12/27/%E9%A2%98%E5%BA%93/image-20231228124204498.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<p>MapReduce应用场景</p>
+<p> MapReduce是一种用于处理大规模数据集的并行计算模型和编程框架。它将数据处理任务分为两个阶段：Map（映射）和Reduce（归约）。Map阶段将输入数据集拆分成若干独立的子问题，并由多个计算节点并行处理。Reduce阶段将Map阶段的计算结果进行合并和归约，生成最终的输出结果。MapReduce适用于以下应用场景：</p>
+<ol>
+<li>分布式数据处理：MapReduce适用于处理大规模的分布式数据集。它可以将数据集划分为多个部分，并在多个计算节点上并行处理，从而加快数据处理速度。例如，搜索引擎可以使用MapReduce来处理海量的网页数据，进行索引构建和搜索结果排序。</li>
+<li>批量数据处理：MapReduce适用于批量数据处理任务，其中每个数据项都可以独立处理。例如，日志分析、数据清洗、数据转换等任务可以使用MapReduce来并行处理大量的数据记录。</li>
+<li>分布式机器学习：MapReduce可以应用于分布式机器学习任务，如训练大规模的机器学习模型。通过将训练数据划分为多个部分，在多个计算节点上并行执行模型训练的Map阶段，然后在Reduce阶段合并和更新模型参数。这样可以加快机器学习任务的训练速度。</li>
+<li>图计算：MapReduce可以用于处理图结构数据，如社交网络分析、网络图分析等。通过将图数据划分为多个子图，Map阶段可以并行处理每个子图的计算任务，然后在Reduce阶段合并计算结果。这样可以高效地进行大规模图计算。</li>
+</ol>
+<p>总之，MapReduce适用于大规模数据处理和并行计算任务，包括分布式数据处理、批量数据处理、分布式机器学习和图计算等应用场景。它通过将任务分解为多个子任务并在多个计算节点上并行执行，提高了数据处理的效率和扩展性。</p>
+</body></html>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zhouyuchen/categories/%E8%AF%BE%E7%A8%8B/" class="category-chain-item">课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zhouyuchen/tags/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">#并行程序设计</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="note note-info">
+    <div class="license-title">
+      <!-- <div>题库</div>
+      <div>https://zyccodegit.gitee.io/2023/12/27/题库/</div> -->
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者 : 雨沉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于 : 2023年12月27日</div>
+          <div>未特殊说明均为原创，仅供自己学习使用</div>
+        </div>
+      
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zhouyuchen/2023/12/25/%E5%B9%B6%E8%A1%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" title="并行程序设计">
+                        <span class="hidden-mobile">并行程序设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <span>水鸟窥鱼立，山云带雨沉</span> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zhouyuchen/js/events.js" ></script>
+<script  src="/zhouyuchen/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zhouyuchen/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zhouyuchen/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zhouyuchen/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
