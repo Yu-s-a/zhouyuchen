@@ -22,8 +22,11 @@
 <meta property="og:site_name" content="雨沉">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/06/01/C#/image-20230712222252009.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/C#/image-20240311201304749.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/C#/image-20240311210341910.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/C#/image-20240311211543512.png">
 <meta property="article:published_time" content="2023-05-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-25T07:34:18.000Z">
+<meta property="article:modified_time" content="2024-04-10T08:55:49.373Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.8k 字
+          8.5k 字
         
       </span>
     
@@ -231,7 +234,7 @@
         
         
         
-          66 分钟
+          72 分钟
         
       </span>
     
@@ -613,6 +616,15 @@
 <p>C# 结构体、枚举、类与C相同不再赘述</p>
 <p>类的继承以  子类 ：父类 方式继承</p>
 <p>多重继承以  子类：父类，父类  方式继承</p>
+<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p><img src="/zhouyuchen/C#/image-20240311201304749.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> counter;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>{<br>    StartCoroutine(<span class="hljs-string">"myCoroutine"</span>);<br>    print(<span class="hljs-string">"end"</span>);<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>()</span><br>{<br>    <span class="hljs-keyword">if</span> (counter &lt; <span class="hljs-number">10</span>)<br>        print(<span class="hljs-string">"帧数："</span> + counter++);<br><br>}<br><span class="hljs-function">IEnumerator <span class="hljs-title">myCoroutine</span>()</span><br>{<br>    print(<span class="hljs-string">"步骤1"</span>);<br>    <span class="hljs-comment">// 挂起，控制权返回原来的语句,直到下一帧,逐帧动态</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; <br>    print(<span class="hljs-string">"步骤2"</span>);<br>    print(<span class="hljs-string">"步骤3"</span>);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/zhouyuchen/C#/image-20240311210341910.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<p><img src="/zhouyuchen/C#/image-20240311211543512.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<h2 id="c-快捷键"><a href="#c-快捷键" class="headerlink" title="c#快捷键"></a>c#快捷键</h2><ul>
+<li>快速对齐：ctrl+Ｋ + D<br>快速弹出智能提示：ctrl + J<br>快速注释：ctrl +K+C<br>取消所选的注释：ctrl + K+ U<br>折叠冗余代码：#region 和 #endregion<br><strong>输入svm然后按Tab键会生成Main函数；</strong><br>ctrl+K+S 三个键一起按，会调出代码段；选中多行后，然后按以上三个快捷键，按下Tab，代码段会自动包括选中代码，就可以进行相关的操作。比如加上region等。<br> 单行选中： Shift+Home：选中当前坐标到行首的代码；Shift+End选中当前坐标到行尾的代码；<br>折叠代码：ctrl+M + O，用来查看代码结构是否规整。<br>展开折叠代码： ctrl + M + L<br>展开或折叠光标所在的的代码块：ctrl + M+ M<br>转到定义：F12<br>F7 从设计界面切转到后台代码。Shift+F7 从后台代码切换到设计界面。<br>自动给字段加属性，封装属性的快捷键：Ctrl+R+E。<br>删除整行：ctrl + L<br>F9 添加、消除断点；Shift+Ctrl+F9取消所有断点。</li>
+<li><strong>复制当前行 ctrl D</strong></li>
+</ul>
 </body></html>
                 
               </div>
