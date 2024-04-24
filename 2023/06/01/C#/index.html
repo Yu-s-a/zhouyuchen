@@ -16,21 +16,23 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="C#学习入门C#简介C# 是在 .Net 框架开发期间开发的。 C# 是专为公共语言基础结构（CLI）设计的。CLI 由可执行代码和运行时环境组成，允许在不同的计算机平台和体系结构上使用各种高级语言。  现代的、通用的编程语言。 面向对象。 面向组件。 容易学习。 结构化语言。 它产生高效率的程序。 它可以在多种计算机平台上编译。 .Net 框架的一部分。  主要功能：  布尔条件（Boolean">
+<meta property="og:type" content="article">
 <meta property="og:title" content="C#">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/06/01/C#/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="C#学习入门C#简介C# 是在 .Net 框架开发期间开发的。 C# 是专为公共语言基础结构（CLI）设计的。CLI 由可执行代码和运行时环境组成，允许在不同的计算机平台和体系结构上使用各种高级语言。  现代的、通用的编程语言。 面向对象。 面向组件。 容易学习。 结构化语言。 它产生高效率的程序。 它可以在多种计算机平台上编译。 .Net 框架的一部分。  主要功能：  布尔条件（Boolean">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/06/01/C#/image-20230712222252009.png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/C#/image-20240311201304749.png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/C#/image-20240311210341910.png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/C#/image-20240311211543512.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20230712222252009.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240311201304749.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240311210341910.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240311211543512.png">
 <meta property="article:published_time" content="2023-05-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-10T08:55:49.373Z">
+<meta property="article:modified_time" content="2024-04-24T08:47:03.937Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/06/01/C#/image-20230712222252009.png">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20230712222252009.png">
   
   
   
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          8.4k 字
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          72 分钟
+          70 分钟
         
       </span>
     
@@ -277,7 +279,7 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="C-学习入门"><a href="#C-学习入门" class="headerlink" title="C#学习入门"></a>C#学习入门</h1><h3 id="C-简介"><a href="#C-简介" class="headerlink" title="C#简介"></a>C#简介</h3><p>C# 是在 .Net 框架开发期间开发的。</p>
+                <h1 id="C-学习入门"><a href="#C-学习入门" class="headerlink" title="C#学习入门"></a>C#学习入门</h1><h3 id="C-简介"><a href="#C-简介" class="headerlink" title="C#简介"></a>C#简介</h3><p>C# 是在 .Net 框架开发期间开发的。</p>
 <p>C# 是专为公共语言基础结构（CLI）设计的。CLI 由可执行代码和运行时环境组成，允许在不同的计算机平台和体系结构上使用各种高级语言。</p>
 <ul>
 <li>现代的、通用的编程语言。</li>
@@ -313,44 +315,34 @@
 </ul>
 <h3 id="与C不同的基本语法"><a href="#与C不同的基本语法" class="headerlink" title="与C不同的基本语法"></a>与C不同的基本语法</h3><h4 id="using-关键字"><a href="#using-关键字" class="headerlink" title="using 关键字"></a><em>using</em> 关键字</h4><p>在任何 C# 程序中的第一条语句都是：</p>
 <p>由于使用 <code>using</code> 指令，因此程序可以使用 <code>Console.WriteLine</code> 作为 <code>System.Console.WriteLine</code> 的简写。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<span class="hljs-comment">//一个程序可以包含多个using语句</span><br></code></pre></td></tr></tbody></table></figure>
-
-
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<span class="hljs-comment">//一个程序可以包含多个using语句</span><br></code></pre></td></tr></table></figure>
 <h4 id="对象（Object）类型"><a href="#对象（Object）类型" class="headerlink" title="对象（Object）类型"></a>对象（Object）类型</h4><p><strong>对象（Object）类型</strong> 是 C# 通用类型系统（Common Type System -  CTS）中所有数据类型的终极基类。Object 是 System.Object  类的别名。所以对象（Object）类型可以被分配任何其他类型（值类型、引用类型、预定义类型或用户自定义类型）的值。但是，在分配值之前，需要先进行类型转换。</p>
 <p>当一个值类型转换为对象类型时，则被称为 <strong>装箱</strong>；另一方面，当一个对象类型转换为值类型时，则被称为 <strong>拆箱</strong>。</p>
 <h4 id="动态（Dynamic）类型"><a href="#动态（Dynamic）类型" class="headerlink" title="动态（Dynamic）类型"></a>动态（Dynamic）类型</h4><p>您可以存储任何类型的值在动态数据类型变量中。这些变量的类型检查是在运行时发生的。</p>
 <p>声明动态类型的语法：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">dynamic</span> &lt;variable_name&gt; = <span class="hljs-keyword">value</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">dynamic</span> &lt;variable_name&gt; = <span class="hljs-keyword">value</span>;<br></code></pre></td></tr></table></figure>
 <p>例如：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">dynamic</span> d = <span class="hljs-number">20</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">dynamic</span> d = <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
 <h4 id="字符串（String）类型"><a href="#字符串（String）类型" class="headerlink" title="字符串（String）类型"></a>字符串（String）类型</h4><p><strong>字符串（String）类型</strong> 允许您给变量分配任何字符串值。字符串（String）类型是 System.String 类的别名。它是从对象（Object）类型派生的。字符串（String）类型的值可以通过两种形式进行分配：引号和 @引号。</p>
 <p>例如：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">String str = <span class="hljs-string">"runoob.com"</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">String str = <span class="hljs-string">&quot;runoob.com&quot;</span>;<br></code></pre></td></tr></table></figure>
 <p>一个 @引号字符串：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-string">@"runoob.com"</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-string">@&quot;runoob.com&quot;</span>;<br></code></pre></td></tr></table></figure>
 <p>C# string 字符串的前面可以加 @（称作”逐字字符串”）将转义字符（\）当作普通字符对待，比如：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str = <span class="hljs-string">@"C:\Windows"</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str = <span class="hljs-string">@&quot;C:\Windows&quot;</span>;<br></code></pre></td></tr></table></figure>
 <p>等价于：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str = <span class="hljs-string">"C:\\Windows"</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str = <span class="hljs-string">&quot;C:\\Windows&quot;</span>;<br></code></pre></td></tr></table></figure>
 <p>@ 字符串中可以任意换行，换行符及缩进空格都计算在字符串长度之内。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str = <span class="hljs-string">@"&lt;script type=""text/javascript""&gt;</span><br><span class="hljs-string">    &lt;!--</span><br><span class="hljs-string">    --&gt;</span><br><span class="hljs-string">&lt;/script&gt;"</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str = <span class="hljs-string">@&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span><br><span class="hljs-string">    &lt;!--</span><br><span class="hljs-string">    --&gt;</span><br><span class="hljs-string">&lt;/script&gt;&quot;</span>;<br></code></pre></td></tr></table></figure>
 <h3 id="C-类型转换"><a href="#C-类型转换" class="headerlink" title="C#类型转换"></a>C#类型转换</h3><p>C#类型转换与C很类似，隐式转换和显示转换（强转）</p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/csharp/csharp-type-conversion.html">https://www.runoob.com/csharp/csharp-type-conversion.html</a></p>
-<h3 id="C-变量"><a href="#C-变量" class="headerlink" title="C#变量"></a>C#变量</h3><h4 id="接受来自用户的值"><a href="#接受来自用户的值" class="headerlink" title="接受来自用户的值"></a>接受来自用户的值</h4><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 **ReadLine()**，用于接收来自用户的输入，并把它存储到一个变量中。</p>
+<h3 id="C-变量"><a href="#C-变量" class="headerlink" title="C#变量"></a>C#变量</h3><h4 id="接受来自用户的值"><a href="#接受来自用户的值" class="headerlink" title="接受来自用户的值"></a>接受来自用户的值</h4><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 <strong>ReadLine()</strong>，用于接收来自用户的输入，并把它存储到一个变量中。</p>
 <p>例如：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> num;<br>num = Convert.ToInt32(Console.ReadLine());<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> num;<br>num = Convert.ToInt32(Console.ReadLine());<br></code></pre></td></tr></table></figure>
 <p>函数 <strong>Convert.ToInt32()</strong> 把用户输入的数据转换为 int 数据类型，因为 <strong>Console.ReadLine()</strong> 只接受字符串格式的数据。</p>
 <h3 id="C-常量运算符与C类似"><a href="#C-常量运算符与C类似" class="headerlink" title="C#常量运算符与C类似"></a>C#常量运算符与C类似</h3><p>需要注意的是</p>
 <p>下表列出了 C# 支持的位运算符。假设变量 <strong>A</strong> 的值为 60，变量 <strong>B</strong> 的值为 13，则：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -359,15 +351,18 @@
 <th>实例</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>&amp;</td>
 <td>如果同时存在于两个操作数中，二进制 AND 运算符复制一位到结果中。</td>
 <td>(A &amp; B) 将得到 12，即为 0000 1100</td>
 </tr>
 <tr>
-<td>|</td>
+<td>\</td>
+<td></td>
 <td>如果存在于任一操作数中，二进制 OR 运算符复制一位到结果中。</td>
-<td>(A | B) 将得到 61，即为 0011 1101</td>
+<td>(A \</td>
+<td>B) 将得到 61，即为 0011 1101</td>
 </tr>
 <tr>
 <td>^</td>
@@ -404,46 +399,39 @@
 <td>强制转换，即使转换失败也不会抛出异常。</td>
 <td>Object obj = new StringReader(“Hello”);      StringReader r = obj as StringReader;</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="C-封装"><a href="#C-封装" class="headerlink" title="C#封装"></a>C#封装</h3><p>internal：同一个程序集的对象可以访问；</p>
 <p>protected internal：访问限于当前程序集或派生自包含类的类型。也就是包括protected 和 internal</p>
-<p><img src="/zhouyuchen/2023/06/01/C#/image-20230712222252009.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
-<h3 id="C-方法"><a href="#C-方法" class="headerlink" title="C#方法"></a>C#方法</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)<br>{<br>   Method Body<br>}<br></code></pre></td></tr></tbody></table></figure>
-
+<p><img src="/zhouyuchen/.io//image-20230712222252009.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<h3 id="C-方法"><a href="#C-方法" class="headerlink" title="C#方法"></a>C#方法</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)<br>&#123;<br>   Method Body<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><strong>Access Specifier</strong>：访问修饰符，这个决定了变量或方法对于另一个类的可见性。</p>
 <p><strong>Return type</strong>：返回类型，一个方法可以返回一个值。返回类型是方法返回的值的数据类型。如果方法不返回任何值，则返回类型为 <strong>void</strong>。</p>
 <p><strong>Method name</strong>：方法名称，是一个唯一的标识符，且是大小写敏感的。它不能与类中声明的其他标识符相同。</p>
 <p><strong>Parameter list</strong>：参数列表，使用圆括号括起来，该参数是用来传递和接收方法的数据。参数列表是指方法的参数类型、顺序和数量。参数是可选的，也就是说，一个方法可能不包含参数。</p>
 <p><strong>Method body</strong>：方法主体，包含了完成任务所需的指令集。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">FindMax</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> num1, <span class="hljs-built_in">int</span> num2</span>)</span><br>{<br>    <span class="hljs-comment">//方法主体</span><br>}<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">FindMax</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> num1, <span class="hljs-built_in">int</span> num2</span>)</span><br>&#123;<br>    <span class="hljs-comment">//方法主体</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h4 id="C-中调用方法"><a href="#C-中调用方法" class="headerlink" title="C# 中调用方法"></a>C# 中调用方法</h4><p>通过方法名调用</p>
 <p>实际参数的值会复制给形参，实参和形参使用的是两个不同内存中的值。所以，当形参的值发生改变时，不会影响实参的值，从而保证了实参数据的安全</p>
 <p>即使在函数内改变了值，值也没有发生任何的变化。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">CalculatorApplication</span><br>{<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">NumberManipulator</span><br>    {<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">FindMax</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> num1, <span class="hljs-built_in">int</span> num2</span>)</span><br>        {...}<br>    }<br>}<br><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span><br>{<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>    {<br>        ...<br>        <span class="hljs-built_in">int</span> ret;<br>        <span class="hljs-comment">//调用 FindMax 方法</span><br>        ret = n.FindMax(a, b);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
-<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">namespace</span> <span class="hljs-title">CalculatorApplication</span><br>{<br>&nbsp; &nbsp;<span class="hljs-keyword">class</span> <span class="hljs-title">NumberManipulator</span><br>&nbsp; &nbsp;{<br>&nbsp; &nbsp; &nbsp; <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y</span>)</span><br>&nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...<br>&nbsp; &nbsp; &nbsp; }&nbsp; <br>&nbsp; &nbsp; &nbsp; <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NumberManipulator n = <span class="hljs-keyword">new</span> NumberManipulator();<br>		 ...<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">/* 调用函数 */</span><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n.swap(a, b);<br>         ...<br>&nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp;}<br>}<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">CalculatorApplication</span><br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">NumberManipulator</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">FindMax</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> num1, <span class="hljs-built_in">int</span> num2</span>)</span><br>        &#123;...&#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span><br>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>    &#123;<br>        ...<br>        <span class="hljs-built_in">int</span> ret;<br>        <span class="hljs-comment">//调用 FindMax 方法</span><br>        ret = n.FindMax(a, b);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">namespace</span> <span class="hljs-title">CalculatorApplication</span><br>&#123;<br>   <span class="hljs-keyword">class</span> <span class="hljs-title">NumberManipulator</span><br>   &#123;<br>      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y</span>)</span><br>      &#123;<br>         ...<br>      &#125;  <br>      <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>      &#123;<br>         NumberManipulator n = <span class="hljs-keyword">new</span> NumberManipulator();<br>		 ...<br>         <span class="hljs-comment">/* 调用函数 */</span><br>         n.swap(a, b);<br>         ...<br>      &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h4 id="按引用传递参数"><a href="#按引用传递参数" class="headerlink" title="按引用传递参数"></a>按引用传递参数</h4><p>引用参数是一个对变量的<strong>内存位置的引用</strong>。当按引用传递参数时，与值参数不同的是，它不会为这些参数创建一个新的存储位置。引用参数表示与提供给方法的实际参数具有相同的内存位置。</p>
 <p>在 C# 中，使用 <strong>ref</strong> 关键字声明引用参数。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NumberManipulator n = <span class="hljs-keyword">new</span> NumberManipulator();<br>		 ...<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">/* 调用函数 */</span><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n.swap(<span class="hljs-keyword">ref</span> a, <span class="hljs-keyword">ref</span> b);<br>         ...<br>&nbsp; &nbsp; &nbsp; }<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>      &#123;<br>         NumberManipulator n = <span class="hljs-keyword">new</span> NumberManipulator();<br>		 ...<br>         <span class="hljs-comment">/* 调用函数 */</span><br>         n.swap(<span class="hljs-keyword">ref</span> a, <span class="hljs-keyword">ref</span> b);<br>         ...<br>      &#125;<br></code></pre></td></tr></table></figure>
 <h4 id="按输出传递参数"><a href="#按输出传递参数" class="headerlink" title="按输出传递参数"></a>按输出传递参数</h4><p>return 语句可用于只从函数中返回一个值。但是，可以使用 <strong>输出参数</strong> 来从函数中返回两个值。输出参数会把方法输出的数据赋给自己，其他方面与引用参数相似</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NumberManipulator n = <span class="hljs-keyword">new</span> NumberManipulator();<br>		 ...<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">/* 调用函数 */</span><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;n.getValue(<span class="hljs-keyword">out</span> a)<br>         ...<br>&nbsp; &nbsp; &nbsp; }<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>      &#123;<br>         NumberManipulator n = <span class="hljs-keyword">new</span> NumberManipulator();<br>		 ...<br>         <span class="hljs-comment">/* 调用函数 */</span><br>         n.getValue(<span class="hljs-keyword">out</span> a)<br>         ...<br>      &#125;<br></code></pre></td></tr></table></figure>
 <p>通过用户输入值再输出</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getValues</span>(<span class="hljs-params"><span class="hljs-keyword">out</span> <span class="hljs-built_in">int</span> x, <span class="hljs-keyword">out</span> <span class="hljs-built_in">int</span> y </span>)</span><br>      {<br>          Console.WriteLine(<span class="hljs-string">"请输入第一个值： "</span>);<br>          x = Convert.ToInt32(Console.ReadLine());<br>          Console.WriteLine(<span class="hljs-string">"请输入第二个值： "</span>);<br>          y = Convert.ToInt32(Console.ReadLine());<br>      }<br></code></pre></td></tr></tbody></table></figure>
-
-<h3 id="C-可空类型（Nullable）"><a href="#C-可空类型（Nullable）" class="headerlink" title="C# 可空类型（Nullable）"></a>C# 可空类型（Nullable）</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> i; <span class="hljs-comment">//默认值0</span><br><span class="hljs-built_in">int</span>? ii; <span class="hljs-comment">//默认值nul</span><br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getValues</span>(<span class="hljs-params"><span class="hljs-keyword">out</span> <span class="hljs-built_in">int</span> x, <span class="hljs-keyword">out</span> <span class="hljs-built_in">int</span> y </span>)</span><br>      &#123;<br>          Console.WriteLine(<span class="hljs-string">&quot;请输入第一个值： &quot;</span>);<br>          x = Convert.ToInt32(Console.ReadLine());<br>          Console.WriteLine(<span class="hljs-string">&quot;请输入第二个值： &quot;</span>);<br>          y = Convert.ToInt32(Console.ReadLine());<br>      &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="C-可空类型（Nullable）"><a href="#C-可空类型（Nullable）" class="headerlink" title="C# 可空类型（Nullable）"></a>C# 可空类型（Nullable）</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> i; <span class="hljs-comment">//默认值0</span><br><span class="hljs-built_in">int</span>? ii; <span class="hljs-comment">//默认值nul</span><br></code></pre></td></tr></table></figure>
 <h4 id="Null-合并运算符（-）"><a href="#Null-合并运算符（-）" class="headerlink" title="Null 合并运算符（ ?? ）"></a>Null 合并运算符（ ?? ）</h4><p>如果第一个操作数的值为 null，则运算符返回第二个操作数的值，否则返回第一个操作数的值。</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">num3 = num1 ?? <span class="hljs-number">5.34</span>;      <span class="hljs-comment">// num1 如果为空值则返回 5.34</span><br></code></pre></td></tr></tbody></table></figure>
-
-<h4 id="使用-foreach-循环"><a href="#使用-foreach-循环" class="headerlink" title="使用 foreach 循环"></a>使用 <em>foreach</em> 循环</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">/* 初始化数组 n 中的元素 */</span>        <br><span class="hljs-keyword">for</span> ( <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ )<br>{<br>   n[i] = i + <span class="hljs-number">100</span>;<br>}<br><span class="hljs-comment">/* 输出每个数组元素的值 */</span><br><span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">int</span> j <span class="hljs-keyword">in</span> n )<br>{<br>   <span class="hljs-built_in">int</span> i = j<span class="hljs-number">-100</span>;<br>   Console.WriteLine(<span class="hljs-string">"Element[{0}] = {1}"</span>, i, j);<br>}<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">num3 = num1 ?? <span class="hljs-number">5.34</span>;      <span class="hljs-comment">// num1 如果为空值则返回 5.34</span><br></code></pre></td></tr></table></figure>
+<h4 id="使用-foreach-循环"><a href="#使用-foreach-循环" class="headerlink" title="使用 foreach 循环"></a>使用 <em>foreach</em> 循环</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">/* 初始化数组 n 中的元素 */</span>        <br><span class="hljs-keyword">for</span> ( <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ )<br>&#123;<br>   n[i] = i + <span class="hljs-number">100</span>;<br>&#125;<br><span class="hljs-comment">/* 输出每个数组元素的值 */</span><br><span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">int</span> j <span class="hljs-keyword">in</span> n )<br>&#123;<br>   <span class="hljs-built_in">int</span> i = j<span class="hljs-number">-100</span>;<br>   Console.WriteLine(<span class="hljs-string">&quot;Element[&#123;0&#125;] = &#123;1&#125;&quot;</span>, i, j);<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>结果</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs result">Element[0] = 100<br>Element[1] = 101<br>Element[2] = 102<br>...<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs result">Element[0] = 100<br>Element[1] = 101<br>Element[2] = 102<br>...<br></code></pre></td></tr></table></figure>
 <h3 id="C-字符串（String）"><a href="#C-字符串（String）" class="headerlink" title="C# 字符串（String）"></a>C# 字符串（String）</h3><h4 id="String-类的属性"><a href="#String-类的属性" class="headerlink" title="String 类的属性"></a>String 类的属性</h4><p>String 类有以下两个属性：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -451,7 +439,8 @@
 <th>属性名称 &amp; 描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td><strong>Chars</strong> 在当前 <em>String</em> 对象中获取 <em>Char</em> 对象的指定位置。</td>
 </tr>
@@ -459,15 +448,19 @@
 <td>2</td>
 <td><strong>Length</strong> 在当前的 <em>String</em> 对象中获取字符数。</td>
 </tr>
-</tbody></table>
-<h4 id="String-类的方法"><a href="#String-类的方法" class="headerlink" title="String 类的方法"></a>String 类的方法</h4><table>
+</tbody>
+</table>
+</div>
+<h4 id="String-类的方法"><a href="#String-类的方法" class="headerlink" title="String 类的方法"></a>String 类的方法</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>序号</th>
 <th>方法名称 &amp; 描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td><strong>public static int Compare( string strA, string strB )</strong>  比较两个指定的 string 对象，并返回一个表示它们在排列顺序中相对位置的整数。该方法区分大小写。</td>
 </tr>
@@ -611,21 +604,22 @@
 <td>36</td>
 <td><strong>public string Trim()</strong> 移除当前 String 对象中的所有前导空白字符和后置空白字符。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>完整方法参考MSDN库</p>
 <p>C# 结构体、枚举、类与C相同不再赘述</p>
 <p>类的继承以  子类 ：父类 方式继承</p>
 <p>多重继承以  子类：父类，父类  方式继承</p>
-<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p><img src="/zhouyuchen/C#/image-20240311201304749.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> counter;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>{<br>    StartCoroutine(<span class="hljs-string">"myCoroutine"</span>);<br>    print(<span class="hljs-string">"end"</span>);<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>()</span><br>{<br>    <span class="hljs-keyword">if</span> (counter &lt; <span class="hljs-number">10</span>)<br>        print(<span class="hljs-string">"帧数："</span> + counter++);<br><br>}<br><span class="hljs-function">IEnumerator <span class="hljs-title">myCoroutine</span>()</span><br>{<br>    print(<span class="hljs-string">"步骤1"</span>);<br>    <span class="hljs-comment">// 挂起，控制权返回原来的语句,直到下一帧,逐帧动态</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; <br>    print(<span class="hljs-string">"步骤2"</span>);<br>    print(<span class="hljs-string">"步骤3"</span>);<br>}<br></code></pre></td></tr></tbody></table></figure>
-
-<p><img src="/zhouyuchen/C#/image-20240311210341910.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
-<p><img src="/zhouyuchen/C#/image-20240311211543512.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p><img src="/zhouyuchen/.io//image-20240311201304749.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> counter;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>&#123;<br>    StartCoroutine(<span class="hljs-string">&quot;myCoroutine&quot;</span>);<br>    print(<span class="hljs-string">&quot;end&quot;</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>()</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (counter &lt; <span class="hljs-number">10</span>)<br>        print(<span class="hljs-string">&quot;帧数：&quot;</span> + counter++);<br><br>&#125;<br><span class="hljs-function">IEnumerator <span class="hljs-title">myCoroutine</span>()</span><br>&#123;<br>    print(<span class="hljs-string">&quot;步骤1&quot;</span>);<br>    <span class="hljs-comment">// 挂起，控制权返回原来的语句,直到下一帧,逐帧动态</span><br>    <span class="hljs-keyword">yield</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; <br>    print(<span class="hljs-string">&quot;步骤2&quot;</span>);<br>    print(<span class="hljs-string">&quot;步骤3&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="/zhouyuchen/.io//image-20240311210341910.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/.io//image-20240311211543512.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <h2 id="c-快捷键"><a href="#c-快捷键" class="headerlink" title="c#快捷键"></a>c#快捷键</h2><ul>
-<li>快速对齐：ctrl+Ｋ + D<br>快速弹出智能提示：ctrl + J<br>快速注释：ctrl +K+C<br>取消所选的注释：ctrl + K+ U<br>折叠冗余代码：#region 和 #endregion<br><strong>输入svm然后按Tab键会生成Main函数；</strong><br>ctrl+K+S 三个键一起按，会调出代码段；选中多行后，然后按以上三个快捷键，按下Tab，代码段会自动包括选中代码，就可以进行相关的操作。比如加上region等。<br> 单行选中： Shift+Home：选中当前坐标到行首的代码；Shift+End选中当前坐标到行尾的代码；<br>折叠代码：ctrl+M + O，用来查看代码结构是否规整。<br>展开折叠代码： ctrl + M + L<br>展开或折叠光标所在的的代码块：ctrl + M+ M<br>转到定义：F12<br>F7 从设计界面切转到后台代码。Shift+F7 从后台代码切换到设计界面。<br>自动给字段加属性，封装属性的快捷键：Ctrl+R+E。<br>删除整行：ctrl + L<br>F9 添加、消除断点；Shift+Ctrl+F9取消所有断点。</li>
+<li>快速对齐：ctrl+Ｋ + D<br>快速弹出智能提示：ctrl + J<br>快速<strong>注释</strong>：ctrl +K+C<br>取消所选的注释：ctrl + K+ U<br>折叠冗余代码：#region 和 #endregion<br><strong>输入svm然后按Tab键会生成Main函数；</strong><br>ctrl+K+S 三个键一起按，会调出代码段；选中多行后，然后按以上三个快捷键，按下Tab，代码段会自动包括选中代码，就可以进行相关的操作。比如加上region等。<br> 单行选中： Shift+Home：选中当前坐标到行首的代码；Shift+End选中当前坐标到行尾的代码；<br>折叠代码：ctrl+M + O，用来查看代码结构是否规整。<br>展开折叠代码： ctrl + M + L<br>展开或折叠光标所在的的代码块：ctrl + M+ M<br>转到定义：F12<br>F7 从设计界面切转到后台代码。Shift+F7 从后台代码切换到设计界面。<br>自动给字段加属性，封装属性的快捷键：Ctrl+R+E。<br>删除整行：ctrl + L<br>F9 添加、消除断点；Shift+Ctrl+F9取消所有断点。</li>
 <li><strong>复制当前行 ctrl D</strong></li>
 </ul>
-</body></html>
+
                 
               </div>
             

@@ -16,10 +16,12 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="UnityLateUpdate和Update两者都是每帧调用，执行顺序不同 无论有多少个update函数，都要等update函数执行完才能再执行lateupdate Lateupdate一般放相机处理 update放画面控制逻辑 update在渲染每一帧的时候调用。但是fixupdate一般是在固定的时间频率调用。这个时间不一定是每一帧的时间。 光影区域光（Area）烘焙后相当于生成一张贴图，可以">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Unity3D">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/09/18/Unity3D/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="UnityLateUpdate和Update两者都是每帧调用，执行顺序不同 无论有多少个update函数，都要等update函数执行完才能再执行lateupdate Lateupdate一般放相机处理 update放画面控制逻辑 update在渲染每一帧的时候调用。但是fixupdate一般是在固定的时间频率调用。这个时间不一定是每一帧的时间。 光影区域光（Area）烘焙后相当于生成一张贴图，可以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-04-13T09:42:58.189Z">
@@ -272,7 +274,7 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h1><h2 id="LateUpdate和Update"><a href="#LateUpdate和Update" class="headerlink" title="LateUpdate和Update"></a>LateUpdate和Update</h2><p>两者都是每帧调用，执行顺序不同</p>
+                <h1 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h1><h2 id="LateUpdate和Update"><a href="#LateUpdate和Update" class="headerlink" title="LateUpdate和Update"></a>LateUpdate和Update</h2><p>两者都是每帧调用，执行顺序不同</p>
 <p>无论有多少个update函数，都要等update函数执行完才能再执行lateupdate</p>
 <p>Lateupdate一般放相机处理</p>
 <p>update放画面控制逻辑</p>
@@ -280,7 +282,7 @@
 <h2 id="光影"><a href="#光影" class="headerlink" title="光影"></a>光影</h2><p>区域光（Area）烘焙后相当于生成一张贴图，可以删除光源</p>
 <p>烘焙光对一般动态物体没有影响</p>
 <h3 id="体积雾学习笔记"><a href="#体积雾学习笔记" class="headerlink" title="体积雾学习笔记"></a>体积雾学习笔记</h3><p>Volumetric Fog放在camera下</p>
-</body></html>
+
                 
               </div>
             

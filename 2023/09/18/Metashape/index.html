@@ -16,20 +16,22 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="Agisoft Metashape等使用Metashape使用 新建项目，将图片资源拖入堆块（Chunk）中 选择工作流程（Workflow）中的对齐照片（Align Photos）可选精度，目的是为了将导入的素材形成链接点描点拼接 选择移动区域（Move Region)调整区域，排除多余的点 再次选择工作流程中创建点云（build dense cloud）再次生成深度图 形成深度图后，双击左侧工">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Agisoft Metashape">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/09/18/Metashape/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="Agisoft Metashape等使用Metashape使用 新建项目，将图片资源拖入堆块（Chunk）中 选择工作流程（Workflow）中的对齐照片（Align Photos）可选精度，目的是为了将导入的素材形成链接点描点拼接 选择移动区域（Move Region)调整区域，排除多余的点 再次选择工作流程中创建点云（build dense cloud）再次生成深度图 形成深度图后，双击左侧工">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/09/18/Metashape/image-20230925112737882.png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/Metashape/splash_lambda.png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/Metashape/splash_shortcuts.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20230925112737882.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//splash_lambda.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//splash_shortcuts.png">
 <meta property="article:published_time" content="2023-09-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-11-18T05:54:32.000Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="Metashape">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/09/18/Metashape/image-20230925112737882.png">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20230925112737882.png">
   
   
   
@@ -276,7 +278,7 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="Agisoft-Metashape等使用"><a href="#Agisoft-Metashape等使用" class="headerlink" title="Agisoft Metashape等使用"></a>Agisoft Metashape等使用</h1><h2 id="Metashape使用"><a href="#Metashape使用" class="headerlink" title="Metashape使用"></a>Metashape使用</h2><ol>
+                <h1 id="Agisoft-Metashape等使用"><a href="#Agisoft-Metashape等使用" class="headerlink" title="Agisoft Metashape等使用"></a>Agisoft Metashape等使用</h1><h2 id="Metashape使用"><a href="#Metashape使用" class="headerlink" title="Metashape使用"></a>Metashape使用</h2><ol>
 <li>新建项目，将图片资源拖入堆块（Chunk）中</li>
 <li>选择工作流程（Workflow）中的对齐照片（Align Photos）可选精度，目的是为了将导入的素材形成链接点描点拼接</li>
 <li>选择移动区域（Move Region)调整区域，排除多余的点</li>
@@ -299,45 +301,38 @@
 <li><strong>Sharpen Image：</strong>只锐化处理；</li>
 </ul>
 <p>注意在系统中开启：</p>
-<p><img src="/zhouyuchen/2023/09/18/Metashape/image-20230925112737882.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<p><img src="/zhouyuchen/.io//image-20230925112737882.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <p>测试记录：</p>
 <ol>
-<li><p>   图片记录（5张图）</p>
+<li>图片记录（5张图）<ol>
+<li>96DPI放大4倍（9600x12800，3M，10分钟）</li>
+<li>96DPI放大8倍（12000x16000，5M，15分钟）</li>
+<li>300DPI（2400x3200，3M，15分钟）   300DPI放大后变为（1）</li>
+</ol>
 </li>
-<li><p>96DPI放大4倍（9600x12800，3M，10分钟）</p>
-</li>
-<li><p>96DPI放大8倍（12000x16000，5M，15分钟）</p>
-</li>
-<li><p>300DPI（2400x3200，3M，15分钟）   300DPI放大后变为（1）</p>
-</li>
-<li><p>   建模记录</p>
-</li>
-<li><pre><code class="hljs"> 5张图建模总时长在20分钟左右，DPI大，时间长
-</code></pre>
-</li>
-<li><p>   （3）点云数量多于（1，2）</p>
-</li>
-<li><p>   （1）和（2）建模清晰度并无太大差异  （3）清晰度低</p>
+<li><p>建模记录</p>
+<ol>
+<li>5张图建模总时长在20分钟左右，DPI大，时间长</li>
+<li>（3）点云数量多于（1，2）</li>
+<li>（1）和（2）建模清晰度并无太大差异  （3）清晰度低</li>
+</ol>
 </li>
 <li><p>总结</p>
 <ol>
-<li>   每张图优化时长在3分钟左右，</li>
-<li>   15cm大小一面至少需要4面整体，4面细节，位置需以球面等距拍摄</li>
+<li>每张图优化时长在3分钟左右，</li>
+<li>15cm大小一面至少需要4面整体，4面细节，位置需以球面等距拍摄</li>
 </ol>
 </li>
 </ol>
 <h2 id="DOTween"><a href="#DOTween" class="headerlink" title="DOTween"></a>DOTween</h2><p><strong>解压缩</strong>到 Unity Assets 文件夹中</p>
 <p>使用的每个类/脚本中<strong>导入 DOTween 的命名空间：</strong></p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> DG.Tweening;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> DG.Tweening;<br></code></pre></td></tr></table></figure>
 <p>初始化以设置一些全局选项，DOTween 将使用默认设置自动初始化：</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">DOTween.Init(autoKillMode, useSafeMode, logBehaviour);<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">DOTween.Init(autoKillMode, useSafeMode, logBehaviour);<br></code></pre></td></tr></table></figure>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p><img src="/zhouyuchen/.io//splash_lambda.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/zhouyuchen/.io//splash_shortcuts.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
+<h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//目标点（1，1，1），时长秒</span><br>DoMove(Vector3.one, <span class="hljs-number">2</span>)<br><span class="hljs-comment">//X,Y,Z移动</span><br>DOMoveX<br><span class="hljs-comment">//旋转</span><br>DORotate(<span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">140</span>,<span class="hljs-number">140</span>, <span class="hljs-number">140</span>), <span class="hljs-number">2</span>)<br><span class="hljs-comment">//放大</span><br>DOScale<br></code></pre></td></tr></table></figure>
 
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p><img src="/zhouyuchen/Metashape/splash_lambda.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/zhouyuchen/Metashape/splash_shortcuts.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
-<h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//目标点（1，1，1），时长秒</span><br>DoMove(Vector3.one, <span class="hljs-number">2</span>)<br><span class="hljs-comment">//X,Y,Z移动</span><br>DOMoveX<br><span class="hljs-comment">//旋转</span><br>DORotate(<span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">140</span>,<span class="hljs-number">140</span>, <span class="hljs-number">140</span>), <span class="hljs-number">2</span>)<br><span class="hljs-comment">//放大</span><br>DOScale<br></code></pre></td></tr></tbody></table></figure>
-
-</body></html>
                 
               </div>
             

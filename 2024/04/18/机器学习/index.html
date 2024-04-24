@@ -16,16 +16,32 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="机器学习机器学习分类半监督学习：监督学习和无监督学习 监督学习：数据有标签、一般为回归或分类 无监督学习：数据无标签、一般为聚类或若干降维任务 强化学习：序列数据决策学习、一般为从环境交互中学习 在无监督式学习中，数据并不被特别标识，学习模型是为了推断出数据的一些内在结构; 在监督式学习下，输入数据被称为“训练数据”，每组训练数据有一个明确的标识或结果 常见的应用场景包括关联规则的学习以及聚类等。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="机器学习">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2024/04/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="机器学习机器学习分类半监督学习：监督学习和无监督学习 监督学习：数据有标签、一般为回归或分类 无监督学习：数据无标签、一般为聚类或若干降维任务 强化学习：序列数据决策学习、一般为从环境交互中学习 在无监督式学习中，数据并不被特别标识，学习模型是为了推断出数据的一些内在结构; 在监督式学习下，输入数据被称为“训练数据”，每组训练数据有一个明确的标识或结果 常见的应用场景包括关联规则的学习以及聚类等。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416112557044.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416140851945.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416194507458.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416194539654.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416194554820.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416205205173.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240417151554970.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240417140040656.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240417162108117.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240417162122926.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240417164313560.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240418200310246.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240418203651419.png">
 <meta property="article:published_time" content="2024-04-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-13T09:41:26.648Z">
+<meta property="article:modified_time" content="2024-04-21T12:30:24.628Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20240416112557044.png">
   
   
   
@@ -218,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          12k 字
         
       </span>
     
@@ -229,7 +245,7 @@
         
         
         
-          13 分钟
+          104 分钟
         
       </span>
     
@@ -272,69 +288,545 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="信息增益ID3"><a href="#信息增益ID3" class="headerlink" title="信息增益ID3"></a>信息增益ID3</h2><p>选择具有最高信息增益的属性作为分裂属性</p>
+                <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="机器学习分类"><a href="#机器学习分类" class="headerlink" title="机器学习分类"></a>机器学习分类</h2><p>半监督学习：监督学习和无监督学习</p>
+<p>监督学习：数据有标签、一般为回归或分类</p>
+<p>无监督学习：数据无标签、一般为聚类或若干降维任务</p>
+<p>强化学习：序列数据决策学习、一般为从环境交互中学习</p>
+<p>在无监督式学习中，数据并不被特别标识，学习模型是为了推断出数据的一些<br>内在结构;</p>
+<p>在监督式学习下，输入数据被称为“训练数据”，每组训练数据有一个明确的标识或结果</p>
+<p>常见的应用场景包括关联规则的学习以及聚类等。常见算法包括Apriori算法和k-Means算法</p>
+<p>半监督学习是介于监督学习与无监督学习之间一种机器学习方式，主要考虑如可利用<strong>少量的标注样本</strong>和<strong>大量的未标注样本</strong>进行训练和分类的问题;</p>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>中值是奇数个中间的值或者偶数个中间两个数的平均值。</strong></p>
+<p>已知一组价格数据：15,21,24,21,25,4,8,34,28<br>现用等深（深度为3）分箱方法对其进行平滑，以对数据中的噪声进行处理。</p>
+<p>首先进行排序：</p>
+<p>排序后价格:4，8，15，21，21，24 ，25，28，34</p>
+<p>划分为等高度：</p>
+<p>Bin1：4，8，15</p>
+<p>Bin2：21，21，24</p>
+<p>Bin3：25，28，34</p>
+<p>根据Bin均值进行平滑</p>
+<p>Bin1：9，9，9</p>
+<p>Bin2：22，22，22</p>
+<p>Bin3：29，29，29</p>
+<p>根据Bin边界进行平滑</p>
+<p>Bin1：4，4，15</p>
+<p>Bin2：21，21，24</p>
+<p>Bin3：25，25，34</p>
+<p>根据Bin中值进行平滑</p>
+<p>Bin1：8，8，8</p>
+<p>Bin2：21，21，21</p>
+<p>Bin3：28，28，28</p>
+<p>已知一组价格数据:15,21,24,21,25,4,8,34,28现用等宽(宽度为10)分箱方法对其进行平滑，以对数据中的噪声进行处理。</p>
+<p><strong>由于数据范围是从最小值4到最大值34，数据范围的总宽度是34 - 4 = 30。要分为3个等宽的区间，每个区间的宽度将是30 / 3 = 10。即要求箱中数据之差不能超过10</strong></p>
+<ul>
+<li>第一个区间：4 - 13（包括头尾）</li>
+<li>第二个区间：15 - 24（包括头尾）</li>
+<li>第三个区间：28 - 37（包括头尾）</li>
+</ul>
+<p>结果:<br>先排序:4，8，15，21，21，24，25，28，34</p>
+<p>划分为等宽度箱子</p>
+<p>Bin1：4，8</p>
+<p>Bin2：15，21，21，24，25</p>
+<p>Bin3：28，34</p>
+<p>根据Bin均值进行平滑</p>
+<p>Bin1：6，6</p>
+<p>Bin2：21，21，21，21，21</p>
+<p>Bin3：31，31</p>
+<p>根据Bin边界进行平滑</p>
+<p>Bin1：4，8</p>
+<p>Bin2：15，25，25，25，25</p>
+<p>Bin3：28，34</p>
+<p>根据Bin中值进行平滑</p>
+<p>Bin1：6，6</p>
+<p>Bin2：21，21，21，21，21</p>
+<p>Bin3：31，31</p>
+<p><strong>ppt第二章p28</strong></p>
+<p><strong>纯度</strong></p>
+<p>可以通过以下公式计算：</p>
+<script type="math/tex; mode=display">
+P = \frac{\text{多数类别的实例数}}{\text{总实例数}}</script><p>数据规范化：将数据按比例进行缩放，使之落入一个特定的区域，以消除数值型属性因大小不一而造成的挖掘结果的偏差</p>
+<p>最小-最大规范化</p>
+<p>零-均值规范化（z-score规范化）</p>
+<p>小数定标规范化</p>
+<p><strong>最小—最大规范化</strong>：假定minA和maxA分别为属性A的最小和最大值，则通过下面公式将A的值映射到区间[new_min, new_max]中的v’：</p>
+<script type="math/tex; mode=display">
+v' = \frac{(v - \min_A) \times (\text{new\_max} - \text{new\_min})}{(\max_A - \min_A)} + \text{new\_min}</script><p>例：假定属性income的最小与最大值分别为$12000和$98000，可根据最小—最大规范化方法将其范围映射到[0,1]：<br>如：属性值$73600将变换为：</p>
+<script type="math/tex; mode=display">
+v' = \frac{(73600 - 12000) \times (1 - 0)}{98000 - 12000} + \text{0}=0.716</script><p><strong>零-均值规范化（z-score规范化）</strong></p>
+<script type="math/tex; mode=display">
+𝑣′=\frac{𝑣−𝑚𝑒𝑎𝑛𝐴}{standard_− 𝑑𝑒𝑣𝐴}</script><p>其中，meanA、standard-devA分别为属性A取值的均值和标准差</p>
+<p>例：假定属性income的平均值与标准差分别为$54000和$16000，使用z-score规范化，则属性值$73600将变换为：</p>
+<script type="math/tex; mode=display">
+𝑣′=\frac{73600−54000}{16000}=1.225</script><p><strong>小数定标规范化</strong></p>
+<script type="math/tex; mode=display">
+𝑣′=\frac𝑣{10^𝑗 }</script><p>其中，j是使 Max(|  v’ |)&lt;1的最小整数</p>
+<p><strong>例：</strong>假定A的取值范围[-986, 917]，则A的最大绝对值为986，为使用小数定标规范化，用1000（即j=3）除每个值，这样-986被规范化为-0.986。</p>
+<p><img src="/zhouyuchen/.io//image-20240416112557044.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240416112557044"></p>
+<h2 id="信息增益ID3"><a href="#信息增益ID3" class="headerlink" title="信息增益ID3"></a>信息增益ID3</h2><p>选择具有最高信息增益的属性作为分裂属性</p>
 <p>假设有两个类,P和N </p>
 <p>让样本集S包含类P的p个元素以及类N的n个元素</p>
-<p>识别S中一个样本是否属于P或N所需要的平均信息量为<br>$$<br>I(p, n) = -\frac{p}{p + n} \log_2\left(\frac{p}{p + n}\right) - \frac{n}{p + n} \log_2\left(\frac{n}{p + n}\right)<br>$$</p>
-<p>对于离散随机变量 ，其熵定义同下</p>
-<p>当熵公式推广到多个类别时，其形式保持不变，只是需要对所有可能的类别进行求和。对于离散随机变量 X，如果它有 k 个不同的取值 x1,x2,…,xk，每个取值的概率分别为 p(x1),p(x2),…,p(xk)，那么熵 H(X) 的公式为<br>$$<br>H(X) = -\sum_{i=1}^{k} p(x_i) \log_2 p(x_i)<br>$$<br>例如总共有14个样本，最终结果9是，5否，带入上面公式<br>$$<br>I(9, 5) = -\frac{9}{14} \log_2\left(\frac{9}{14}\right) - \frac{5}{14} \log_2\left(\frac{5}{14}\right)=0.940<br>$$</p>
-<hr>
+<p>识别S中一个样本是否属于P或N所需要的平均信息量为</p>
+<script type="math/tex; mode=display">
+I(p, n) = -\frac{p}{p + n} \log_2\left(\frac{p}{p + n}\right) - \frac{n}{p + n} \log_2\left(\frac{n}{p + n}\right)</script><p>对于离散随机变量 ，其熵定义同下</p>
+<p>当熵公式推广到多个类别时，其形式保持不变，只是需要对所有可能的类别进行求和。对于离散随机变量 X，如果它有 k 个不同的取值 x1,x2,…,xk，每个取值的概率分别为 p(x1),p(x2),…,p(xk)，那么熵 H(X) 的公式为</p>
+<script type="math/tex; mode=display">
+E(X) = -\sum_{i=1}^{k} p(x_i) \log_2 p(x_i)</script><script type="math/tex; mode=display">
+信息增益：Gain(A)=I(p,n)-E(A)</script><p>例如总共有14个样本，最终结果9是，5否，带入上面公式</p>
+<script type="math/tex; mode=display">
+I(9, 5) = -\frac{9}{14} \log_2\left(\frac{9}{14}\right) - \frac{5}{14} \log_2\left(\frac{5}{14}\right)=0.940</script><hr>
 <p><strong>例题</strong></p>
 <p>请按照ID3决策树分类算法，采用信息增益作为节点的选择指标，筛选出基于以下训练数据所生成的决策树的根节点，请详细写出计算步骤。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">不浮出水面是否可以生存</th>
-<th align="center">是否有脚璞</th>
-<th align="center">属于鱼类</th>
+<th style="text-align:center">不浮出水面是否可以生存</th>
+<th style="text-align:center">是否有脚璞</th>
+<th style="text-align:center">属于鱼类</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">是</td>
+<tbody>
+<tr>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
 </tr>
 <tr>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
 </tr>
 <tr>
-<td align="center">是</td>
-<td align="center">否</td>
-<td align="center">否</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">否</td>
 </tr>
 <tr>
-<td align="center">否</td>
-<td align="center">是</td>
-<td align="center">否</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
 </tr>
 <tr>
-<td align="center">否</td>
-<td align="center">是</td>
-<td align="center">否</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">否</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ol>
 <li>计算未分类前的熵,总共有5个样本，是2个,否3个</li>
 </ol>
-<p>$$<br>熵(总)=I(2,3) = -\frac{2}{5} \log_2\left(\frac{2}{5}\right) - \frac{3}{5} \log_2\left(\frac{3}{5}\right)=0.971<br>$$</p>
-<ol start="2">
+<script type="math/tex; mode=display">
+熵(总)=I(2,3) = -\frac{2}{5} \log_2\left(\frac{2}{5}\right) - \frac{3}{5} \log_2\left(\frac{3}{5}\right)=0.971</script><ol>
 <li>分别计算按不浮出水面是否可以生存和是否有脚蹊进行分类后的信息嫡。</li>
 </ol>
-<p>先按不浮出水面是否可以生存进行分类：是中有2是1否；否中有0是2否<br>$$<br>熵(是否可以生存_是)=I(2,1) = -\frac{2}{3} \log_2\left(\frac{2}{3}\right) - \frac{1}{3} \log_2\left(\frac{1}{3}\right)=0.28<br>$$</p>
-<p>$$<br>熵(是否可以生存_否)=I(2,1) = -\frac{2}{3} \log_2\left(\frac{2}{3}\right) - \frac{1}{3} \log_2\left(\frac{1}{3}\right)=0.28<br>$$</p>
-<p>$$<br>熵(是否可以生存)=\frac{3}{5}*0.28+\frac{2}{5}*0=0.17<br>$$</p>
-<p>$$<br>信息增益=熵(总)-熵(是否可以生存)=0.971-0.17=0.801<br>$$</p>
-<ol start="3">
+<p>先按不浮出水面是否可以生存进行分类：是中有2是1否；否中有0是2否</p>
+<script type="math/tex; mode=display">
+熵(是否可以生存_是)=I(2,1) = -\frac{2}{3} \log_2\left(\frac{2}{3}\right) - \frac{1}{3} \log_2\left(\frac{1}{3}\right)=0.28</script><script type="math/tex; mode=display">
+熵(是否可以生存_否)=I(2,1) = -\frac{2}{3} \log_2\left(\frac{2}{3}\right) - \frac{1}{3} \log_2\left(\frac{1}{3}\right)=0.28</script><script type="math/tex; mode=display">
+E=熵(是否可以生存)=\frac{3}{5}*0.28+\frac{2}{5}*0=0.17</script><script type="math/tex; mode=display">
+信息增益=熵(总)-熵(是否可以生存)=0.971-0.17=0.801</script><ol>
 <li>是否有脚蹊进行分类：是中2是2否；否中有0是1否</li>
 </ol>
-<p>$$<br>熵(是否可以生存_是)=I(2,2) = -\frac{2}{4} \log_2\left(\frac{2}{4}\right) - \frac{2}{4} \log_2\left(\frac{2}{4}\right)=1<br>$$</p>
-<p>$$<br>熵(是否可以生存_否)=I(0,1) = -\frac{0}{1} \log_2\left(\frac{0}{1}\right) - \frac{1}{1} \log_2\left(\frac{1}{1}\right)=0<br>$$</p>
-<p>$$<br>熵(是否可以生存)=\frac{4}{5}*1+\frac{1}{5}*0=0.8<br>$$</p>
-<p>$$<br>信息增益=熵(总)-熵(是否可以生存)=0.971-0.8=0.171<br>$$</p>
-<p>信息增益更大，区分样本的能力更强，更具有代表性,故根节点为”不浮出水面是否可以生存”</p>
-</body></html>
+<script type="math/tex; mode=display">
+熵(是否可以生存_是)=I(2,2) = -\frac{2}{4} \log_2\left(\frac{2}{4}\right) - \frac{2}{4} \log_2\left(\frac{2}{4}\right)=1</script><script type="math/tex; mode=display">
+熵(是否可以生存_否)=I(0,1) = -\frac{0}{1} \log_2\left(\frac{0}{1}\right) - \frac{1}{1} \log_2\left(\frac{1}{1}\right)=0</script><script type="math/tex; mode=display">
+熵(是否可以生存)=\frac{4}{5}*1+\frac{1}{5}*0=0.8</script><script type="math/tex; mode=display">
+信息增益=熵(总)-熵(是否可以生存)=0.971-0.8=0.171</script><p><strong>信息增益更大，区分样本的能力更强</strong>，更具有代表性,故根节点为”不浮出水面是否可以生存”</p>
+<p><strong>基尼指标Gini指标</strong></p>
+<p>( G ) 是基尼指数，( p_i ) 是第 ( i ) 个类别的样本占比，( n ) 是类别的总数</p>
+<p>类似于信息增益，Gini指标越小，则为最优特征，指数越大，样本不确定性就越大</p>
+<script type="math/tex; mode=display">
+G = 1 - \sum_{i=1}^{n} p_i^2</script><p>在特征A条件下，集合D的基尼指数</p>
+<script type="math/tex; mode=display">
+G(D|A) = \sum_{j=1}^{k} \frac{|D_j|}{|D|} G(D_j)</script><p><img src="/zhouyuchen/.io//image-20240416140851945.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240416140851945"></p>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><p>避免过分拟合的两种方法</p>
+<ul>
+<li>先剪枝: 通过提前停止树的构造而对树剪枝<br>很难选取一个合适的阈值</li>
+<li>后剪枝: 由完全生成的树剪去子树.通过删除节点的分枝并用树叶替换它而剪掉给定节点的子树.树叶用被替换的子树中最频繁的类标记</li>
+</ul>
+<p><strong>CART使用的代价复杂度剪枝算法</strong></p>
+<p>使用Gini系数，求得权重</p>
+<p>在特征A条件下，集合D的基尼指数</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45116749/article/details/129261511?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E5%86%B3%E7%AD%96%E6%A0%91cart%E8%AE%A1%E7%AE%97%E9%A2%98&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-129261511.142^v100^pc_search_result_base4&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/weixin_45116749/article/details/129261511?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E5%86%B3%E7%AD%96%E6%A0%91cart%E8%AE%A1%E7%AE%97%E9%A2%98&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-129261511.142^v100^pc_search_result_base4&amp;spm=1018.2226.3001.4187</a></p>
+<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>贝叶斯定理公式</p>
+<p>朴素的概念：假设样本特征彼此独立，没有相关关系。而这在现实中不存在，但用这个方法来分类效果很好</p>
+<p>P(B) </p>
+<ul>
+<li>表示在没有训练数据前假设A拥有的初始概率。P(A)被称为A的先验概率.</li>
+</ul>
+<p>P(B|A) </p>
+<ul>
+<li>P(A|B)表示假设B成立时A的概率</li>
+<li>机器学习中我们关心的是P(B|A)，即给定A时B的成立的概率，称为B的后验概率</li>
+</ul>
+<script type="math/tex; mode=display">
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}</script><p>因此P(B|A)如下</p>
+<script type="math/tex; mode=display">
+P(B|A) = \frac{P(A|B) \cdot P(B)}{P(A)}</script><p>​    P(B|A)随着P(B)和P(A|B)的增长而增长，随着P(A)的增长而减少，即如果A独立于B时被观察到的可能性越大，那么B对A的支持度越小.</p>
+<p>贝叶斯全概率公式</p>
+<script type="math/tex; mode=display">
+P(A) = \sum_{i=1}^{n} P(A|B_i) \cdot P(B_i)</script><p>例题</p>
+<p> <img src="/zhouyuchen/.io//image-20240416194507458.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240416194507458"></p>
+<p>求出所有概率最后相乘，选择更大的</p>
+<p><img src="/zhouyuchen/.io//image-20240416194539654.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/zhouyuchen/.io//image-20240416194554820.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240416194554820"></p>
+<p>例题</p>
+<p>用公式展开，并使用全概率公式将分母展开</p>
+<p>给出P(R)=0.4    P(W|R)=0.9    P(W|~R)=0.2    P(~R)=0.6</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P(R|W)&=\frac{P(W|R)P(R)}{P(W)} \\
+&=\frac{P(W|R)P(R)}{P(W|R)P(R)+P(W|\neg R)P(\neg R)}\\
+&=\frac{0.9\times0.4}{0.9\times0.4+0.2\times0.6}=0.75
+\end{aligned}</script><p>例题公式推导</p>
+<script type="math/tex; mode=display">
+P(W|S) = \frac{P(W \cap S)}{P(S)}</script><script type="math/tex; mode=display">
+P(W \cap S) = P((W \cap S) \cap R) + P((W \cap S) \cap \sim R)</script><p>由于下面</p>
+<script type="math/tex; mode=display">
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}</script><p>因此得到</p>
+<script type="math/tex; mode=display">
+P(W \cap S) = P(W \mid R,S) \cdot P(R \mid S) + P(W \mid \sim R,S) \cdot P(\sim R \mid S)</script><p>所以</p>
+<script type="math/tex; mode=display">
+P(W \cap S) = P(W \mid R,S) \cdot P(R ) + P(W \mid \sim R,S) \cdot P(\sim R)</script><p><img src="/zhouyuchen/.io//image-20240416205205173.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240416205205173"></p>
+<h2 id="分类器验证方法"><a href="#分类器验证方法" class="headerlink" title="分类器验证方法"></a>分类器验证方法</h2><p>交叉验证</p>
+<ul>
+<li>CV是用来验证分类器的性能一种统计分析方法，将原始数据(dataset)进行分组,一部分做为训练集(train set)，另一部分做为验证集(validation set),首先用训练集对分类器进行训练,再利用验证集来测试训练得到的模型(model),以此来做为评价分类器的性能指标</li>
+</ul>
+<p>K-折交叉验证</p>
+<ul>
+<li>将原始数据分成K组(一般是均分)，将每个子集数据分别做一次验证集,其余的K-1组子集数据作为训练集,这样会得到K个模型,用这K个模型最终的验证集的分类准确率的平均数作为此K-CV下分类器的性能指标</li>
+<li>K一般大于等于2,实际操作时一般从3开始取,只有在原始数据集合数据量小的时候才会尝试取2.K-CV可以有效的避免过学习以及欠学习状态的发生,最后得到的结果也比较具有说服性</li>
+</ul>
+<p>留一验证LOO-CV</p>
+<ul>
+<li><p>如果设原始数据有N个样本,那么LOO-CV就是N-CV,即 每个样本单独作为验证集,其余的N-1个样本作为训练集,所以LOO-CV会得到N个模型,用这N个模型最终的验证集的分类准确率的平均数作为此下LOO-CV分类器的性能指标</p>
+</li>
+<li><p>相比于前面的K-CV,LOO-CV有两个明显的优点: ①a.每一回合中几乎所有的样本皆用于训练模型,因此最接近原始样本的分布,这样评估所得的结果比较可靠。 ②b.实验过程中没有随机因素会影响实验数据,确保实验过程是可以被复制的</p>
+</li>
+<li><p>LOO-CV的缺点则是计算成本高,因为需要建立的模型数量与原始数据样本数量相同,当原始数据样本数量相当多时,LOO-CV在实作上几乎就是不现实的,除非每次训练分类器得到模型的速度很快,或是可以用并行化计算减少计算所需的时间. </p>
+</li>
+</ul>
+<h2 id="分类器性能评价"><a href="#分类器性能评价" class="headerlink" title="分类器性能评价"></a>分类器性能评价</h2><p>主对角线：被正确分类的正例个数(TP个)和    被正确分类的负例个数(TN个)</p>
+<p>副对角线：被错误分类的正例个数(FP个)和    被错误分类的负例个数(FN个)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>预测正例</th>
+<th>预测负例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实际正例</td>
+<td>TP (真正例)PP</td>
+<td>FN (假反例)PN</td>
+</tr>
+<tr>
+<td>实际负例</td>
+<td>FP (假正例)NP</td>
+<td>TN (真反例)NN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>准确率：总样本预测对了个数</p>
+<script type="math/tex; mode=display">
+\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}</script></li>
+<li><p>查准率(Precision)：也叫<strong>精确率</strong>，预测为正的中实际为正的有多少。（正确分类的正例个数占分类为正例的实例个数的比例）</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}</script><ul>
+<li>查全率(Recall)：也叫<strong>召回率</strong>，在所有实际为正例的样本中，正确分类的正例个数占实际正例个数的比例。</li>
+</ul>
+<script type="math/tex; mode=display">
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}</script><ul>
+<li>F1值：查全率与查询率的调和平均数</li>
+</ul>
+<script type="math/tex; mode=display">
+F1 = 2 \times \frac{P \times R}{P + R}</script><ul>
+<li>误分率<script type="math/tex; mode=display">
+\text{误分率} = \frac{\text{FP} + \text{FN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}</script></li>
+</ul>
+<p><strong>ROC</strong></p>
+<p>ROC图形，根据混合矩阵，定义两个概念：</p>
+<p>错误的正例率(False Positive Rate,FPR)=FP/N=错误预测为正/原本为负</p>
+<p>正确的正例率(True Positive Rate.TPR)=TP/P=正确预测为正/原本为正</p>
+<p>ROC图形是一个二维图形，横轴为<strong>FPR</strong>，纵轴为TPR，直观的展示FPR与TPR之间的对应关系</p>
+<p>FPR</p>
+<script type="math/tex; mode=display">
+\text{FPR} = \frac{\text{FP}}{\text{FP} + \text{TN}}</script><p>TPR</p>
+<script type="math/tex; mode=display">
+\text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}}</script><p><strong>AUC</strong></p>
+<p>ROC曲线下的面积，是一个具体数值，数值越大，模型越好</p>
+<ul>
+<li>AUC =1，是完美的分类器，该模型至少存在一个值，可以将正负样本完美的划分开</li>
+<li>0.5&lt;AUC&lt;1，优于随机猜测，数值越大，分类器越好</li>
+<li>AUC=0.5，相当于随机猜测，模型没有预测价值</li>
+<li>AUC&lt;0.5，比随机猜测要差，然而若反向预测，该模型也可优于随机猜测</li>
+</ul>
+<p><strong>预测概率和阈值</strong></p>
+<p>模型预测概率大于阈值判定为正，反之为负</p>
+<p>例题</p>
+<p><img src="/zhouyuchen/.io//image-20240417151554970.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240417151554970"></p>
+<p>混淆矩阵画法</p>
+<p><img src="/zhouyuchen/.io//image-20240417140040656.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240417140040656"></p>
+<h2 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h2><ul>
+<li>无监督的分类</li>
+<li>不要训练集合</li>
+<li>聚类算法会将数据集中的样本划分成为若干个通常不相交的子集，每一个子集我们称之为“簇”。</li>
+<li>在聚类过程自动形成簇结构后,我们会发现每个簇里会存在一些潜在的概念，比如“黄种人”、“白种人”，“女性”、“男性”，这些是我们事先未知的，这些概念也是由使用者来把握和命名的。</li>
+</ul>
+<h2 id="k均值聚类算法"><a href="#k均值聚类算法" class="headerlink" title="k均值聚类算法"></a>k均值聚类算法</h2><p>k-means：k均值聚类算法,其中每个簇都用该簇中对象的均值来表示  </p>
+<p>k-medoids：k中心点聚类算法，其中每个簇用接近簇中心的一个对象来表示</p>
+<p>CLARANS：大型数据库中的划分聚类算法</p>
+<p>步骤</p>
+<ul>
+<li><p>先定义总共有多少个类/簇(cluster)</p>
+</li>
+<li><p>将每个簇心(cluster centers)随机定在一个点上将每个数据点关联到最近簇中心所属的簇上</p>
+</li>
+<li>对于每一个簇找到其所有关联点的中心点(取每一个点坐标的平均值)</li>
+<li>将上述点变为新的簇心</li>
+<li>不停重复，直到每个簇所拥有的点不变</li>
+</ul>
+<p><img src="/zhouyuchen/.io//image-20240417162108117.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240417162108117"></p>
+<p><img src="/zhouyuchen/.io//image-20240417162122926.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240417162122926"></p>
+<p>例题</p>
+<p><img src="/zhouyuchen/.io//image-20240417164313560.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240417164313560"></p>
+<p>k均值优点</p>
+<ul>
+<li>聚类时间快</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>用户必须事先指定聚类簇的个数</li>
+<li>常常终止于局部最优</li>
+<li>只适用于数值属性聚类(计算均值有意义)</li>
+<li>对噪声和异常数据也很敏感</li>
+<li>不同的初始值，结果可能不同</li>
+<li>不适合发现非凸面形状的簇</li>
+</ul>
+<p>k-means利用簇内点的均值或加权平均值ci（质心）作为类Ci的代表点。对数值属性数据有较好的几何和统计意义。对孤立点是敏感的，如果具有极大值，就可能大幅度地扭曲数据的分布</p>
+<p>k-medoids(k-中心点)算法是为消除这种敏感性提出的，它选择类中位置最接近类中心的对象(称为中心点)作为类的代表点，目标函数仍然可以采用平方误差准则</p>
+<p>PAM（Partitioning Around Medoids，围绕中心点的划分）是最早提出的k中心点算法之一</p>
+<p>当使用 k-medoids 算法进行聚类时，以下是完整的步骤：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>k均值</th>
+<th>k中心点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td>从数据集中随机选择 k 个点作为初始的聚类中心</td>
+<td>same</td>
+</tr>
+<tr>
+<td>分配数据点到最近的聚类中心</td>
+<td>计算它与每个聚类中心之间的距离（通常使用欧氏距离），将该点分配给距离最近的聚类中心所在的簇。</td>
+<td>same</td>
+</tr>
+<tr>
+<td>更新中心点</td>
+<td>对于每个簇，计算该簇中所有数据点的均值，并将该均值作为新的聚类中心。</td>
+<td>对于每个簇，选择一个新的中心点以最小化该簇中所有点到该中心点的总距离。具体步骤如下：对于当前簇中的每个点，将该点作为新的中心点，计算所有其他点到该新中心点的总距离。 选择使总距离最小的点作为该簇的新中心点</td>
+</tr>
+<tr>
+<td>重复迭代直到收敛</td>
+<td>重复步骤二和步骤三</td>
+<td>same</td>
+</tr>
+<tr>
+<td>收敛条件</td>
+<td>k-均值算法会在聚类中心不再改变或达到最大迭代次数时收敛</td>
+<td>same</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>PAM</strong></p>
+<p>假如空间中的五个点｛A、Ｂ、Ｃ、Ｄ、Ｅ｝如图1所示，各点之间的距离关系如表1所示，根据所给的数据对其运行PAM算法实现划分聚类（设<em>k</em>=2）。 样本点间距离如下表所示</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>样本点</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>D</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>E</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>第一步 建立阶段：假如从5个对象中随机抽取的2个中心点为{A，B},则样本被划分为{A、C、D}和{B、E}</p>
+<p>第二步 交换阶段：假定中心点A、B分别被非中心点C、D、E替换，根据PAM算法需要计算下列代价TCAC、 TCAD、 TCAE、TCBC、TCBD、 TCBE。</p>
+<p>以TCAC为例说明计算过程</p>
+<p>a)当A被C替换以后，A不再是一个中心点，因为A离B比A离C近，A被分配到B中心点代表的簇，CAAC=<em>d</em>(<em>A</em>,<em>B</em>)-<em>d</em>(<em>A</em>,<em>A</em>)=1</p>
+<p>b)B是一个中心点，当A被C替换以后，B不受影响，CBAC=0</p>
+<p>a)C原先属于A中心点所在的簇，当A被C替换以后，C是新中心点，符合PAM算法代价函数的第二种情况<em>C**CAC</em>=<em>d</em>(<em>C</em>,<em>C</em>)-<em>d</em>(<em>C</em>,<em>A</em>)=0-2=-2</p>
+<p>b)D原先属于A中心点所在的簇，当A被C替换以后，离D最近的中心点是C，根据PAM算法代价函数的第二种情况<em>C**DAC</em>=<em>d</em>(<em>D</em>,<em>C</em>)-<em>d</em>(<em>D</em>,<em>A</em>)=1-2=-1</p>
+<p>c)E原先属于B中心点所在的簇，当A被C替换以后，离E最近的中心仍然是 B，根据PAM算法代价函数的第三种情况<em>C**EAC</em>=0</p>
+<p>因此，<em>TC**AC</em>=<em>C**AAC</em>+ <em>C**BAC</em>+ <em>C**cAC</em>+ <em>C<strong>DAC</strong>+ C**EAC</em> <em>=1+0-2-1+0=-2。</em></p>
+<p>重复迭代，找到T最小值</p>
+<p>PAM算法的时间复杂度通常是O(k(n-k)^2)，其中n是数据集中的对象数，k是聚类的数量。由于迭代的次数可能很多，PAM算法的复杂性很高，所以不适合大型数据库</p>
+<p><strong>CLARANS</strong></p>
+<p>CLARANS方法在搜索的每一步都以某种随机方式进行采样，其聚类过程可描述成一个图的搜索，图中的每个节点是一个潜在的解，即k个中心点的集合<br>在替换一个中心对象后所获得的新第一就称为当前聚类的邻居，随机产生的聚类邻居数由用户限制<br>若发现一个更好的邻居(具有较低的方差)，CLARANS算法就移动到这一邻居节点然后再开始重新搜索,否则当前节点就形成了一个局部最优<br>若发现一个局部最优，CLARANS方法就随机选择节点重新开始搜索新的局部最优</p>
+<p>优点<br>不用限制在局部区域搜索<br>只检查节点的邻居的样本，效率高</p>
+<h2 id="层次方法"><a href="#层次方法" class="headerlink" title="层次方法"></a><strong>层次方法</strong></h2><p>层次方法hierachical methods创建给定数据对象集的层次分解。根据层次的分解的形成方式，层次的方法可以分类为<strong>凝聚的</strong>或<strong>分裂的</strong>方法</p>
+<p><strong>凝聚法</strong>，也称<strong>自底向上</strong>的方法，开始将每个对象形成单独的组，然后逐次合并相近的对象或组，直到所有的组合并为一个（层次的最顶层），或者满足某个终止条件</p>
+<p><strong>分裂法</strong>，也称<strong>自顶向下</strong>的方法，开始将所有的对象置于一个簇中，每次迭代，簇分裂为更小的簇，直到最终每个对象在一个簇中，或者满足某个终止条件</p>
+<p>比较常用的算法<br>DIANA（Divisive ANAlysis） ：<br>   分裂层次聚类算法<br>AGENES（AGglomerative NESting）：<br>   凝聚层次聚类算法<br>BIRCH：<br>   利用层次方法的平衡迭代规约和</p>
+<p><img src="/zhouyuchen/.io//image-20240418200310246.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240418200310246"></p>
+<p><strong>单链接</strong>（single-link）方法，其每个簇可以用簇中所有对象代表，簇间的相似度用属于不同簇中最近的数据点对之间的相似度来度量<br>也称为最短距离法，定义簇的邻近度为取自不同簇的所有点对的俩个最近的点之间的邻近度</p>
+<p><strong>全链接</strong>取自不同簇中的俩个最远的点之间邻近度作为簇的邻近度，或者使用图的术语，不同的结点子集中俩个结点之间的最长边</p>
+<p><strong>组平均</strong>（average linkage method）类间所有样本点的平均距离<br>该法利用了所有样本的信息，被认为是较好的系统聚类法</p>
+<ul>
+<li>当算法使用最小距离dmin（Ci，Cj）衡量簇间距离时，有时称它为最近邻聚类算法<br>如果当最近的簇之间的距离超过某个任意的阈值是聚类过程就会终止，则成其为单连接算法</li>
+<li>使用最小距离度量的凝聚层次聚类算法也成为最小生成树算法</li>
+<li>当算法使用最大距离dmax（Ci，Cj）衡量簇间距离时，有时称它为最远邻聚类算法（farthest-neighbor clustering algorithm）</li>
+<li>如果当最近的簇之间的最大距离超过某个任意的阈值是聚类过程就会终止，则成其为全连接算法（complete-linkage algorithm）</li>
+</ul>
+<p><img src="/zhouyuchen/.io//image-20240418203651419.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20240418203651419"></p>
+<h2 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h2><p>按相关的程度可分为完全相关、不完全相关和不相关。一般的相关现象是不完全相关。<br>按相关的方向可分为：正相关和负相关。<br>按相关的形式可分为：线性相关和非线性相关。<br>按变量多少可分为：单相关、复相关和偏相关。一个变量对另一变量的相关关系，称为单相关；一个变量对两个以上变量的相关关系时，称为复相关；在某一现象与多种现象相关的场合，当假定其他变量不变时，其中两个变量的相关关系称为偏相关。　</p>
+<h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p>深度学习的基本思想：通过堆叠多层的网络结构和非线性变换，组合低层特征以实现对输入数据的分级表达。<br>强化学习并没有提供直接的监督信号来指导智能体（agent）的行为。</p>
+<p>强化学习的关键要素:</p>
+<ul>
+<li>强化学习的关键要素有：<strong>环境、奖赏、动作和状态</strong>。有了这些要素，就可以建立一个强化学习模型；</li>
+<li>强化学习解决的问题是：针对一个具体问题，得到一个最优策略，使得在该策略下获得的长期回报最大；</li>
+<li>策略：在系列状态下，采取的动作或动作概率。</li>
+</ul>
+<p>状态（state）：</p>
+<ul>
+<li>就是指当前agent所处的状态。</li>
+</ul>
+<p>策略（policy）：就是指agent在特定状态下的动作依据，是从state到action的映射。</p>
+<ul>
+<li>确定策略：某一状态下的确定动作               ；</li>
+<li>随机策略：以概率来描述，即某一状态下执行这一动作的概率                                         </li>
+</ul>
+<p>动作（action）：</p>
+<ul>
+<li>来自于动作空间，每个状态通过采取动作进行状态转移；</li>
+<li>执行动作的目的是达到最大化期望奖赏，直到最终算法收敛，所得到的策略就是一系列action的序列数据。</li>
+</ul>
+<p>奖赏（reward）：</p>
+<ul>
+<li>奖赏通常被记作Rt，表示第t个时间步的返回奖励值。所有强化学习都是基于奖赏假设的。</li>
+<li>奖赏通常为一个标量。</li>
+<li>注意：回报（return）是奖赏（reward）的累积。</li>
+</ul>
+<p>行为策略（ b(s)  ）：</p>
+<ul>
+<li>用来指导个体产生与环境进行实际交互行为的策略；</li>
+<li>实际采样的策略。</li>
+</ul>
+<p>目标策略（ Π(s)  ）：</p>
+<ul>
+<li>用来评价状态或行为价值的策略（或待优化的策略）。</li>
+</ul>
+<p>环境模型：理解环境或感知环境<br>更新方式：回合更新或单步更新<br>求解方式：基于价值或基于策略<br>策略使用：同策略或异策略</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划本质上是多阶段决策过程</p>
+<p>特点</p>
+<ul>
+<li>根据过程的特征可以将过程按空间、时间等标志分为若干互相联系又互相区别的阶段</li>
+<li>在每一个阶段都需要做出决策，从而使得整个过程达到最好的效果</li>
+<li>在处理各阶段决策的选取上，不仅只依赖于当前面临的状态，而且还要注意对以后的发展，即从全局考虑解决局部的问题</li>
+<li>当各个阶段的决策确定后，就组成了一个决策序列，因而就决定了整个过程的一条活动路线</li>
+</ul>
+<p><strong>多阶段决策问题</strong>是把一个问题看作是一个<strong>前后关联</strong>具有<strong>链状结构</strong>的<strong>多阶段过程</strong>，也称为<strong>序贯决策过程</strong>。</p>
+<p>动态规划把一个问题的过程，恰当地分为若干个相互联系的<strong>阶段</strong>，以便于按一定的次序去求解。</p>
+<p>描述阶段的变量称为<strong>阶段变量</strong>,常用k表示。阶段的划分，一般是根据<strong>时间和空间的自然特征</strong>来进行的，但要便于问题转化为多阶段决策</p>
+<p><strong>状态</strong>表示<strong>每个阶段开始</strong>时所处的自然状况或客观条件。</p>
+<p>能用动态规划方法求解的多阶段决策过程是一类特殊的多阶段决策过程，即状态具有<strong>无后效性的多阶段决策过程</strong></p>
+<p><strong>它可以把一个n 维决策问题变换为n个一维最优化问题</strong></p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>1.什么是机器学习？<br> 机器学习：本质上就是让计算机自己在数据中学习规律，并根据所得到的规律对未来数据进行预测。</p>
+<p>2.机器学习基本分类：监督学习、无监督学习。</p>
+<ul>
+<li><p>监督学习：监督学习是根据已有数据集，知道输入和输出结果之间的关系，然后根据这种已知关系训练得到一个最优模型。也就是说，在监督学习中，我们的训练数据应该既有特征又有标签，然后通过训练，使得机器能自己找到特征和标签之间的联系，然后在面对没有标签的数据时可以判断出标签。</p>
+</li>
+<li><p>无监督学习：我们需要用某种算法去训练无标签的训练集从而能让我们我们找到这组数据的潜在结构。无监督学习大致可以分为<strong>聚类</strong>和<strong>降维</strong>两大类。</p>
+</li>
+</ul>
+<p>3.机器模型<br>机器学习模型分为<strong>参数化模型</strong>和<strong>非参数化</strong>模型。</p>
+<ul>
+<li>非参数化模型一般没有优化目标函数，利用某种算法和结构建立模型，比如K近邻、决策树等。</li>
+<li>参数化模型中定义了或多或少的参数，通过参数计算模型的输出，通过定义某种优化目标函数，利用数据去调整(训练)参数，比如线性回归、支持向量机、贝叶斯网络、神经网络等。本书侧重于参数化模型。</li>
+</ul>
+<p>4.监督学习模型和无监督学习模型有哪些？</p>
+<p>监督学习模型：<br>（1） 线性回归（Linear Regression）： 用于解决回归问题，建立输入特征与连续目标变量之间的线性关系。</p>
+<p>（2）逻辑回归（Logistic Regression）： 用于解决分类问题，将输入映射到概率输出，并进行二分类或多分类。</p>
+<p>（3）决策树（Decision Trees）： 通过树状结构进行决策，可用于分类和回归任务。</p>
+<p>（4）支持向量机（Support Vector Machines，SVM）： 用于分类和回归，通过找到将不同类别分开的最优超平面。</p>
+<p>（5）k近邻算法（k-Nearest Neighbors，KNN）： 根据输入实例的邻近实例来进行分类或回归。<br>无监督学习模型：</p>
+<p>（1）K均值聚类（K-Means Clustering）： 用于将数据集划分为K个不同的组（簇）。</p>
+<p>（2）层次聚类（Hierarchical Clustering）： 将数据集划分为具有层次结构的簇。</p>
+<p>（3）主成分分析（Principal Component Analysis，PCA）： 用于降低数据维度，发现数据的主要成分。</p>
+<p>（4）独立成分分析（Independent Component Analysis，ICA）： 寻找数据中的独立源，用于盲源分离。</p>
+<p>（5）自编码器： 用于学习数据的紧凑表示，常用于降维和特征学习。</p>
+<p>5.监督机器学习模型通常将有标注的数据集分割为<strong>训练集</strong>和<strong>测试集</strong>。训练集用于训练模型，获得模型的最佳参数，测试集用于度量模型训练后的性能。</p>
+<p>6.损失函数：<br>  损失函数是这样一类函数: 当模型对样本的分类正确时，不产生损失或产生较小的损失，反之，根据其离谱程度，将带来一定甚至很大损失。通过选择合理的参数，使得整个数据产生的总体损失最小化。这个过程被称为训练(training)，也称有监督学习。</p>
+<p>损失函数衡量的是模型预测能力的好坏。</p>
+<p>1.机器学习：<br>是人工智能的一种分支，让计算机从数据中学习和改进，以完成某种任务，目标是让计算机在经验中学习，自动发现模式和规律，并运用规律进行预测和决策</p>
+<p>2.过拟合及缓解方法：<br>指模型在训练数据集上表现良好，但在新数据或测试集上表现不好的现象。通常是由于模型过于复杂，使得模型在训练的过程中过分注重与特定细节，而没有真正掌握数据的底层结构和一般规律<br>缓解方法：增加训练数据量，提供更多的数据样本供模型学习，减少过拟合的风险；降低模型的复杂度，减少模型的自由度；或者通过正则化限制模型的学习能力</p>
+<p>3.有监督和无监督学习：<br>有监督的学习是指模型在训练数据中，每个样本都有对应的标签和目标输出，模型通过学习输入与输出的映射关系进行预测和决策<br>无监督的学习是指模型在训练数据中，每个样本没有对应的标签和目标输出，模型通过学习数据的内在结构和相似性进行聚类、降维或异常检测等任务</p>
+<p>4.查准率和查全率：<br>查准率又称精确率，是指在预测为正类的样本中真正类所占的比例，衡量分类模型在某一分类预测上的准确性。<br>查全率又称召回率，是指在实际为正类的样本中真正类所占的比例，衡量分类模型在某一分类预测上的完整性。</p>
+<p>5.P-R曲线怎么对学习器进行比较<br>P-R曲线是以P查准率为横轴，R查全率为纵轴绘制的曲线。通过改变分类的阈值来得到不同的P-R点，比较不同学习器的性能，可以通过曲线下的面积AUC，越接近1越好，或者F1-score来判断</p>
+<p>6.真正例率和假正例率<br>真正例率（TPR）是表示实际为正例的样本中被正确预测为正例的比例，TPR=TP/TP+FN<br>假正例率（FPR）是表示实际为负例的样本中 被错误预测为正例的比例，FPR=FP/FP+TN</p>
+
                 
               </div>
             
@@ -406,6 +898,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/zhouyuchen/2024/04/23/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E8%AE%BE%E8%AE%A1/" title="算法分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

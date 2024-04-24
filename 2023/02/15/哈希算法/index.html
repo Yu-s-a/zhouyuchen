@@ -16,18 +16,20 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="哈希算法哈希算法（Hash 算法，散列算法，消息摘要算法）将任意长度的二进制值映射为较短的固定长度的二进制值 ，这个小的二进制值称为哈希值。 简单来说就是通过哈希值快速定位到想要查找的记录，而不是通过表中存放的关键字来比较查找。 特点 哈希表是根据设定的哈希函数和处理冲突方法将一组关键字映射到一个有限的地址区间上，作为记录在表中的存储位置，这种表称为哈希表或散列，所得存储位置称为哈希地址或散列地址">
+<meta property="og:type" content="article">
 <meta property="og:title" content="哈希算法">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/02/15/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="哈希算法哈希算法（Hash 算法，散列算法，消息摘要算法）将任意长度的二进制值映射为较短的固定长度的二进制值 ，这个小的二进制值称为哈希值。 简单来说就是通过哈希值快速定位到想要查找的记录，而不是通过表中存放的关键字来比较查找。 特点 哈希表是根据设定的哈希函数和处理冲突方法将一组关键字映射到一个有限的地址区间上，作为记录在表中的存储位置，这种表称为哈希表或散列，所得存储位置称为哈希地址或散列地址">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/02/15/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/image-20230330224717657.png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20230330224717657.png">
 <meta property="article:published_time" content="2023-02-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-30T16:07:32.000Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="哈希算法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/02/15/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/image-20230330224717657.png">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//image-20230330224717657.png">
   
   
   
@@ -274,7 +276,7 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h1><p><strong>哈希算法</strong>（Hash 算法，散列算法，消息摘要算法）将任意长度的二进制值映射为较短的固定长度的二进制值 ，这个小的二进制值称为哈希值。</p>
+                <h1 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h1><p><strong>哈希算法</strong>（Hash 算法，散列算法，消息摘要算法）将任意长度的二进制值映射为较短的固定长度的二进制值 ，这个小的二进制值称为哈希值。</p>
 <p>简单来说就是通过哈希值快速定位到想要查找的记录，而不是通过表中存放的关键字来比较查找。</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
 <li>哈希表是根据设定的哈希函数和处理冲突方法将<strong>一组关键字</strong>映射到<strong>一个有限的地址区间</strong>上，作为记录在表中的<strong>存储位置</strong>，这种表称为哈希表或散列，所得存储位置称为哈希地址或散列地址。</li>
@@ -289,32 +291,32 @@
 <li>直接定址法</li>
 </ol>
 <p>取关键字或者关键字的某个线性函数为 Hash 地址，即address(key) = a * key + b; 如知道学生的学号从2000开始，最大为4000，则可以将address(key)=key-2000(其中a = 1)作为Hash地址。</p>
-<ol start="2">
+<ol>
 <li>平方取中法</li>
 </ol>
 <p>对关键字进行平方计算，取结果的中间几位作为 Hash 地址。如有以下关键字序列 {421，423，436} ，平方之后的结果为 {177241，178929，190096} ，那么可以取中间的两位数 {72，89，00} 作为 Hash 地址。</p>
-<ol start="3">
+<ol>
 <li>折叠法</li>
 </ol>
 <p>将关键字拆分成几部分，然后将这几部分组合在一起，以特定的方式进行转化形成Hash地址。如图书的 ISBN 号为 8903-241-23，可以将address(key)=89+03+24+12+3 作为 Hash 地址。</p>
-<ol start="4">
+<ol>
 <li>除留取余法</li>
 </ol>
 <p>如果知道 Hash 表的最大长度为 m，可以取不大于m的最大质数 p，然后对关键字进行取余运算，address(key)=key % p。这里 p 的选取非常关键，p 选择的好的话，能够最大程度地减少冲突，p 一般取不大于m的最大质数。</p>
-<ol start="5">
+<ol>
 <li>基数转换法</li>
 </ol>
 <p>将十进制数X看作其他进制，比如十三进制，再按照十三进制数转换成十进制数，提取其中若干为作为X的哈希值。一般取大于原来基数的数作为转换的基数，并且两个基数应该是互素的。</p>
-<ol start="6">
+<ol>
 <li>随机数法</li>
 </ol>
 <p>设定哈希函数为:H(key)=Random(key)其中，Random为伪随机函数</p>
 <p>此法适于：对长度不等的关键字构造哈希函数。</p>
-<ol start="7">
+<ol>
 <li>字符串数值哈希法</li>
 </ol>
 <p>把字符串的前10个字符的ASCⅡ值之和对N取摸作为Hash地址，只要N较小，Hash地址将较均匀分布[0，N]区间内。对于N很大的情形，可使用ELFHash(ExecutableandLinkingFormat,ELF,可执行链接格式)函数，它把一个字符串的绝对长度作为输入，并通过一种方式把字符的十进制值结合起来，对长字符串和短字符串都有效，这种方式产生的位置可能不均匀分布。</p>
-<ol start="8">
+<ol>
 <li>旋转法</li>
 </ol>
 <p>旋转法是将数据的键值中进行旋转。旋转法通常并不直接使用在哈希函数上，而是搭配其他哈希函数使用。</p>
@@ -323,22 +325,22 @@
 <li>开放定址法</li>
 </ol>
 <p>发生冲突时，使用某种探测技术在 Hash 表中形成一个探测序列，然后沿着这个探测序列依次查找下去，当碰到一个空的单元时，则插入其中。比较常用的探测方法有线性探测法，如有一组关键字{12，13，25，23，38，34，6，84，91}，Hash 表长为14，Hash 函数为 address(key) = key % 11，当插入12，13，25时可以直接插入，而当插入 23 时，地址 1 被占用了（因为 12%11 和 23%11 的结果相同）。此时沿着地址 1 依次往下探测(探测步长可以根据情况而定)，直到探测到地址4，发现为空，则将 23 插入其中。</p>
-<ol start="2">
+<ol>
 <li>链地址法</li>
 </ol>
 <p>采用数组和链表相结合的数据结构，将 Hash 地址相同的记录存储在一张线性表中，而每张表的表头的序号即为计算得到的Hash地址。如下图最左边是数组结构，数组内的元素为链表结构。</p>
-<p><img src="/zhouyuchen/2023/02/15/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/image-20230330224717657.png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
+<p><img src="/zhouyuchen/.io//image-20230330224717657.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <h2 id="Hash-表的用处以及优劣"><a href="#Hash-表的用处以及优劣" class="headerlink" title="Hash 表的用处以及优劣"></a>Hash 表的用处以及优劣</h2><ol>
 <li>找出两文件找出重复的元素</li>
 </ol>
 <p>假设有两个文件，文件中均包含一些短字符串，字符串个数分别为n。它们是有重复的字符串，现在需要找出所有重复的字符串。</p>
 <p>最笨的解决办法可能是：遍历文件 1 中的每个元素，取出每一个元素分别去文件 2 中进行查找，这样的时间复杂度为O（n^2）。</p>
 <p>但是借助 Hash 表可以有一种相对巧妙的方法，分别遍历文件 1 中的元素和文件 2 中的元素，然后放入 Hash Table 中，对于遍历的每一个元素我们只要简单的做一下计数处理即可。最后遍历整个 Hash 列表，找出所有个数大于 1 的元素即为重复的元素。</p>
-<ol start="2">
+<ol>
 <li>找出两文件找出出现次数最多的元素</li>
 </ol>
 <p>同找出两文件找出重复的元素这样的问题解决方案类似，只是在最后遍历的时找计数最大的元素，即为出现次数最多的元素。</p>
-<ol start="3">
+<ol>
 <li>路由算法</li>
 </ol>
 <p>多线程处理数据的场景下，通常需要将一个数据集分给不同的线程进行处理，同时要保证，相同的元素需要分到相同的处理线程上。这其实这个就是一个很典型的 Hash 值应用场景，对于很多的计算引擎默认都是用 Hash 算法去解决这个问题。因为相同元素的 Hash 值相同，那么我们可以取 Hash 之后进行模运算，运算结果分配到不同的线程。</p>
@@ -374,7 +376,7 @@
 <li><p>将HASH值与数据库中的HASH值比较，相等则验证成功，反之验证失败</p>
 </li>
 </ol>
-</body></html>
+
                 
               </div>
             

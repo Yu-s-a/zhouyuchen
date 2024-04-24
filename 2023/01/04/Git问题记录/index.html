@@ -16,10 +16,12 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="Git问题记录本文章记录使用Git遇到的问题，方便以后的查阅解决 撤消尚未推送的Git合并通过git-reset - 重置当前HEAD到指定的状态 123git reset --hard git reset --hard ORIG_HEADgit reset --merge ORIG_HEAD  没有进行合并提交，所以git reset --hard是git reset --hard HEAD的同">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Git问题记录">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/01/04/Git%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="Git问题记录本文章记录使用Git遇到的问题，方便以后的查阅解决 撤消尚未推送的Git合并通过git-reset - 重置当前HEAD到指定的状态 123git reset --hard git reset --hard ORIG_HEADgit reset --merge ORIG_HEAD  没有进行合并提交，所以git reset --hard是git reset --hard HEAD的同">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-03T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-13T10:15:06.000Z">
@@ -272,24 +274,22 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="Git问题记录"><a href="#Git问题记录" class="headerlink" title="Git问题记录"></a>Git问题记录</h1><p>本文章记录使用Git遇到的问题，方便以后的查阅解决</p>
+                <h1 id="Git问题记录"><a href="#Git问题记录" class="headerlink" title="Git问题记录"></a>Git问题记录</h1><p>本文章记录使用Git遇到的问题，方便以后的查阅解决</p>
 <h2 id="撤消尚未推送的Git合并"><a href="#撤消尚未推送的Git合并" class="headerlink" title="撤消尚未推送的Git合并"></a>撤消尚未推送的Git合并</h2><p>通过git-reset - 重置当前HEAD到指定的状态</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">git reset --hard <br>git reset --hard ORIG_HEAD<br>git reset --merge ORIG_HEAD<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">git reset --hard <br>git reset --hard ORIG_HEAD<br>git reset --merge ORIG_HEAD<br></code></pre></td></tr></table></figure>
 <ol>
 <li>没有进行合并提交，所以<code>git reset --hard</code>是<code>git reset --hard HEAD</code>的同义词，它清除了索引文件和工作树上的混乱。</li>
 <li>“pull “或 “merge “总是在<code>ORIG_HEAD</code>中留下当前分支的原始提示，所以硬重置到它会使你的索引文件和工作树回到那个状态，并将分支的提示重置到那个提交。</li>
 <li>在检查了合并的结果后，你可能会发现另一个分支的修改不尽人意。 运行<code>git reset --hard ORIG_HEAD</code>可以让你回到原来的位置，但它会丢弃你的本地修改，这是你不想要的。 <code>git reset --merge</code>会保留你的本地修改。</li>
 </ol>
 <h2 id="恢复已经删除的提交"><a href="#恢复已经删除的提交" class="headerlink" title="恢复已经删除的提交"></a>恢复已经删除的提交</h2><p>当需要恢复已经删除的提交记录时候</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">git reflog<br>git rest --hard commitID<br>git push origin HEAD --force<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">git reflog<br>git rest --hard commitID<br>git push origin HEAD --force<br></code></pre></td></tr></table></figure>
 <ol>
 <li>通过reflog找到删除的提交的ID</li>
 <li>执行上述命令，加上提交的ID即可恢复</li>
 <li>本地退回后强制推送到远程仓库</li>
 </ol>
-</body></html>
+
                 
               </div>
             

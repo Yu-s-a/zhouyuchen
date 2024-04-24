@@ -16,10 +16,12 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="React这篇博客是记录我react入门学习笔记，供我自己参考。 简介React：用于构建用户界面的JavaScript库（将数据渲染为HTML视图的JS库） 为什么要学 原生JS操作DOM繁琐，效率低。 原生JS操作DOM会使浏览器大量重绘重排。 原生JS没有组件化的编码方案，代码复用率低。  React特点：  采用组件化模式，声明式编码，提高开发效率和组件复用率。 React Native">
+<meta property="og:type" content="article">
 <meta property="og:title" content="React">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/01/02/React/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="React这篇博客是记录我react入门学习笔记，供我自己参考。 简介React：用于构建用户界面的JavaScript库（将数据渲染为HTML视图的JS库） 为什么要学 原生JS操作DOM繁琐，效率低。 原生JS操作DOM会使浏览器大量重绘重排。 原生JS没有组件化的编码方案，代码复用率低。  React特点：  采用组件化模式，声明式编码，提高开发效率和组件复用率。 React Native">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-01T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-30T14:53:38.000Z">
@@ -218,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k 字
+          3.4k 字
         
       </span>
     
@@ -229,7 +231,7 @@
         
         
         
-          27 分钟
+          29 分钟
         
       </span>
     
@@ -272,7 +274,7 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><p>这篇博客是记录我react入门学习笔记，供我自己参考。</p>
+                <h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><p>这篇博客是记录我react入门学习笔记，供我自己参考。</p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>React：用于构建用户界面的JavaScript库（将数据渲染为HTML视图的JS库）</p>
 <h3 id="为什么要学"><a href="#为什么要学" class="headerlink" title="为什么要学"></a>为什么要学</h3><ol>
 <li>原生JS操作DOM繁琐，效率低。</li>
@@ -289,17 +291,13 @@
 <p>babel官网：<a target="_blank" rel="noopener" href="https://www.babeljs.cn/">https://www.babeljs.cn/</a></p>
 <p>react下载官网：<a target="_blank" rel="noopener" href="http://react-cn.github.io/react/downloads.html">http://react-cn.github.io/react/downloads.html</a></p>
 <p><strong>官方提供的：</strong></p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 引入react核心库 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/react@16/umd/react.development.js"</span> <span class="hljs-attr">crossorigin</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 引入react-dom，用于支持react操作DOM --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/react-dom@16/umd/react-dom.development.js"</span> <span class="hljs-attr">crossorigin</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 引入babel，用于jsx转为js --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/@babel/standalone/babel.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 引入react核心库 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/react@16/umd/react.development.js&quot;</span> <span class="hljs-attr">crossorigin</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 引入react-dom，用于支持react操作DOM --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;</span> <span class="hljs-attr">crossorigin</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 引入babel，用于jsx转为js --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p><strong>Staticfile CDN 的 React CDN 库：</strong></p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.staticfile.org/react/16.4.0/umd/react.development.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>用JSX（JS+XML）创建虚拟DOM</p>
-<figure class="highlight jsx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jsx">&lt;div id=<span class="hljs-string">"test"</span>&gt;&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/babel"</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//创建虚拟DOM,不要写引号</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">VDOM</span> = (</span></span><br><span class="language-javascript"><span class="language-xml">         	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"title"</span>&gt;</span></span></span></span><br><span class="language-xml"><span class="language-javascript"><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>hello,react<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span></span></span><br><span class="language-xml"><span class="language-javascript"><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></span></span><br><span class="language-javascript"><span class="language-xml">        )</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//渲染虚拟DOM到页面</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="hljs-variable constant_">VDOM</span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'test'</span>))</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jsx">&lt;div id=<span class="hljs-string">&quot;test&quot;</span>&gt;&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//创建虚拟DOM,不要写引号</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">VDOM</span> = (</span></span><br><span class="language-javascript"><span class="language-xml">         	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span></span></span></span><br><span class="language-xml"><span class="language-javascript"><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>hello,react<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span></span></span><br><span class="language-xml"><span class="language-javascript"><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span></span></span><br><span class="language-javascript"><span class="language-xml">        )</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//渲染虚拟DOM到页面</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="hljs-variable constant_">VDOM</span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;test&#x27;</span>))</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <p>用JS创建虚拟DOM</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script type=<span class="hljs-string">"text/javascript"</span>&gt;<br><span class="hljs-comment">//创建虚拟DOM,不要写引号</span><br>	<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">VDOM</span> = <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'h1'</span>, { <span class="hljs-attr">id</span>: <span class="hljs-string">'title'</span> }, <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">'span'</span>, {}, <span class="hljs-string">'hello React'</span>))<br><span class="hljs-comment">//渲染虚拟DOM到页面</span><br>	<span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="hljs-variable constant_">VDOM</span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'test'</span>))<br>&lt;/script&gt;<br></code></pre></td></tr></tbody></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;<br><span class="hljs-comment">//创建虚拟DOM,不要写引号</span><br>	<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">VDOM</span> = <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;h1&#x27;</span>, &#123; <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;title&#x27;</span> &#125;, <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;span&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;hello React&#x27;</span>))<br><span class="hljs-comment">//渲染虚拟DOM到页面</span><br>	<span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="hljs-variable constant_">VDOM</span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;test&#x27;</span>))<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 <p>可以看出JSX使用就如同写HTML一样方便，但是如果要嵌套多个标签，JS会大量增加重复的代码</p>
 <p>关于虚拟DOM：</p>
 <ol>
@@ -332,20 +330,15 @@
 </ul>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>JSX使用JavaScript表达式，表达式写在花括号 <strong>{}</strong> 中</p>
 <p>在 JSX 中不能使用 <strong>if else</strong> 语句，但可以使用 <strong>conditional (三元运算)</strong> 表达式来替代。以下实例中如果变量 <strong>i</strong> 等于 <strong>1</strong> 浏览器将输出 <strong>true</strong>, 如果修改 i 的值，则会输出 <strong>false</strong></p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{i == 1 ? 'True!' : 'False'}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
-
-
-
-<h2 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;script type="text/babel"&gt;<br>    console.log(this)//此处this是undefined 因为babel编译后开启了严格模式<br>    function MyComponent() {<br>        return &lt;h1&gt;函数定义的组件&lt;/h1&gt;<br>    }<br>    ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById("test"))<br>&lt;/script&gt;<br></code></pre></td></tr></tbody></table></figure>
-
-<p>执行ReactDOM.render(<mycomponent>…)</mycomponent></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;i == 1 ? &#x27;True!&#x27; : &#x27;False&#x27;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;script type=&quot;text/babel&quot;&gt;<br>    console.log(this)//此处this是undefined 因为babel编译后开启了严格模式<br>    function MyComponent() &#123;<br>        return &lt;h1&gt;函数定义的组件&lt;/h1&gt;<br>    &#125;<br>    ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById(&quot;test&quot;))<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>执行ReactDOM.render(<MyComponent>…)</MyComponent></p>
 <ol>
 <li>React解析组件标签，找到了MyComponent组件</li>
 <li>由于组件是由函数定义的，随后调用函数，将返回的虚拟DOM转为真实的DOM，呈现在页面中</li>
 </ol>
-<h2 id="类式组件"><a href="#类式组件" class="headerlink" title="类式组件"></a>类式组件</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;script type="text/babel"&gt;<br>    class MyComponent extends React.Component {<br>        render() {<br>            console.log(this)//MyComponent实例<br>            return &lt;h1&gt;我是类定义的组件&lt;/h1&gt;<br>        }<br>    }<br>    ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById("test"))<br>&lt;/script&gt;<br></code></pre></td></tr></tbody></table></figure>
-
-<p>执行ReactDOM.render(<mycomponent>…)</mycomponent></p>
+<h2 id="类式组件"><a href="#类式组件" class="headerlink" title="类式组件"></a>类式组件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;script type=&quot;text/babel&quot;&gt;<br>    class MyComponent extends React.Component &#123;<br>        render() &#123;<br>            console.log(this)//MyComponent实例<br>            return &lt;h1&gt;我是类定义的组件&lt;/h1&gt;<br>        &#125;<br>    &#125;<br>    ReactDOM.render(&lt;MyComponent /&gt;, document.getElementById(&quot;test&quot;))<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>执行ReactDOM.render(<MyComponent>…)</MyComponent></p>
 <ol>
 <li>React解析组件标签，找到了MyComponent组件</li>
 <li>由于组件是由类定义的，随后new该类的实例，并通过该实例调用到原型上的render方法</li>
@@ -353,10 +346,9 @@
 </ol>
 <h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><p>state是组件对象的重要属性，值是对象（可以包含多个key-value的组合）</p>
 <p>React的组件被看为”状态机“，通过更新组件的state来更新对象对应的页面显示（重新渲染组件，不需要操作DOM）</p>
-<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p>[^自定义function中默认开启了严格模式，所以function中的this为undefined]:</p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p><sup><a href="#fn_自定义function中默认开启了严格模式，所以function中的this为undefined" id="reffn_自定义function中默认开启了严格模式，所以function中的this为undefined">自定义function中默认开启了严格模式，所以function中的this为undefined</a></sup>:</p>
 <ol>
-<li><p>组件中的render方法中的this为实例对象</p>
-</li>
+<li>组件中的render方法中的this为实例对象</li>
 <li><p>组件自定义的方法中的this为undefined解决方式：</p>
 <ol>
 <li>强制绑定this：通过函数对象的bind(this)</li>
@@ -367,7 +359,7 @@
 </li>
 </ol>
 <h2 id="props"><a href="#props" class="headerlink" title="props"></a>props</h2><p>state 和 props 主要的区别在于 <strong>props</strong> 是不可变的，而 state 可以根据与用户交互来改变。 state 来更新和修改数据，子组件只能通过 props 来传递数据。</p>
-</body></html>
+
                 
               </div>
             

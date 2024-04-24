@@ -16,10 +16,12 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="CacheCache概述CPU的运行速度是远远高于读写内存速度的，以当前嵌入式普遍使用的mcu来说，主频也普遍在几百Mhz，但是要知道使用的主存储器使用的动态存储器（DRAM）其存储速度在10Mhz左右。这样，如果指令和数据都存储在主存储器中，内存的速度会严重制约整个系统的性能。因此，为了解决内存速度低下，Cache就被引入了。可以说 Cache 是连接 CPU 和内存的桥梁。  Cache全部是">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Cache">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/02/08/Cache/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="CacheCache概述CPU的运行速度是远远高于读写内存速度的，以当前嵌入式普遍使用的mcu来说，主频也普遍在几百Mhz，但是要知道使用的主存储器使用的动态存储器（DRAM）其存储速度在10Mhz左右。这样，如果指令和数据都存储在主存储器中，内存的速度会严重制约整个系统的性能。因此，为了解决内存速度低下，Cache就被引入了。可以说 Cache 是连接 CPU 和内存的桥梁。  Cache全部是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-07T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-30T15:42:42.000Z">
@@ -272,14 +274,14 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h1><h2 id="Cache概述"><a href="#Cache概述" class="headerlink" title="Cache概述"></a>Cache概述</h2><p>CPU的运行速度是远远高于读写内存速度的，以当前嵌入式普遍使用的mcu来说，主频也普遍在几百Mhz，但是要知道使用的主存储器使用的动态存储器（DRAM）其存储速度在10Mhz左右。这样，如果指令和数据都存储在主存储器中，内存的速度会严重制约整个系统的性能。因此，为了解决内存速度低下，Cache就被引入了。可以说 Cache 是连接 CPU 和内存的桥梁。 </p>
+                <h1 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h1><h2 id="Cache概述"><a href="#Cache概述" class="headerlink" title="Cache概述"></a>Cache概述</h2><p>CPU的运行速度是远远高于读写内存速度的，以当前嵌入式普遍使用的mcu来说，主频也普遍在几百Mhz，但是要知道使用的主存储器使用的动态存储器（DRAM）其存储速度在10Mhz左右。这样，如果指令和数据都存储在主存储器中，内存的速度会严重制约整个系统的性能。因此，为了解决内存速度低下，Cache就被引入了。可以说 Cache 是连接 CPU 和内存的桥梁。 </p>
 <p>Cache全部是由硬件实现的，其不仅对于应用程序员是透明的，对系统程序员也是透明的，其是由速度与cpu速度相近的SRAM构成（Cahce和内存都是用的SRAM，那么速度为什么不同这是因为离CPU距离不同越近总线读写速度越快）。现在的处理器一般是通过多级缓存的组织形式来达到性能和功能的最优。但是其实对于多级cache还是一级cache，其原理是一致的，了解其原理后，多级和一级没有什么功能上的差异。</p>
 <h2 id="Cache功能"><a href="#Cache功能" class="headerlink" title="Cache功能"></a>Cache功能</h2><p>cache是一种<strong>高速缓冲存储器</strong>，是为了解决CPU和主存之间速度不匹配而采用的一项重要技术</p>
 <h2 id="Cache原理"><a href="#Cache原理" class="headerlink" title="Cache原理"></a>Cache原理</h2><p>cache原理是基于程序运行中具有的<strong>空间</strong>局限性和<strong>时间</strong>局限性特征。</p>
 <p>空间局限性：在最近的未来要用到的信息(指令和数据)，很有可能与现在正在使用的信息在存储空间上是邻近的，如：数组元素、顺序执行的指令代码</p>
 <p>时间局限性：在最近的未来要用到的信息，很可能是现在正在使用的信息，  如：循环结构的指令代码</p>
 <p>基于局部性原理，不难想到，可以把CPU目前访问的地址“周围”的部分数据放在Cache中</p>
-</body></html>
+
                 
               </div>
             

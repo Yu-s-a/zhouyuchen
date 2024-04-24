@@ -16,20 +16,22 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="汉诺塔经典递归问题：汉诺塔 汉诺塔的本质（x，y，z三根柱）：  将n-1层从x移动到y 将第n层从x移动到z 将n-1层从y移动到z      三步解决 因此用递归的方法，只需考虑2层时候的代码（把第一层看作是n-1层，第二层看作是n层） .png) .png) .png) 1234567891011121314151617181920212223242526#include &lt;stdio">
+<meta property="og:type" content="article">
 <meta property="og:title" content="汉诺塔">
 <meta property="og:url" content="https://zyccodegit.gitee.io/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/index.html">
 <meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="汉诺塔经典递归问题：汉诺塔 汉诺塔的本质（x，y，z三根柱）：  将n-1层从x移动到y 将第n层从x移动到z 将n-1层从y移动到z      三步解决 因此用递归的方法，只需考虑2层时候的代码（把第一层看作是n-1层，第二层看作是n层） .png) .png) .png) 1234567891011121314151617181920212223242526#include &lt;stdio">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(1).png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(2).png">
-<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(3).png">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//(1">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//(2">
+<meta property="og:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//(3">
 <meta property="article:published_time" content="2023-01-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-12-26T07:56:01.239Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="汉诺塔">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(1).png">
+<meta name="twitter:image" content="https://zyccodegit.gitee.io/zhouyuchen/.io//(1">
   
   
   
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          519 字
+          644 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -276,7 +278,7 @@
             
               <div class="markdown-body">
                 
-                <html><head></head><body><h1 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h1><p>经典递归问题：汉诺塔</p>
+                <h1 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h1><p>经典递归问题：汉诺塔</p>
 <p>汉诺塔的本质（x，y，z三根柱）：</p>
 <ol>
 <li>将n-1层从x移动到y</li>
@@ -285,12 +287,11 @@
 </ol>
 <p>三步解决</p>
 <p>因此用递归的方法，只需考虑2层时候的代码（把第一层看作是n-1层，第二层看作是n层）</p>
-<p><img src="/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(1).png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
-<p><img src="/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(2).png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
-<p><img src="/zhouyuchen/2023/01/15/%E6%B1%89%E8%AF%BA%E5%A1%94/(3).png" srcset="/zhouyuchen/img/loading.gif" lazyload></p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">void</span> <span class="hljs-title function_">hanoi</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">char</span> x, <span class="hljs-type">char</span> y, <span class="hljs-type">char</span> z)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">hanoi</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">char</span> x, <span class="hljs-type">char</span> y, <span class="hljs-type">char</span> z)</span><br>{<br>    <span class="hljs-comment">//判断n的层数，如果为一层直接移动x到z</span><br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>)<br>    {<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c ---&gt;  %c\n"</span>, x, z);<br>    }<br>    <span class="hljs-keyword">else</span><br>    {<span class="hljs-comment">//当n！=1时候，将再次调用函数，移动n-1层：x到y，也就是把y和z互换</span><br>        hanoi(n - <span class="hljs-number">1</span>, x, z, y);<br>        <span class="hljs-comment">//移动第n层：x到z</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c ---&gt;  %c\n"</span>, x, z);<br>        <span class="hljs-comment">//最后移动n-层：y到z</span><br>        hanoi(n - <span class="hljs-number">1</span>, y, x, z);<br>    }<br>}<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>{<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"请输入汉诺塔的层数：\n"</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);<br>    hanoi(n, <span class="hljs-string">'x'</span>, <span class="hljs-string">'y'</span>, <span class="hljs-string">'z'</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p><img src="/zhouyuchen/.io//(1" srcset="/zhouyuchen/img/loading.gif" lazyload alt>.png)</p>
+<p><img src="/zhouyuchen/.io//(2" srcset="/zhouyuchen/img/loading.gif" lazyload alt>.png)</p>
+<p><img src="/zhouyuchen/.io//(3" srcset="/zhouyuchen/img/loading.gif" lazyload alt>.png)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">void</span> <span class="hljs-title function_">hanoi</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">char</span> x, <span class="hljs-type">char</span> y, <span class="hljs-type">char</span> z)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">hanoi</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">char</span> x, <span class="hljs-type">char</span> y, <span class="hljs-type">char</span> z)</span><br>&#123;<br>    <span class="hljs-comment">//判断n的层数，如果为一层直接移动x到z</span><br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c ---&gt;  %c\n&quot;</span>, x, z);<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<span class="hljs-comment">//当n！=1时候，将再次调用函数，移动n-1层：x到y，也就是把y和z互换</span><br>        hanoi(n - <span class="hljs-number">1</span>, x, z, y);<br>        <span class="hljs-comment">//移动第n层：x到z</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c ---&gt;  %c\n&quot;</span>, x, z);<br>        <span class="hljs-comment">//最后移动n-层：y到z</span><br>        hanoi(n - <span class="hljs-number">1</span>, y, x, z);<br>    &#125;<br>&#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入汉诺塔的层数：\n&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    hanoi(n, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-</body></html>
                 
               </div>
             
