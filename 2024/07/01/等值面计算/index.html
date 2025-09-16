@@ -1,0 +1,723 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zhouyuchen/img/fluid.png">
+  <link rel="icon" href="/zhouyuchen/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="雨沉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="等值面计算有向距离场SDF有向距离场（Signed Distance Field, SDF）是一种用于表示形状或几何体的数学模型，在计算机图形学、计算机视觉和物理仿真等领域有广泛应用。它不仅可以描述形状的边界，还能提供形状内部和外部的距离信息。 有向距离场的定义有向距离场是在每个点上存储到最近表面的距离，以及该点是位于表面内部还是外部。这个距离可以是正值、负值或零：  正值：点位于表面外部。 负值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="等值面计算">
+<meta property="og:url" content="https://github.com/Yu-s-a/zhouyuchen.git/2024/07/01/%E7%AD%89%E5%80%BC%E9%9D%A2%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="等值面计算有向距离场SDF有向距离场（Signed Distance Field, SDF）是一种用于表示形状或几何体的数学模型，在计算机图形学、计算机视觉和物理仿真等领域有广泛应用。它不仅可以描述形状的边界，还能提供形状内部和外部的距离信息。 有向距离场的定义有向距离场是在每个点上存储到最近表面的距离，以及该点是位于表面内部还是外部。这个距离可以是正值、负值或零：  正值：点位于表面外部。 负值">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122093756034.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122111337685.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122155531394.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122165951389.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122165753159.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202154451817.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202160101540.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202160255505.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202160843293.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202161525873.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241204110934602.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241204111108984.png">
+<meta property="article:published_time" content="2024-06-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-04T03:11:35.382Z">
+<meta property="article:author" content="雨沉">
+<meta property="article:tag" content="等值面计算">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122093756034.png">
+  
+  
+  
+  <title>等值面计算 - 雨沉</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zhouyuchen/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zhouyuchen/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zhouyuchen/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/zhouyuchen/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zhouyuchen/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zhouyuchen/js/utils.js" ></script>
+  <script  src="/zhouyuchen/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zhouyuchen/">
+      <strong>雨沉</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zhouyuchen/img/spider.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="等值面计算"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-01 00:00" pubdate>
+          2024年7月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">等值面计算</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="等值面计算"><a href="#等值面计算" class="headerlink" title="等值面计算"></a>等值面计算</h1><h2 id="有向距离场SDF"><a href="#有向距离场SDF" class="headerlink" title="有向距离场SDF"></a>有向距离场SDF</h2><p>有向距离场（Signed Distance Field, SDF）是一种用于表示形状或几何体的数学模型，在计算机图形学、计算机视觉和物理仿真等领域有广泛应用。它不仅可以描述形状的边界，还能提供形状内部和外部的距离信息。</p>
+<h3 id="有向距离场的定义"><a href="#有向距离场的定义" class="headerlink" title="有向距离场的定义"></a>有向距离场的定义</h3><p>有向距离场是在每个点上存储到最近表面的距离，以及该点是位于表面内部还是外部。这个距离可以是正值、负值或零：</p>
+<ul>
+<li>正值：点位于表面外部。</li>
+<li>负值：点位于表面内部。</li>
+<li>零值：点位于表面上。</li>
+</ul>
+<h3 id="计算有向距离场"><a href="#计算有向距离场" class="headerlink" title="计算有向距离场"></a>计算有向距离场</h3><p>有向距离场的计算可以通过多种方法实现，常见的方法包括：</p>
+<ol>
+<li><strong>离散网格法</strong>：在一个三维网格中计算每个格点到表面的距离。</li>
+<li><strong>几何法</strong>：使用几何算法直接计算点到表面的距离。</li>
+<li><strong>快速距离场变换</strong>：使用快速算法（如Fast Marching Method）计算距离场。</li>
+</ol>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122093756034.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241122093756034"></p>
+<p>其中点乘即为向量在该方向上的投影</p>
+<script type="math/tex; mode=display">
+\vec{a} \cdot \vec{b} = |\vec{a}| |\vec{b}| \cos(\theta)</script><p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122111337685.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241122111337685"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122155531394.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241122155531394"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122165951389.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241122165951389"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241122165753159.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241122165753159"></p>
+<p>判断速度是否向下，越陷越深，N法向上速度，T切线上速度</p>
+<p>impulse可以精确控制不穿透（刚体）  物理世界本质也是penalty（衣服，布料）</p>
+<p>库伦定律</p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202154451817.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241202154451817"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202160101540.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241202160101540"></p>
+<p>向量转为矩阵相乘</p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202160255505.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241202160255505"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202160843293.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241202160843293"> </p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241202161525873.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241202161525873">                </p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241204110934602.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20241204110934602"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20241204111108984.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt=" "></p>
+<h4 id="示例：二维有向距离场"><a href="#示例：二维有向距离场" class="headerlink" title="示例：二维有向距离场"></a>示例：二维有向距离场</h4><p>以下是一个简单的二维有向距离场的示例，计算一个圆形区域的距离场：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> UnityEngine;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SignedDistanceField</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> resolution = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> radius = <span class="hljs-number">0.5f</span>;<br>    <span class="hljs-keyword">public</span> Vector2 center = <span class="hljs-keyword">new</span> Vector2(<span class="hljs-number">0.5f</span>, <span class="hljs-number">0.5f</span>);<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span>[,] sdf;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>    &#123;<br>        GenerateSDF();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GenerateSDF</span>()</span><br>    &#123;<br>        sdf = <span class="hljs-keyword">new</span> <span class="hljs-built_in">float</span>[resolution, resolution];<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = <span class="hljs-number">0</span>; x &lt; resolution; x++)<br>        &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; resolution; y++)<br>            &#123;<br>                Vector2 point = <span class="hljs-keyword">new</span> Vector2((<span class="hljs-built_in">float</span>)x / resolution, (<span class="hljs-built_in">float</span>)y / resolution);<br>                <span class="hljs-built_in">float</span> distance = Vector2.Distance(point, center) - radius;<br>                sdf[x, y] = distance;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">// 输出SDF到控制台</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = resolution - <span class="hljs-number">1</span>; y &gt;= <span class="hljs-number">0</span>; y--)<br>        &#123;<br>            <span class="hljs-built_in">string</span> line = <span class="hljs-string">&quot;&quot;</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = <span class="hljs-number">0</span>; x &lt; resolution; x++)<br>            &#123;<br>                line += sdf[x, y].ToString(<span class="hljs-string">&quot;F2&quot;</span>) + <span class="hljs-string">&quot; &quot;</span>;<br>            &#125;<br>            Debug.Log(line);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在这个示例中，我们计算了一个圆形区域的有向距离场。中心在$(0.5, 0.5)$，半径为$0.5$。距离场被存储在二维数组<code>sdf</code>中，并在控制台输出。</p>
+<h3 id="有向距离场的应用"><a href="#有向距离场的应用" class="headerlink" title="有向距离场的应用"></a>有向距离场的应用</h3><ol>
+<li><p><strong>形状表示与碰撞检测</strong>：SDF用于描述复杂形状的边界，在物理仿真和碰撞检测中尤为重要。与传统的边界表示方法相比，SDF可以更高效地进行距离计算和碰撞检测。</p>
+</li>
+<li><p><strong>纹理与字体渲染</strong>：SDF常用于字体渲染和纹理生成中，特别是在放大或缩小时保持边缘的平滑和清晰。Valve公司在其游戏引擎中使用SDF技术来渲染高质量的字体和符号。</p>
+</li>
+<li><p><strong>流体和烟雾模拟</strong>：在流体和烟雾模拟中，SDF可以用来表示障碍物和界面，用于模拟复杂流体运动和交互。</p>
+</li>
+<li><p><strong>三维建模与重建</strong>：SDF用于从扫描数据重建三维模型。通过将点云数据转换为SDF，可以生成具有平滑表面的高质量三维模型。</p>
+</li>
+</ol>
+<h3 id="优势与挑战"><a href="#优势与挑战" class="headerlink" title="优势与挑战"></a>优势与挑战</h3><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
+<li><strong>准确性</strong>：SDF可以精确描述复杂形状的边界和内部结构。</li>
+<li><strong>高效性</strong>：在距离计算和碰撞检测方面，SDF比传统方法更高效。</li>
+<li><strong>多用途</strong>：SDF可以用于渲染、模拟、重建等多个领域。</li>
+</ul>
+<h4 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h4><ul>
+<li><strong>计算复杂性</strong>：生成和更新SDF可能计算复杂且耗时，尤其是对于高分辨率的场景。</li>
+<li><strong>存储需求</strong>：高分辨率的SDF需要大量的存储空间。</li>
+</ul>
+<p>有向距离场作为一种强大的形状表示工具，在许多领域发挥着重要作用。通过合理的算法和优化技术，可以有效地利用SDF来解决复杂的计算机图形学和仿真问题。</p>
+<h2 id="DC双重轮廓化"><a href="#DC双重轮廓化" class="headerlink" title="DC双重轮廓化"></a>DC双重轮廓化</h2><p>Dual Contouring (DC) 是一种用于从有向距离场（SDF）或其他隐式表面表示中提取多边形网格的高级算法。它是一种改进的表面重建方法，相较于传统的 Marching Cubes 算法，DC 更加擅长捕捉锐边和细节特征。以下是对 Dual Contouring 的详细介绍。</p>
+<h3 id="Dual-Contouring-的基本概念"><a href="#Dual-Contouring-的基本概念" class="headerlink" title="Dual Contouring 的基本概念"></a>Dual Contouring 的基本概念</h3><p>Dual Contouring 使用的基本思想是通过将每个网格单元（或体素）转化为一个顶点，并通过这些顶点生成网格的几何形状。它可以在保留原始几何特征（如锐边和细节）的同时，生成高质量的多边形网格。</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li><p><strong>顶点生成</strong>：在每个网格单元中，根据其八个角点的距离值和梯度（或法向量），计算一个优化顶点。这个顶点通常位于该单元的内部，靠近表面的位置。</p>
+</li>
+<li><p><strong>顶点连接</strong>：通过连接相邻单元的顶点，形成多边形面。顶点的连接方式根据单元的标量值和邻接关系确定。</p>
+</li>
+</ol>
+<h3 id="优化顶点的计算"><a href="#优化顶点的计算" class="headerlink" title="优化顶点的计算"></a>优化顶点的计算</h3><p>在每个网格单元中，优化顶点的位置可以通过最小化一个误差函数来确定，这个误差函数通常表示顶点与原始表面的距离。常用的优化方法包括线性最小二乘法。</p>
+<h4 id="示例算法"><a href="#示例算法" class="headerlink" title="示例算法"></a>示例算法</h4><p>以下是一个简化的 Dual Contouring 算法示例，用于从三维有向距离场中生成多边形网格：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> UnityEngine;<br><span class="hljs-keyword">using</span> System.Collections.Generic;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DualContouring</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> resolution = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> isoLevel = <span class="hljs-number">0.5f</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">float</span>[,,] scalarField;<br>    <span class="hljs-keyword">private</span> List&lt;Vector3&gt; vertices = <span class="hljs-keyword">new</span> List&lt;Vector3&gt;();<br>    <span class="hljs-keyword">private</span> List&lt;<span class="hljs-built_in">int</span>&gt; triangles = <span class="hljs-keyword">new</span> List&lt;<span class="hljs-built_in">int</span>&gt;();<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>    &#123;<br>        GenerateScalarField();<br>        GenerateMesh();<br>        CreateMesh();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GenerateScalarField</span>()</span><br>    &#123;<br>        scalarField = <span class="hljs-keyword">new</span> <span class="hljs-built_in">float</span>[resolution, resolution, resolution];<br>        <span class="hljs-comment">// 示例：生成简单的噪声标量场</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = <span class="hljs-number">0</span>; x &lt; resolution; x++)<br>        &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; resolution; y++)<br>            &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> z = <span class="hljs-number">0</span>; z &lt; resolution; z++)<br>                &#123;<br>                    <span class="hljs-built_in">float</span> noiseValue = Mathf.PerlinNoise(x * <span class="hljs-number">0.1f</span>, y * <span class="hljs-number">0.1f</span>) - (z * <span class="hljs-number">0.1f</span>);<br>                    scalarField[x, y, z] = noiseValue;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GenerateMesh</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = <span class="hljs-number">0</span>; x &lt; resolution - <span class="hljs-number">1</span>; x++)<br>        &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; resolution - <span class="hljs-number">1</span>; y++)<br>            &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> z = <span class="hljs-number">0</span>; z &lt; resolution - <span class="hljs-number">1</span>; z++)<br>                &#123;<br>                    ProcessCell(x, y, z);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ProcessCell</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">int</span> z</span>)</span><br>    &#123;<br>        <span class="hljs-comment">// 提取单元的8个角点</span><br>        Vector3[] cellCorners = <span class="hljs-keyword">new</span> Vector3[<span class="hljs-number">8</span>];<br>        <span class="hljs-built_in">float</span>[] cellScalars = <span class="hljs-keyword">new</span> <span class="hljs-built_in">float</span>[<span class="hljs-number">8</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>        &#123;<br>            <span class="hljs-built_in">int</span> dx = (i &amp; <span class="hljs-number">1</span>) != <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>            <span class="hljs-built_in">int</span> dy = (i &amp; <span class="hljs-number">2</span>) != <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>            <span class="hljs-built_in">int</span> dz = (i &amp; <span class="hljs-number">4</span>) != <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>            cellCorners[i] = <span class="hljs-keyword">new</span> Vector3(x + dx, y + dy, z + dz);<br>            cellScalars[i] = scalarField[x + dx, y + dy, z + dz];<br>        &#125;<br><br>        <span class="hljs-comment">// 计算优化顶点</span><br>        Vector3 vertex = CalculateOptimalVertex(cellCorners, cellScalars);<br><br>        <span class="hljs-comment">// 在此示例中，我们简单地将顶点添加到列表中，并生成三角形（实际应用中会更复杂）</span><br>        vertices.Add(vertex);<br>        <span class="hljs-keyword">if</span> (vertices.Count &gt;= <span class="hljs-number">3</span>)<br>        &#123;<br>            triangles.Add(vertices.Count - <span class="hljs-number">1</span>);<br>            triangles.Add(vertices.Count - <span class="hljs-number">2</span>);<br>            triangles.Add(vertices.Count - <span class="hljs-number">3</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function">Vector3 <span class="hljs-title">CalculateOptimalVertex</span>(<span class="hljs-params">Vector3[] corners, <span class="hljs-built_in">float</span>[] scalars</span>)</span><br>    &#123;<br>        <span class="hljs-comment">// 简单实现：计算角点的平均值作为优化顶点</span><br>        Vector3 optimalVertex = Vector3.zero;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>        &#123;<br>            optimalVertex += corners[i];<br>        &#125;<br>        optimalVertex /= <span class="hljs-number">8.0f</span>;<br>        <span class="hljs-keyword">return</span> optimalVertex;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CreateMesh</span>()</span><br>    &#123;<br>        Mesh mesh = <span class="hljs-keyword">new</span> Mesh();<br>        mesh.vertices = vertices.ToArray();<br>        mesh.triangles = triangles.ToArray();<br>        mesh.RecalculateNormals();<br><br>        MeshFilter meshFilter = GetComponent&lt;MeshFilter&gt;();<br>        <span class="hljs-keyword">if</span> (meshFilter == <span class="hljs-literal">null</span>)<br>            meshFilter = gameObject.AddComponent&lt;MeshFilter&gt;();<br><br>        MeshRenderer meshRenderer = GetComponent&lt;MeshRenderer&gt;();<br>        <span class="hljs-keyword">if</span> (meshRenderer == <span class="hljs-literal">null</span>)<br>            meshRenderer = gameObject.AddComponent&lt;MeshRenderer&gt;();<br><br>        meshFilter.mesh = mesh;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>Dual Contouring 在多个领域有广泛应用：</p>
+<ol>
+<li><strong>三维建模与重建</strong>：从点云数据或体数据中重建三维模型，特别适用于需要保留细节和锐边的场景。</li>
+<li><strong>物理仿真与碰撞检测</strong>：通过生成高质量的多边形网格，用于物理仿真和精确的碰撞检测。</li>
+<li><strong>计算机图形学</strong>：在游戏开发和动画制作中，用于生成复杂的几何体和场景。</li>
+</ol>
+<h3 id="优势与挑战-1"><a href="#优势与挑战-1" class="headerlink" title="优势与挑战"></a>优势与挑战</h3><h4 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h4><ul>
+<li><strong>高质量网格</strong>：DC 能够生成捕捉细节和锐边的高质量网格。</li>
+<li><strong>灵活性</strong>：适用于多种隐式表面表示和复杂形状。</li>
+<li><strong>效率</strong>：在保留细节的同时，计算效率较高。</li>
+</ul>
+<h4 id="挑战-1"><a href="#挑战-1" class="headerlink" title="挑战"></a>挑战</h4><ul>
+<li><strong>复杂性</strong>：实现和优化 DC 算法可能较为复杂，特别是处理大规模数据时。</li>
+<li><strong>顶点优化</strong>：需要有效的优化方法来计算顶点，以保证网格质量和准确性。</li>
+</ul>
+<p>Dual Contouring 是一种强大且灵活的表面重建技术，在需要高质量几何表示和保留细节特征的应用中，具有重要价值。通过合理的实现和优化，DC 可以在多种领域中发挥重要作用。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zhouyuchen/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zhouyuchen/tags/%E7%AD%89%E5%80%BC%E9%9D%A2%E8%AE%A1%E7%AE%97/">#等值面计算</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="note note-info">
+    <div class="license-title">
+      <!-- <div>等值面计算</div>
+      <div>https://github.com/Yu-s-a/zhouyuchen.git/2024/07/01/等值面计算/</div> -->
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者 : 雨沉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于 : 2024年7月1日</div>
+          <div>未特殊说明均为原创，仅供自己学习使用</div>
+        </div>
+      
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/zhouyuchen/2024/08/24/Matlab/" title="Matlab">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Matlab</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zhouyuchen/2024/07/01/%E7%BA%A6%E6%9D%9F/" title="等值面计算">
+                        <span class="hidden-mobile">等值面计算</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <span>水鸟窥鱼立，山云带雨沉</span> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zhouyuchen/js/events.js" ></script>
+<script  src="/zhouyuchen/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zhouyuchen/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zhouyuchen/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zhouyuchen/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

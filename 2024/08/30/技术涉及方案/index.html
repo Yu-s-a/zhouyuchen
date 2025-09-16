@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zhouyuchen/img/fluid.png">
+  <link rel="icon" href="/zhouyuchen/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="雨沉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="惯性张量 1. 数学定义通用公式：惯性张量是一个对称矩阵，其元素 $ I_{ij} $ 定义为：  I_{ij} &#x3D; \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \right) $ m_k $: 第 $ k $ 个点的质量。 $ \mathbf{r}_k &#x3D; (x_k, y_k, z_k) $: 第 $">
+<meta property="og:type" content="article">
+<meta property="og:title" content="雨沉">
+<meta property="og:url" content="https://github.com/Yu-s-a/zhouyuchen.git/2024/08/30/%E6%8A%80%E6%9C%AF%E6%B6%89%E5%8F%8A%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="雨沉">
+<meta property="og:description" content="惯性张量 1. 数学定义通用公式：惯性张量是一个对称矩阵，其元素 $ I_{ij} $ 定义为：  I_{ij} &#x3D; \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \right) $ m_k $: 第 $ k $ 个点的质量。 $ \mathbf{r}_k &#x3D; (x_k, y_k, z_k) $: 第 $">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20250218144135861.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20250225104908890.png">
+<meta property="article:published_time" content="2024-08-30T09:06:56.134Z">
+<meta property="article:modified_time" content="2025-03-26T11:13:25.881Z">
+<meta property="article:author" content="雨沉">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20250218144135861.png">
+  
+  
+  
+  <title>雨沉</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zhouyuchen/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zhouyuchen/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zhouyuchen/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/zhouyuchen/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zhouyuchen/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zhouyuchen/js/utils.js" ></script>
+  <script  src="/zhouyuchen/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zhouyuchen/">
+      <strong>雨沉</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zhouyuchen/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zhouyuchen/img/spider.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-30 17:06" pubdate>
+          2024年8月30日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="惯性张量"><a href="#惯性张量" class="headerlink" title="惯性张量"></a>惯性张量</h1><hr>
+<h3 id="1-数学定义"><a href="#1-数学定义" class="headerlink" title="1. 数学定义"></a><strong>1. 数学定义</strong></h3><h4 id="通用公式："><a href="#通用公式：" class="headerlink" title="通用公式："></a>通用公式：</h4><p>惯性张量是一个对称矩阵，其元素 $ I_{ij} $ 定义为：</p>
+<script type="math/tex; mode=display">
+I_{ij} = \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \right)</script><ul>
+<li><strong>$ m_k $</strong>: 第 $ k $ 个点的质量。</li>
+<li><strong>$ \mathbf{r}_k = (x_k, y_k, z_k) $</strong>: 第 $ k $ 个点的位置向量。</li>
+<li><strong>$ \delta_{ij} $</strong>: Kronecker delta（克朗尼克德尔塔），当 $ i = j $ 时 $ \delta_{ij} = 1 $，否则为 $ 0 $。</li>
+<li><strong>$ | \mathbf{r}_k |^2 $</strong>: 位置向量的模长平方，即 $ x_k^2 + y_k^2 + z_k^2 $。</li>
+</ul>
+<p>这个公式分为两部分：</p>
+<ol>
+<li><p><strong>对角线项 $ i = j $</strong>:</p>
+<script type="math/tex; mode=display">I_{ii} = \sum_k m_k \left( \| \mathbf{r}_k \|^2 - r_{k,i}^2 \right)</script><ul>
+<li>$ | \mathbf{r}_k |^2 $：总模长平方。</li>
+<li>$ r_{k,i}^2 $：在当前轴上的分量平方。</li>
+</ul>
+</li>
+<li><p><strong>非对角线项 $ i \neq j $</strong>:</p>
+<script type="math/tex; mode=display">I_{ij} = -\sum_k m_k \cdot r_{k,i} \cdot r_{k,j}</script><ul>
+<li>表示旋转惯性的耦合，体现不同轴间的质量分布相互作用。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="2-算法逻辑"><a href="#2-算法逻辑" class="headerlink" title="2. 算法逻辑"></a><strong>2. 算法逻辑</strong></h3><h4 id="计算过程与公式一一对应："><a href="#计算过程与公式一一对应：" class="headerlink" title="计算过程与公式一一对应："></a>计算过程与公式一一对应：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">float</span> diag = m * vertices[i].sqrMagnitude; <span class="hljs-comment">// m * |r_k|^2</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>这里 <code>vertices[i].sqrMagnitude</code> 是点的模长平方 $ | \mathbf{r}_k |^2 = x_k^2 + y_k^2 + z_k^2 $。</li>
+<li>$ diag $ 对应公式中的 $ m_k | \mathbf{r}_k |^2 $。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp">I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>] += diag; <span class="hljs-comment">// 对应 I_xx 中的总模长平方部分</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>] += diag; <span class="hljs-comment">// 对应 I_yy</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">2</span>] += diag; <span class="hljs-comment">// 对应 I_zz</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>这是为每个主对角线项初始化模长平方的累加。</li>
+</ul>
+<hr>
+<h4 id="减去当前轴分量平方："><a href="#减去当前轴分量平方：" class="headerlink" title="减去当前轴分量平方："></a>减去当前轴分量平方：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp">I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>] -= m * vertices[i][<span class="hljs-number">0</span>] * vertices[i][<span class="hljs-number">0</span>]; <span class="hljs-comment">// x^2 部分</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>] -= m * vertices[i][<span class="hljs-number">1</span>] * vertices[i][<span class="hljs-number">1</span>]; <span class="hljs-comment">// y^2 部分</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">2</span>] -= m * vertices[i][<span class="hljs-number">2</span>] * vertices[i][<span class="hljs-number">2</span>]; <span class="hljs-comment">// z^2 部分</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>这一步从模长平方中减去当前轴方向的分量平方，确保公式的完整性：<script type="math/tex; mode=display">I_{ii} = m_k (\| \mathbf{r}_k \|^2 - r_{k,i}^2).</script></li>
+</ul>
+<hr>
+<h4 id="更新非对角线项："><a href="#更新非对角线项：" class="headerlink" title="更新非对角线项："></a>更新非对角线项：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp">I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>] -= m * vertices[i][<span class="hljs-number">0</span>] * vertices[i][<span class="hljs-number">1</span>]; <span class="hljs-comment">// -xy</span><br>I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>] -= m * vertices[i][<span class="hljs-number">0</span>] * vertices[i][<span class="hljs-number">2</span>]; <span class="hljs-comment">// -xz</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>] -= m * vertices[i][<span class="hljs-number">1</span>] * vertices[i][<span class="hljs-number">0</span>]; <span class="hljs-comment">// -yx</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>] -= m * vertices[i][<span class="hljs-number">1</span>] * vertices[i][<span class="hljs-number">2</span>]; <span class="hljs-comment">// -yz</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>] -= m * vertices[i][<span class="hljs-number">2</span>] * vertices[i][<span class="hljs-number">0</span>]; <span class="hljs-comment">// -zx</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">1</span>] -= m * vertices[i][<span class="hljs-number">2</span>] * vertices[i][<span class="hljs-number">1</span>]; <span class="hljs-comment">// -zy</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>这些计算对应非对角线项公式：<script type="math/tex; mode=display">I_{ij} = -\sum_k m_k r_{k,i} r_{k,j}.</script></li>
+<li>每个顶点对惯性耦合产生贡献，例如：<ul>
+<li>$ I_{xy} $：与顶点 $ (x, y) $ 分量相乘，体现 $ xy $ 耦合。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-赋值"><a href="#3-赋值" class="headerlink" title="3.赋值 "></a><strong>3.赋值 </strong></h3><p>在刚体动力学中，惯性张量通常是 3x3 矩阵，但这里的 <code>I_ref</code> 被扩展为 4x4 矩阵。最后一行（或列）的赋值 $ [3,3] = 1 $ 是为了方便使用<strong>齐次坐标变换</strong>。</p>
+<p><code>I_ref[3, 3] = 1</code></p>
+<ul>
+<li>齐次坐标扩展使惯性张量可以直接与 4x4 矩阵乘法配合，用于变换（如平移、旋转）。</li>
+<li>上三行三列仍然存储惯性张量的主要信息。</li>
+</ul>
+<hr>
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h3><p>这个算法直接基于惯性张量的定义进行实现：</p>
+<ol>
+<li>先计算对角线项的模长平方。</li>
+<li>减去特定轴上的分量平方。</li>
+<li>更新非对角线项以考虑轴间的耦合惯性。</li>
+<li>最终扩展为齐次形式（赋值 $ I_{33} = 1 $）。</li>
+</ol>
+<p>优化问题本质：一阶导数等于0</p>
+<h1 id="多重网格"><a href="#多重网格" class="headerlink" title="多重网格"></a>多重网格</h1><p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20250218144135861.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20250218144135861"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20250225104908890.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20250225104908890"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="note note-info">
+    <div class="license-title">
+      <!-- <div></div>
+      <div>https://github.com/Yu-s-a/zhouyuchen.git/2024/08/30/技术涉及方案/</div> -->
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者 : 雨沉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于 : 2024年8月30日</div>
+          <div>未特殊说明均为原创，仅供自己学习使用</div>
+        </div>
+      
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zhouyuchen/2024/08/24/Matlab/" title="Matlab">
+                        <span class="hidden-mobile">Matlab</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <span>水鸟窥鱼立，山云带雨沉</span> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zhouyuchen/js/events.js" ></script>
+<script  src="/zhouyuchen/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zhouyuchen/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zhouyuchen/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zhouyuchen/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
