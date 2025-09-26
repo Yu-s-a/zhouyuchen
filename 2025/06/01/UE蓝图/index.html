@@ -16,24 +16,22 @@
   <meta name="author" content="雨沉">
   <meta name="keywords" content="">
   
-    <meta name="description" content="惯性张量 1. 数学定义通用公式：惯性张量是一个对称矩阵，其元素 $ I_{ij} $ 定义为：  I_{ij} &#x3D; \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \right) $ m_k $: 第 $ k $ 个点的质量。 $ \mathbf{r}_k &#x3D; (x_k, y_k, z_k) $: 第 $">
+    <meta name="description" content="UE蓝图界面基本介绍按住鼠标右键进行WSAD移动，E上升，Q下降，鼠标滚轮控制相机速度 shift+坐标轴是偏移世界位置 V键吸附 在虚幻引擎世界里，空间坐标的单位是厘米（cm），且规定红轴X正方向为前方，绿轴Y正方向为右方，蓝轴Z正方向为上方。显然X轴代表前后方向，Y轴代表左右方向，Z轴代表上下方向。 ctrl 空格 内容浏览器 布局在视图中 做了工作之后记得保存所有 游戏模式中选择BP_Thi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="雨沉">
-<meta property="og:url" content="https://github.com/Yu-s-a/zhouyuchen.git/2024/08/30/%E6%8A%80%E6%9C%AF%E6%B6%89%E5%8F%8A%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:title" content="UE">
+<meta property="og:url" content="https://github.com/Yu-s-a/zhouyuchen.git/2025/06/01/UE%E8%93%9D%E5%9B%BE/index.html">
 <meta property="og:site_name" content="雨沉">
-<meta property="og:description" content="惯性张量 1. 数学定义通用公式：惯性张量是一个对称矩阵，其元素 $ I_{ij} $ 定义为：  I_{ij} &#x3D; \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \right) $ m_k $: 第 $ k $ 个点的质量。 $ \mathbf{r}_k &#x3D; (x_k, y_k, z_k) $: 第 $">
+<meta property="og:description" content="UE蓝图界面基本介绍按住鼠标右键进行WSAD移动，E上升，Q下降，鼠标滚轮控制相机速度 shift+坐标轴是偏移世界位置 V键吸附 在虚幻引擎世界里，空间坐标的单位是厘米（cm），且规定红轴X正方向为前方，绿轴Y正方向为右方，蓝轴Z正方向为上方。显然X轴代表前后方向，Y轴代表左右方向，Z轴代表上下方向。 ctrl 空格 内容浏览器 布局在视图中 做了工作之后记得保存所有 游戏模式中选择BP_Thi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20250218144135861.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20250225104908890.png">
-<meta property="article:published_time" content="2024-08-30T09:06:56.134Z">
-<meta property="article:modified_time" content="2025-03-26T11:13:25.881Z">
+<meta property="article:published_time" content="2025-05-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-16T07:38:11.667Z">
 <meta property="article:author" content="雨沉">
+<meta property="article:tag" content="UE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20250218144135861.png">
   
   
   
-  <title>雨沉</title>
+  <title>UE - 雨沉</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="UE"></span>
           
         </div>
 
@@ -210,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-30 17:06" pubdate>
-          2024年8月30日 下午
+        <time datetime="2025-06-01 00:00" pubdate>
+          2025年6月1日 凌晨
         </time>
       </span>
     
@@ -222,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          401 字
         
       </span>
     
@@ -233,7 +231,7 @@
         
         
         
-          14 分钟
+          4 分钟
         
       </span>
     
@@ -271,76 +269,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">UE</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="惯性张量"><a href="#惯性张量" class="headerlink" title="惯性张量"></a>惯性张量</h1><hr>
-<h3 id="1-数学定义"><a href="#1-数学定义" class="headerlink" title="1. 数学定义"></a><strong>1. 数学定义</strong></h3><h4 id="通用公式："><a href="#通用公式：" class="headerlink" title="通用公式："></a>通用公式：</h4><p>惯性张量是一个对称矩阵，其元素 $ I_{ij} $ 定义为：</p>
-<script type="math/tex; mode=display">
-I_{ij} = \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \right)</script><ul>
-<li><strong>$ m_k $</strong>: 第 $ k $ 个点的质量。</li>
-<li><strong>$ \mathbf{r}_k = (x_k, y_k, z_k) $</strong>: 第 $ k $ 个点的位置向量。</li>
-<li><strong>$ \delta_{ij} $</strong>: Kronecker delta（克朗尼克德尔塔），当 $ i = j $ 时 $ \delta_{ij} = 1 $，否则为 $ 0 $。</li>
-<li><strong>$ | \mathbf{r}_k |^2 $</strong>: 位置向量的模长平方，即 $ x_k^2 + y_k^2 + z_k^2 $。</li>
-</ul>
-<p>这个公式分为两部分：</p>
-<ol>
-<li><p><strong>对角线项 $ i = j $</strong>:</p>
-<script type="math/tex; mode=display">I_{ii} = \sum_k m_k \left( \| \mathbf{r}_k \|^2 - r_{k,i}^2 \right)</script><ul>
-<li>$ | \mathbf{r}_k |^2 $：总模长平方。</li>
-<li>$ r_{k,i}^2 $：在当前轴上的分量平方。</li>
-</ul>
-</li>
-<li><p><strong>非对角线项 $ i \neq j $</strong>:</p>
-<script type="math/tex; mode=display">I_{ij} = -\sum_k m_k \cdot r_{k,i} \cdot r_{k,j}</script><ul>
-<li>表示旋转惯性的耦合，体现不同轴间的质量分布相互作用。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h3 id="2-算法逻辑"><a href="#2-算法逻辑" class="headerlink" title="2. 算法逻辑"></a><strong>2. 算法逻辑</strong></h3><h4 id="计算过程与公式一一对应："><a href="#计算过程与公式一一对应：" class="headerlink" title="计算过程与公式一一对应："></a>计算过程与公式一一对应：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">float</span> diag = m * vertices[i].sqrMagnitude; <span class="hljs-comment">// m * |r_k|^2</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>这里 <code>vertices[i].sqrMagnitude</code> 是点的模长平方 $ | \mathbf{r}_k |^2 = x_k^2 + y_k^2 + z_k^2 $。</li>
-<li>$ diag $ 对应公式中的 $ m_k | \mathbf{r}_k |^2 $。</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp">I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>] += diag; <span class="hljs-comment">// 对应 I_xx 中的总模长平方部分</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>] += diag; <span class="hljs-comment">// 对应 I_yy</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">2</span>] += diag; <span class="hljs-comment">// 对应 I_zz</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>这是为每个主对角线项初始化模长平方的累加。</li>
-</ul>
-<hr>
-<h4 id="减去当前轴分量平方："><a href="#减去当前轴分量平方：" class="headerlink" title="减去当前轴分量平方："></a>减去当前轴分量平方：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp">I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>] -= m * vertices[i][<span class="hljs-number">0</span>] * vertices[i][<span class="hljs-number">0</span>]; <span class="hljs-comment">// x^2 部分</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>] -= m * vertices[i][<span class="hljs-number">1</span>] * vertices[i][<span class="hljs-number">1</span>]; <span class="hljs-comment">// y^2 部分</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">2</span>] -= m * vertices[i][<span class="hljs-number">2</span>] * vertices[i][<span class="hljs-number">2</span>]; <span class="hljs-comment">// z^2 部分</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>这一步从模长平方中减去当前轴方向的分量平方，确保公式的完整性：<script type="math/tex; mode=display">I_{ii} = m_k (\| \mathbf{r}_k \|^2 - r_{k,i}^2).</script></li>
-</ul>
-<hr>
-<h4 id="更新非对角线项："><a href="#更新非对角线项：" class="headerlink" title="更新非对角线项："></a>更新非对角线项：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp">I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>] -= m * vertices[i][<span class="hljs-number">0</span>] * vertices[i][<span class="hljs-number">1</span>]; <span class="hljs-comment">// -xy</span><br>I_ref[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>] -= m * vertices[i][<span class="hljs-number">0</span>] * vertices[i][<span class="hljs-number">2</span>]; <span class="hljs-comment">// -xz</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>] -= m * vertices[i][<span class="hljs-number">1</span>] * vertices[i][<span class="hljs-number">0</span>]; <span class="hljs-comment">// -yx</span><br>I_ref[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>] -= m * vertices[i][<span class="hljs-number">1</span>] * vertices[i][<span class="hljs-number">2</span>]; <span class="hljs-comment">// -yz</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>] -= m * vertices[i][<span class="hljs-number">2</span>] * vertices[i][<span class="hljs-number">0</span>]; <span class="hljs-comment">// -zx</span><br>I_ref[<span class="hljs-number">2</span>, <span class="hljs-number">1</span>] -= m * vertices[i][<span class="hljs-number">2</span>] * vertices[i][<span class="hljs-number">1</span>]; <span class="hljs-comment">// -zy</span><br></code></pre></td></tr></table></figure>
-<ul>
-<li>这些计算对应非对角线项公式：<script type="math/tex; mode=display">I_{ij} = -\sum_k m_k r_{k,i} r_{k,j}.</script></li>
-<li>每个顶点对惯性耦合产生贡献，例如：<ul>
-<li>$ I_{xy} $：与顶点 $ (x, y) $ 分量相乘，体现 $ xy $ 耦合。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="3-赋值"><a href="#3-赋值" class="headerlink" title="3.赋值 "></a><strong>3.赋值 </strong></h3><p>在刚体动力学中，惯性张量通常是 3x3 矩阵，但这里的 <code>I_ref</code> 被扩展为 4x4 矩阵。最后一行（或列）的赋值 $ [3,3] = 1 $ 是为了方便使用<strong>齐次坐标变换</strong>。</p>
-<p><code>I_ref[3, 3] = 1</code></p>
-<ul>
-<li>齐次坐标扩展使惯性张量可以直接与 4x4 矩阵乘法配合，用于变换（如平移、旋转）。</li>
-<li>上三行三列仍然存储惯性张量的主要信息。</li>
-</ul>
-<hr>
-<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h3><p>这个算法直接基于惯性张量的定义进行实现：</p>
-<ol>
-<li>先计算对角线项的模长平方。</li>
-<li>减去特定轴上的分量平方。</li>
-<li>更新非对角线项以考虑轴间的耦合惯性。</li>
-<li>最终扩展为齐次形式（赋值 $ I_{33} = 1 $）。</li>
-</ol>
-<p>优化问题本质：一阶导数等于0</p>
-<h1 id="多重网格"><a href="#多重网格" class="headerlink" title="多重网格"></a>多重网格</h1><p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20250218144135861.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20250218144135861"></p>
-<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20250225104908890.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="image-20250225104908890"></p>
+                <h1 id="UE蓝图"><a href="#UE蓝图" class="headerlink" title="UE蓝图"></a>UE蓝图</h1><h2 id="界面基本介绍"><a href="#界面基本介绍" class="headerlink" title="界面基本介绍"></a>界面基本介绍</h2><p>按住鼠标右键进行WSAD移动，E上升，Q下降，鼠标滚轮控制相机速度</p>
+<p>shift+坐标轴是偏移世界位置</p>
+<p>V键吸附</p>
+<p>在虚幻引擎世界里，空间坐标的单位是厘米（cm），且规定红轴X正方向为前方，绿轴Y正方向为右方，蓝轴Z正方向为上方。显然X轴代表前后方向，Y轴代表左右方向，Z轴代表上下方向。</p>
+<p>ctrl 空格 内容浏览器 布局在视图中 做了工作之后记得保存所有</p>
+<p>游戏模式中选择BP_ThirdPerson进行第三人称模式</p>
+<p>按下F键快速聚焦到物体</p>
+<p>复制：按下alt拖动物体或者ctrl+D</p>
+<p>多选/减选：ctrl 点击</p>
+<p>轴向移动小技巧：<br>关于轴向移动，当我们同时选中两个模型时，我们可以按住鼠标中键，将原本物体的坐标轴拖动到两个物体轴中心的位置，这样我们在旋转这两个物体时会发现，物体是沿着我们改变后的轴向进行的整体移动。</p>
+<p>在静态网格体中更换模型可以直接进行替换</p>
+<p>EV100是一种曝光值的标准，不同的值会影响自动曝光的明暗强度。</p>
 
                 
               </div>
@@ -349,6 +294,34 @@ I_{ij} = \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \r
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zhouyuchen/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zhouyuchen/tags/UE/">#UE</a>
+      
+    </div>
   
 </div>
 
@@ -358,8 +331,8 @@ I_{ij} = \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \r
 
   <div class="note note-info">
     <div class="license-title">
-      <!-- <div></div>
-      <div>https://github.com/Yu-s-a/zhouyuchen.git/2024/08/30/技术涉及方案/</div> -->
+      <!-- <div>UE</div>
+      <div>https://github.com/Yu-s-a/zhouyuchen.git/2025/06/01/UE蓝图/</div> -->
     </div>
     <div class="license-meta">
       
@@ -369,7 +342,7 @@ I_{ij} = \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \r
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于 : 2024年8月30日</div>
+          <div>发布于 : 2025年6月1日</div>
           <div>未特殊说明均为原创，仅供自己学习使用</div>
         </div>
       
@@ -386,18 +359,12 @@ I_{ij} = \sum_k m_k \left( \delta_{ij} \| \mathbf{r}_k \|^2 - r_{k,i} r_{k,j} \r
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/zhouyuchen/2025/06/01/UE%E8%93%9D%E5%9B%BE/" title="UE">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">UE</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/zhouyuchen/2024/08/24/Matlab/" title="Matlab">
-                        <span class="hidden-mobile">Matlab</span>
+                      <a href="/zhouyuchen/2024/08/30/%E6%8A%80%E6%9C%AF%E6%B6%89%E5%8F%8A%E6%96%B9%E6%A1%88/" title="">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

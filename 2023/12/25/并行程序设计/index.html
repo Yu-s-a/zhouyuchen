@@ -23,18 +23,18 @@
 <meta property="og:site_name" content="雨沉">
 <meta property="og:description" content="并行程序设计第三章（重点）1.并行编程的语言实现改动越大，实现难度越大，从1~3实现难度递减  设计全新的并行语言  优点：并行程序实现简单、方便 缺点：没有统一的标准，设计语言的难度和工作量都很大  扩展串行语言语法，使其支持并行特征  将串行语言的并行扩充部分作为原来串行语言的注释(标注)，则对串行编译器来说，并行扩充部分将不起作用；对于并行编译器来说，将会根据标注要求，将串行程序转化为并行程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20231226155644186.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20231226163828227.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20231226194256003.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20231226205715445-17035954415368.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20231226213852081.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20231227170013111.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226155644186.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226163828227.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226194256003.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226205715445-17035954415368.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226213852081.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231227170013111.png">
 <meta property="article:published_time" content="2023-12-24T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-04-11T12:18:03.077Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="并行程序设计">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/zhouyuchen/.io//image-20231226155644186.png">
+<meta name="twitter:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226155644186.png">
   
   
   
@@ -339,7 +339,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_GROUP_NULL<br><span class="hljs-comment">//无效进程组句柄</span><br>MPI_COMM_NULL<br><span class="hljs-comment">//无效通信域句柄</span><br>MPI_GROUP_EMPTY<br><span class="hljs-comment">//有效进程组句柄，包括元素个数为0</span><br>MPI_COMM_SELF<br><span class="hljs-comment">//有效通信域句柄，包括元素仅为当前进程</span><br>MPI_COMM_WORLD<br><span class="hljs-comment">//有效通信域句柄，包括元素为所有进程！！！！！！</span><br></code></pre></td></tr></table></figure>
 <p>MPI程序最小工作示例</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> **argv)</span><br>&#123;<br>   <span class="hljs-comment">//在程序启动后初始化，包括程序参数</span><br>   MPI_Init(&amp;argc, &amp;argv);<br>   <span class="hljs-type">int</span> rank, nprocs;<br>   <span class="hljs-comment">//获取进程的rank number</span><br>   MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);<br>   <span class="hljs-comment">//获取由mpirun命令确定的程序进程数量</span><br>   MPI_Comm_size(MPI_COMM_WORLD, &amp;nprocs);<br>   <span class="hljs-comment">//完成MPI来同步rank，然后退出</span><br>   <span class="hljs-built_in">printf</span>(“I am Rank %d of %d\n<span class="hljs-string">&quot;, rank, nprocs);</span><br><span class="hljs-string">   MPI_Finalize();</span><br><span class="hljs-string">   return 0;</span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure>
-<p><img src="/zhouyuchen/.io//image-20231226155644186.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226155644186.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <p><strong>输出的结果可能是任意顺序的：MPI程序由操作系统决定何时以及通过怎样的方式输出结果。</strong></p>
 </li>
 </ul>
@@ -349,7 +349,7 @@
 <p>接受</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">MPI_Recv</span><span class="hljs-params">(<span class="hljs-type">void</span>* buf, <span class="hljs-type">int</span> count, MPI_Datatype datatype, <span class="hljs-type">int</span> source, <span class="hljs-type">int</span> tag, MPI_Comm comm, MPI_Status* status)</span><br><span class="hljs-title function_">MPI_Recv</span><span class="hljs-params">(B, <span class="hljs-number">20</span>, MPI_DOBULE, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD,  &amp;status)</span>;<br><span class="hljs-comment">//MPI_Recv函数从标识符为0的进程接收消息，消息标签为99，将接收到的数据存储在数组B中，并使用status变量获取消息的状态信息。</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (rank != <span class="hljs-number">0</span>)<br>&#123;<br>    <span class="hljs-comment">// 对于非根进程，发送消息到根进程（rank 0）</span><br>    <span class="hljs-built_in">strcpy</span>(message, <span class="hljs-string">&quot;Hello World!&quot;</span>);<br>    MPI_Send(message, <span class="hljs-built_in">strlen</span>(message)+<span class="hljs-number">1</span>, MPI_CHAR, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, MPI_COMM_WORLD);<br>&#125; <br><span class="hljs-keyword">else</span> <br>&#123; <span class="hljs-comment">/* rank == 0 */</span><br>    <span class="hljs-comment">// 对于根进程，循环接收来自其他进程的消息</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> source = <span class="hljs-number">1</span>; source &lt; nprocs; ++source)<br>    &#123;<br>        <span class="hljs-comment">// 使用MPI_Recv接收来自其他进程（source）的消息</span><br>        MPI_Recv(message, <span class="hljs-number">100</span>, MPI_CHAR, source, <span class="hljs-number">99</span>, MPI_COMM_WORLD,  &amp;status);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, message);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/zhouyuchen/.io//image-20231226163828227.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226163828227.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <h3 id="7-阻塞"><a href="#7-阻塞" class="headerlink" title="7.阻塞"></a>7.阻塞</h3><ul>
 <li>需要等待操作的实际完成，或至少等待MPI系统安全地备份后才返回；</li>
 <li>MPI_Send与MPI_Recv都是阻塞的；</li>
@@ -406,7 +406,7 @@
 <li>多对多通信：每一个进程都向其他所有进程发送消息或者接收来自其他所有进程发送的消息。</li>
 </ul>
 <h3 id="3-MPI-数据类型"><a href="#3-MPI-数据类型" class="headerlink" title="3.MPI 数据类型"></a>3.MPI 数据类型</h3><p>目的：移植，方便使用（抽象，不连续数据的传送）<br>分为：预定义数据类型 和 派生数据类型<br>MPI是强数据类型的</p>
-<p><img src="/zhouyuchen/.io//image-20231226194256003.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226194256003.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <h3 id="4-MPI-派生数据类型（自定义）"><a href="#4-MPI-派生数据类型（自定义）" class="headerlink" title="4.MPI 派生数据类型（自定义）"></a>4.MPI 派生数据类型（自定义）</h3><p>派生数据类型：通常是用户根据程序的需要，在原始数据类型的基础上定义适合自身程序的数据处理方式，又称为用户自定义数据类型或抽象数据类型</p>
 <p>目的</p>
 <ul>
@@ -445,7 +445,7 @@
 </ul>
 <h3 id="6-笛卡尔拓扑基础"><a href="#6-笛卡尔拓扑基础" class="headerlink" title="6.笛卡尔拓扑基础"></a>6.笛卡尔拓扑基础</h3><p>MPI的笛卡尔拓扑可以将进程进行坐标划分，将进程映射到二维、三维，甚至多维网格。</p>
 <p>MPI_Dims_create：在笛卡尔网格中创建处理器的除法。<br>MPI_Cart_create：创建要附加到的拓扑信息的新通信器。<br>MPI_Cart_coords：确定在组中给定排名的笛卡尔拓扑中的进程共同点。<br>MPI_Cart_shift：返回移动的源和目标排名，给定移动方向和量。</p>
-<p><img src="/zhouyuchen/.io//image-20231226205715445-17035954415368.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226205715445-17035954415368.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <h2 id="第五章（重点）"><a href="#第五章（重点）" class="headerlink" title="第五章（重点）"></a>第五章（重点）</h2><h3 id="1-MapReduce-基本概念"><a href="#1-MapReduce-基本概念" class="headerlink" title="1.MapReduce 基本概念"></a>1.MapReduce 基本概念</h3><p>MapReduce是一种编程范式（programming paradigm），用于大规模数据集（大于1TB）的并行运算。 </p>
 <p>MapReduce的名字源于这个模型中的两项核心操作：Map（映射）和 Reduce（化简）</p>
 <p>模式的思想是通过<strong>自动分割</strong>将要执行的问题(程序)、拆解成<strong>Map(映射)</strong>和<strong>Reduce(化简)</strong>的方式。</p>
@@ -458,7 +458,7 @@
 </ul>
 <p>用户自定义的Reduce函数接受一个中间key的值I和相关的一个value值的集合。Reduce函数合并这些value值，形成一个较小的value值的集合。一般的，每次Reduce函数调用只产生0或1个输出value值。通常我们通过一个迭代器把中间value值提供给Reduce 函数，这样我们就可以处理无法全部放入内存中的大量的value值的集合。</p>
 <p>简单概括的说：MapReduce是将一个大作业拆分为多个小作业的框架（大作业和小作业应该本质是一样的，只是规模不同），用户需要做的就是决定拆成多少份，以及定义作业本身。 </p>
-<h3 id="3-处理流程"><a href="#3-处理流程" class="headerlink" title="3.处理流程"></a>3.处理流程</h3><p><img src="/zhouyuchen/.io//image-20231226213852081.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<h3 id="3-处理流程"><a href="#3-处理流程" class="headerlink" title="3.处理流程"></a>3.处理流程</h3><p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20231226213852081.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <h3 id="4-词频统计"><a href="#4-词频统计" class="headerlink" title="4.词频统计"></a>4.词频统计</h3><p>如果我们想统计下过去10年计算机论文出现最多的几个单词，看看大家都在研究些什么，那我收集好论文后，该怎么办呢？<br><strong>方法一</strong>：我可以写一个小程序，把所有论文按顺序遍历一遍，统计每一个遇到的单词的出现次数，最后就可以知道哪几个单词最热门了。<br>这种方法在数据集比较小时，是非常有效的，而且实现最简单，用来解决这个问题很合适。<br><strong>方法二</strong>：写一个多线程程序，并发遍历论文。<br>这个问题理论上是可以高度并发的，因为统计一个文件时不会影响统计另一个文件。当我们的机器是多核或者多处理器，方法二肯定比方法一高效。但是写一个多线程程序要比方法一困难多了，我们必须自己同步共享数据，比如要防止两个线程重复统计文件。</p>
 <p><strong>方法三</strong>：把作业交给多个计算机去完成。<br>    我们可以使用方法一的程序，部署到N台机器上去，然后把论文集分成N份，一台机器跑一个作业。这个方法跑得足够快，但是部署起来很麻烦，我们要人工把程序copy到别的机器，要人工把论文集分开，最痛苦的是还要把N个运行结果进行整合（当然我们也可以再写一个程序）。<br><strong>方法四</strong>：让MapReduce来帮帮我们吧！<br>    Map/Reduce本质上就是方法三，但是如何拆分文件集，如何copy程序，如何整合结果这些都是框架定义好的。我们只要定义好这个任务（用户程序），其它都交给MapReduce。</p>
 <p>统计词频的Map/Reduce函数的核心代码非常简短，主要就是实现Map和Reduce函数。 </p>
@@ -496,7 +496,7 @@
 <li><strong>本地内存分配（Local Memory Allocation）：</strong><br> 每个MPI进程都有自己的本地内存，可以使用标准的内存分配函数（如malloc、calloc等）在本地分配内存。本地内存分配的内存只能在本地进程中使用，无法直接在其他进程中访问。如果需要在不同进程之间共享数据，就需要使用MPI提供的通信操作来传输数据。</li>
 <li><strong>分布式内存分配（Distributed Memory Allocation）：</strong><br> 在MPI中，通常使用分布式内存模型，即每个进程有自己的内存空间，进程之间的内存是独立的。分布式内存分配可以通过使用MPI提供的特定函数来实现，如MPI_Alloc_mem和MPI_Win_allocate等。这些函数可以在多个进程之间分配共享内存，以便进行进程间的数据交换和通信。</li>
 </ol>
-<p><img src="/zhouyuchen/.io//image-20231227170013111.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20231227170013111.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 
                 
               </div>

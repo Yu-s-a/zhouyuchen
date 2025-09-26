@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="雨沉">
 <meta property="og:description" content="Agisoft Metashape等使用Metashape使用 新建项目，将图片资源拖入堆块（Chunk）中 选择工作流程（Workflow）中的对齐照片（Align Photos）可选精度，目的是为了将导入的素材形成链接点描点拼接 选择移动区域（Move Region)调整区域，排除多余的点 再次选择工作流程中创建点云（build dense cloud）再次生成深度图 形成深度图后，双击左侧工">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//image-20230925112737882.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//splash_lambda.png">
-<meta property="og:image" content="https://github.com/zhouyuchen/.io//splash_shortcuts.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20230925112737882.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/splash_lambda.png">
+<meta property="og:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/splash_shortcuts.png">
 <meta property="article:published_time" content="2023-09-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-11-18T05:54:32.000Z">
 <meta property="article:author" content="雨沉">
 <meta property="article:tag" content="Metashape">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/zhouyuchen/.io//image-20230925112737882.png">
+<meta name="twitter:image" content="https://github.com/zhouyuchen/Yu-s-a/zhouyuchen/image-20230925112737882.png">
   
   
   
@@ -301,7 +301,7 @@
 <li><strong>Sharpen Image：</strong>只锐化处理；</li>
 </ul>
 <p>注意在系统中开启：</p>
-<p><img src="/zhouyuchen/.io//image-20230925112737882.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/image-20230925112737882.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt></p>
 <p>测试记录：</p>
 <ol>
 <li>图片记录（5张图）<ol>
@@ -329,8 +329,8 @@
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">using</span> DG.Tweening;<br></code></pre></td></tr></table></figure>
 <p>初始化以设置一些全局选项，DOTween 将使用默认设置自动初始化：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#">DOTween.Init(autoKillMode, useSafeMode, logBehaviour);<br></code></pre></td></tr></table></figure>
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p><img src="/zhouyuchen/.io//splash_lambda.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/zhouyuchen/.io//splash_shortcuts.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/splash_lambda.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/zhouyuchen/Yu-s-a/zhouyuchen/splash_shortcuts.png" srcset="/zhouyuchen/img/loading.gif" lazyload alt="img"></p>
 <h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-comment">//目标点（1，1，1），时长秒</span><br>DoMove(Vector3.one, <span class="hljs-number">2</span>)<br><span class="hljs-comment">//X,Y,Z移动</span><br>DOMoveX<br><span class="hljs-comment">//旋转</span><br>DORotate(<span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">140</span>,<span class="hljs-number">140</span>, <span class="hljs-number">140</span>), <span class="hljs-number">2</span>)<br><span class="hljs-comment">//放大</span><br>DOScale<br></code></pre></td></tr></table></figure>
 
                 
